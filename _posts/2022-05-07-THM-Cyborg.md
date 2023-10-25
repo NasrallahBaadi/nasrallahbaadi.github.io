@@ -14,7 +14,7 @@ tags: [tryhackme, linux, sudo]
 
 # **Description**
 
-Hello hackers, I hope you are doing well. We are doing []() from [TryHackMe](https://tryhackme.com).
+Hello hackers, I hope you are doing well. We are doing `Cyborg` from [TryHackMe](https://tryhackme.com).
 
 # **Enumeration**
 

@@ -57,7 +57,7 @@ Nothing interesting here except of the email which has the domain `mafialive.thm
 
 ![](2.png)
 
-Now let's go [http://mafialive.thm](http://mafialive.thm).
+Now let's go `http://mafialive.thm`.
 
 ![](3.png)
 
@@ -91,7 +91,7 @@ Let's check robots.txt file.
 
 ![](4.png)
 
-We found test.php, let's check it out [http://mafialive.thm/test.php](http://mafialive.thm/test.php).
+We found test.php, let's check it out `http://mafialive.thm/test.php`.
 
 ![](5.png)
 

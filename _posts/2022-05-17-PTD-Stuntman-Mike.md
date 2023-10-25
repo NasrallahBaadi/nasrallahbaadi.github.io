@@ -12,7 +12,7 @@ tags: [pwntilldawn, linux, hydra]
 
 # **Description**
 
-Hello hackers, I hope you are doing well. We are doing [Stuntman Mike]() from [PwnTillDawn](https://online.pwntilldawn.com/) and [Wizlynxgroup](https://www.wizlynxgroup.com). This is an easy linux machine, running a ssh server on port 22 and a webserver on port 8089. When we try to connect to ssh, the server reveals some useful information, we use that to brute force ssh and we find valid credentials. After login to the machine via ssh, we find that we can run any command as root, so we can easily change user to root. Let's get started.
+Hello hackers, I hope you are doing well. We are doing `Stuntman Mike` from [PwnTillDawn](https://online.pwntilldawn.com/) and [Wizlynxgroup](https://www.wizlynxgroup.com). This is an easy linux machine, running a ssh server on port 22 and a webserver on port 8089. When we try to connect to ssh, the server reveals some useful information, we use that to brute force ssh and we find valid credentials. After login to the machine via ssh, we find that we can run any command as root, so we can easily change user to root. Let's get started.
 
 # **Enumeration**
 

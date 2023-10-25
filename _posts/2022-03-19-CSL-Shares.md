@@ -11,11 +11,11 @@ tags: [cyberselabs, linux, nfs, john, crack]
 
 # **Description**
 
-Hello l33ts, I hope you are doing well. Today we are going to look at []() from [Shares](https://www.cyberseclabs.co.uk/labs/info/Shares/) from [CyberSecLabs](https://www.cyberseclabs.co.uk).
+Hello l33ts, I hope you are doing well. Today we are going to look at **Shares** from [Shares](https://www.cyberseclabs.co.uk/labs/info/Shares/) from [CyberSecLabs](https://www.cyberseclabs.co.uk).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -23,16 +23,16 @@ We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target
 
 - -sV: Find the version of services running on the target.
 
-- -T4: Aggressice scan to provide faster results.
+- -SSST4: Aggressice scan to provide faster results.
 
 ![](/assets/img/cyberseclabs/shares/Untitled.png)
 
 There are 4 open port.
 
-  - 21/tcp     ftp     vsftpd 3.0.3
-  - 80/tcp     http    Apache httpd 2.4.29
-  - 111/tcp    rpcbind 2-4
-  - 2049/tcp   nfs_acl 3
+- 21/tcp     ftp     vsftpd 3.0.3
+- 80/tcp     http    Apache httpd 2.4.29
+- 111/tcp    rpcbind 2-4
+- 2049/tcp   nfs_acl 3
 
 Since the machine is called shares, i decided to look for any nfs shares.
 
@@ -46,11 +46,11 @@ We found a share, let's mount it on our attacking machine.
 
 First, use `mkdir /tmp/share` to create a directory on your machine to mount the share to. Now let's use the following command to mount the nfs share to our machine. `sudo mount -t nfs IP:/home/amir /tmp/share -nolock`
 
- - sudo :	Run as root
- - mount :	Execute the mount command
- - -t nfs :	Type of device to mount, then specifying that it's NFS
- - IP:share :	The IP Address of the NFS server, and the name of the share we wish to mount
- - -nolock :	Specifies not to use NLM locking
+- sudo:Run as root
+- mount:Execute the mount command
+- -t nfs:Type of device to mount, then specifying that it's NFS
+- IP:share:The IP Address of the NFS server, and the name of the share we wish to mount
+- -nolock:Specifies not to use NLM locking
 
 ![](/assets/img/cyberseclabs/shares/Untitled2.png)
 
@@ -61,7 +61,7 @@ It appears to be the home directory of **amir**, and it a **.ssh** directory tha
 
 Great! We found the port of ssh.
 
-# **Foothold**
+## **Foothold**
 
 Let's now use the private key we got from the nfs share so connect to the machine.
 
@@ -71,8 +71,7 @@ the private key has a password protecting it, using `ssh2john` we were able to e
 
 ![](/assets/img/cyberseclabs/shares/Untitled5.png)
 
-
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 We now have access to the machine as **amir**, let's do some basic enumeration.
 
@@ -88,8 +87,9 @@ User amir may run the following commands on shares:
 ```
 
 We see that as amir, we can execute any command as root but we need a password for that, on the other hand, we can execute `/usr/bin/pkexec` and `/usr/bin/python3` as **amy**. We go to [GTFOBins](https://gtfobins.github.io/) and get a pkexec/python3 command that would give us a shell as amy.
-  - python3 : `sudo -u amy python -c 'import os; os.system("/bin/bash")'`
-  - pkexec : `sudo -u amy pkexec /bin/sh`
+
+- python3 : `sudo -u amy python -c 'import os; os.system("/bin/bash")'`
+- pkexec : `sudo -u amy pkexec /bin/sh`
 
 We can't escalate to amy with `pkexec` so let's use `python3`
 
@@ -111,8 +111,6 @@ Going back to [GTFOBins](https://gtfobins.github.io/) and searching for ssh, we 
 
 ![](/assets/img/cyberseclabs/shares/Untitled7.png)
 
-
-
 ---
 
-Thank you for taking the time to read my writeup, I hope you have learned something with this, if you have any questions or comments, please feel free to reach out to me. See you in the next hack :) .
+Thank you for taking the time to read my writeup, I hope you have learned something with this, if you have any questions or comments, please feel free to reach out to me. See you in the next hack :).

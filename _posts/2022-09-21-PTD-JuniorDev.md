@@ -71,7 +71,7 @@ The port is running a jetty web server.
 
 ## Web
 
-Let's navigate to the web page on [http://10.150.150.38:30609/](http://10.150.150.38:30609/)
+Let's navigate to the web page on `http://10.150.150.38:30609/`
 
 ![](1.png)
 
