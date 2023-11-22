@@ -12,13 +12,13 @@ tags: [tryhackme, linux, smb, john, crack, hydra]
 ---
 
 
-# **Description**
+## **Description**
 
 Hello l33ts, I hope you are doing well. We will be doing [Basic Pentesting](https://tryhackme.com/room/basicpentestingjt) from [TryHackMe](https://tryhackme.com). It's an easy machine where we enumerate SMB to get a username, we brute force ssh after that to get a password that will give us access to the machine. Some basic enumeration on the machine after that will give us a way to get root. Let's get into it.
 
-# **Enumeration**
+## **Enumeration**
 
-## Nmap
+### Nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -103,13 +103,14 @@ Host script results:
 ```
 
 We found about 6 open port.
+
  - 22 SSH
  - 80 HTTP
  - 139/445 Samba
  - 8009 ajp13
  - 8080 HTTP
 
-## WebPage
+### WebPage
 
 Let's navigate to the webpage on port 80.
 
@@ -120,7 +121,7 @@ Checking the source code we see a comment.
 ![webpage](/assets/img/tryhackme/basicpen/sourcecode.png)
 
 
-## Gobuster
+### Gobuster
 
 Let's run a directory scan using the following command: `gobuster dir -w /usr/share/wordlists/dirb/common.txt  -u http://{target_IP}`
 
@@ -167,7 +168,7 @@ Let's check the **j.txt** file.
 
 It looks like it's a message for **J** noting that the password the latter uses is weak, and it's from **K**.
 
-## SMB
+### SMB
 
 Let's now enumerate samba using `Enum4linux` with `-A` option for all simple enumeration, and it will enumerate for : users, groups, shares...etc.
 
@@ -350,7 +351,7 @@ enum4linux complete on Mon May 24 07:13:07 2021
 
 At the end of the enumeration, we were able to find 2 usernames, **Kay** and **Jan**.
 
-# **Foothold**
+## **Foothold**
 
 With the information we have now, we can see that the note in **j.txt** file we read earlier was from **kay** to **jan**. We know that **Jan**'s password is weak, so let's use hydra to brute force the password on ssh.
 
@@ -358,7 +359,7 @@ With the information we have now, we can see that the note in **j.txt** file we 
 
 Great! We got jan's password, let's ssh to the machine as jan.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's do some basic enumeration on the machine.
 
