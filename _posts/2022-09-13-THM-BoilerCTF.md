@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/boilerctf
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Boiler CTF](https://tryhackme.com/room/boilerctf2) from [TryHackMe](https://tryhackme.com). The machine is running a webserver on a non-standard port, we keep running directory scans until we find ssh credentials for a user. After we login to the machine we find a shell script that has another user's credentials. A binary with SUID bit is used after that to get root.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -63,7 +63,7 @@ Service Info: OS: Unix
 
 We have 3 open ports, 21(FTP), 80(Apache) and 10000(Webmin).
 
-## FTP
+### FTP
 
 We see that FTP has anonymous login enabled, so let's log in.
 
@@ -85,7 +85,7 @@ Let's navigate to the webpage.
 
 Found the default page for Apache.
 
-### Gobuster
+#### Gobuster
 
 Let's run a directory scan.
 
@@ -119,7 +119,7 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 
 We found **Joomla** CMS, a manual directory and **robots.txt**.
 
-### robots.txt
+#### robots.txt
 
 Let's check the robots file.
 
@@ -139,7 +139,7 @@ That decoded to what looks like a md5 hash, let's crack it using [crackstation](
 
 Another rabbit hole.
 
-### Joomla
+#### Joomla
 
 Let's go to **/joomla** directory.
 
@@ -234,7 +234,7 @@ Found **log.txt** file.
 
 Inside the log file, we find ssh credentials.
 
-# **Foothold**
+## **Foothold**
 
 We found ssh username and password, but we didn't find an ssh service running from the previous nmap scan. Let's run another scan for all ports. `sudo nmap --min-rate 5000 -p- {Target_ip}`.
 
@@ -266,7 +266,7 @@ Using the credentials we got from the log file, let's connect via ssh.
 
 ![](11.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 In the home directory of `basterd` user we find the following shell script.
 
@@ -299,5 +299,3 @@ Congratulations, we have successfully rooted the machine.
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
 
 ---
-
-# References

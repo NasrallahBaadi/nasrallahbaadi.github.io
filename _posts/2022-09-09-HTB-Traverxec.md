@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/traverxec
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Traverxec](https://app.hackthebox.com/machines/Traverxec) from [HackTheBox](https://www.hackthebox.com). The box is running a webserver vulnerable to rce allowing to get a reverse shell on the machine. We enumerate the machine and find ssh private key of user `david`. After that we exploit a sudo entry to get root.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -82,7 +82,7 @@ To get a fully functional shell, setup a listener with `nc -lvnp 1234` and run t
 
 Got a shell and stabilized it with python pty. 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Going to nostromo's config directory, we find an interesting file.
 

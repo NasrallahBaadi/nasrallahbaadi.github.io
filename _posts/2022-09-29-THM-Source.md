@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/source
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Source](https://tryhackme.com/room/source) from [TryHackMe](https://tryhackme.com). The machine is running a vulnerable version of webmin giving us root access to the target.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -46,7 +46,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We have two open ports, 22(ssh) and 10000(webmin)
 
-## Web
+### Web
 
 Let's navigate to the web page at port 10000.
 
@@ -58,7 +58,7 @@ We are advised to use SSL, so let's add https to the url.
 
 We webmin login page. I tried some default credentials but no luck.
 
-# **Foothold**
+## **Foothold**
 
 Let's check for exploits in webmin using `searchsploit`.
 
@@ -119,7 +119,7 @@ Matching Modules
 
 Let's use `exploit/linux/http/webmin_backdoor` module and set the following options:
 
-```
+```bash
 use exploit/linux/http/webmin_backdoor
 
 set rhost {target_IP}
@@ -142,5 +142,3 @@ Great! We got access as root!
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
 
 ---
-
-# References

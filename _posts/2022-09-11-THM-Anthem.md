@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/anthem
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Anthem](https://tryhackme.com/room/anthem) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 -Pn {target_IP}`.
 
@@ -55,7 +55,7 @@ Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
 
 The target is a windows machine running a web server on port 80, and RDP on port 3389.
 
-## Web
+### Web
 
 Let's navigate to the webpage.
 
@@ -118,7 +118,7 @@ Some one wrote a poem to IT department. If we googled the poem, we find who wrot
 
 Solomon Grundy wrote the poem, so his email might be `SG@anthem.com`.
 
-# **Foothold**
+## **Foothold**
 
 Using the string we found in robots.txt as a password, and SG as a username, let's login to the machine via rdp using `xfreerdp`.
 
@@ -128,7 +128,7 @@ xfreerdp /u:sg /p:UmbracoIsTheBest! /v:10.10.253.248 /cert:ignore /dynamic-resol
 
 ![](6.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 After going down a deep rabbit hole, i checked the hint and it says `it's hidden`. I checked the hidden item box and started searching.
 

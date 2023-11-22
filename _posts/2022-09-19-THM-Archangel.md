@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/archangel
 ---
 
 
-# **Description**
+##**Description**
 
 Hello hackers, I hope you are doing well. We are doing [Archangel](https://tryhackme.com/room/archangel) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -47,7 +47,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We have ssh running on port 22 and an Apache web server on port 80.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -107,7 +107,7 @@ I tried including **/etc/passwd** but that's not allowed, let's try read base64 
 
 Let's navigate to the following URL.
 
-```
+```text
 http://mafialive.thm/test.php?view=php://filter/convert.base64-encode/resource=/var/www/html/development_testing/test.php
 ```
 
@@ -154,7 +154,7 @@ We can bypass the first condition by using `..//..` instead.
 
 Our payload would look like the following.
 
-```
+```text
 /var/www/html/development_testing//..//..//..//..//etc/passwd
 ```
 
@@ -164,15 +164,15 @@ Let's put our payload in the view parameter.
 
 We managed to read the passwd file and confirmed the LFI vulnerability.
 
-# **Foothold**
+## **Foothold**
 
-## Log Poisoning
+### Log Poisoning
 
 We know that the web server is Apache, so we're going to use a technique called `log poisoning`. For more information, check this [article](https://www.hackingarticles.in/apache-log-poisoning-through-lfi/).
 
 The file we're going to poison is `/var/log/apache2/access.log`. We can access it through the lfi with the following payload.
 
-```
+```url
 http://mafialive.thm/test.php?view=/var/www/html/development_testing//..//..//..//log/apache2/access.log
 ```
 
@@ -212,7 +212,7 @@ Now we setup a listener on our machine with `nc -lvnp 1234` and request the shel
 
 Great! We got a shell.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 After some basic enumeration, we found the following shell script.
 

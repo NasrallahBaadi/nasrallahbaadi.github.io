@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/shocker
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Shoker](https://app.hackthebox.com/machines/Shoker) from [HackTheBox](https://www.hackthebox.com). In this machine, we us the shellshock exploit to gain foothold, and a sudo misconfiguration gives us root access.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -47,7 +47,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 There are two open ports, port 80 running Apache web server and 2222 running SSH on a non-standard port.
 
-## Web
+### Web
 
 Navigate to the web page.
 
@@ -112,7 +112,7 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 
 We found **user.sh** file.
 
-# **Foothold**
+## **Foothold**
 
 From the machine's name, we can guess the the exploit we're going to use is `shellshock`(Apache mod_cgi). Let's fire up metasploit and use `exploit/multi/http/apache_mod_cgi_bash_env_exec` module.
 
@@ -122,7 +122,7 @@ After setting up the required options, we run the exploit to get a shell.
 
 ![](3.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's check our privileges with `sudo -l`.
 

@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/yearoftherabbit
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Year of the Rabbit](https://tryhackme.com/room/yearoftherabbit) from [TryHackMe](https://tryhackme.com). The target is running a web server where we find an image that contains a list of passwords that we use to brute force the ftp server. After finding the right password we login to find a file that has some weird text, we decode that to get ssh credentials. Once we're in the target machine we find a secret file with on of the user's password. After switching to that user we exploit a sudo cve to get root.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -49,7 +49,7 @@ Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 
 There are 3 open ports, 21 running vsftp, 22 running OpenSSH, and 80 running Apache web server.
 
-## Web
+### Web
 
 Navigate to the web page.
 
@@ -57,7 +57,7 @@ Navigate to the web page.
 
 It's the default page for apache.
 
-### Gobuster
+#### Gobuster
 
 Let's run a directory scan.
 
@@ -123,9 +123,9 @@ strings Hot_Babe.png | tail -n 82 > pass.txt
 ![](7.png)
 
 
-# **Foothold**
+## **Foothold**
 
-## Hydra
+### Hydra
 
 Now let's use `hydra` to brute force the ftp server.
 
@@ -135,7 +135,7 @@ hydra -l ftpuser -P pass.txt 10.10.243.82 ftp
 
 ![](8.png)
 
-## FTP
+### FTP
 
 Let's login to the ftp server.
 
@@ -153,11 +153,11 @@ Great! We got hte credentials. Let's login with ssh.
 
 ![](12.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 When we logged in, we got the following message.
 
-```
+```text
 "Gwendoline, I am not happy with you. Check our leet s3cr3t hiding place. I've left you a hidden message there"
 ```
 

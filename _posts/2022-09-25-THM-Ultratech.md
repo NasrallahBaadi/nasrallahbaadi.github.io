@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/ultratech
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [UltraTech](https://tryhackme.com/room/ultratech1) from [TryHackMe](https://tryhackme.com). The machine is running a web server where we find a js file disclosing a way to run command on the target that leads to a foothold. Being part of docker group makes it easy to get root.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -58,7 +58,7 @@ If we run another nmap scan for all ports, it discovers another open ports
 
 Port 31331 open running Apache web server.
 
-## Web
+### Web
 
 Let's navigate to the node.js web page on port 8081.
 
@@ -181,11 +181,11 @@ The api.js file has the following.
 
 According to the js file, we can execute command on `http://{APIURL}:8081/ping?ip={command}`
 
-# **Foothold**
+## **Foothold**
 
 Let's test this functionality by running the command `id` for example:
 
-```
+```url
 http://10.10.216.105:8081/ping?ip=`id`
 ```
 
@@ -214,7 +214,7 @@ Got the password for `r00t`, let's login with ssh.
 
 ![](8.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 When we run the command `id`, we get this:
 
@@ -244,5 +244,3 @@ Great! We got root.
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
 
 ---
-
-# References

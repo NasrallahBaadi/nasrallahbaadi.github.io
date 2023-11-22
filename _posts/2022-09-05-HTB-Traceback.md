@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/traceback
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Traceback](https://app.hackthebox.com/machines/Traceback) from [HackTheBox](https://www.hackthebox.com). The machine is running an Apache web server which has been hacked and the hacker put a backdoor allowing us to get a reverse shell as `webadmin` user. This user is able to run a tool called `luvit` which executes `Lua` as `sysadmin`. The user `sysadmin` has write permissions to update-motd.d scripts that get executed every time someone logs to the system, so we exploit that to escalate our privileges to root.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -47,7 +47,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We found two open ports, port 22 running OpenSSH and port 80 running Apache web server.
 
-## Web
+### Web
 
 Let's go to the webpage.
 
@@ -105,7 +105,7 @@ We found the backdoor. Looking at the source code of the backdoor we can find th
 Here we see that we can execute commands, upload files and much much more. 
 
 
-# **Foothold**
+## **Foothold**
 
 I decided to upload this [reverse shell](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php).
 
@@ -116,7 +116,7 @@ After that i setup a listener and requested the file.
 After getting a shell, i stabilized it using python pty; 
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's check our privileges with `sudo -l`.
 

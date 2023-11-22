@@ -11,13 +11,13 @@ img_path: /assets/img/pwntilldawn/juniordev
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [JuniorDev](https://online.pwntilldawn.com/Target/Show/63) from [PwnTillDawn](https://online.pwntilldawn.com/). The target is running a web server on a non standard port. We found a login page that we brute force to get in and then run a command for a reverse shell. Then we find another web server running internally so we use an ssh tunnel to access it. We exploit a command injection vulnerability to get root. 
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -69,7 +69,7 @@ PORT      STATE SERVICE VERSION
 
 The port is running a jetty web server.
 
-## Web
+### Web
 
 Let's navigate to the web page on `http://10.150.150.38:30609/`
 
@@ -93,7 +93,7 @@ Let's run the command.
 
 Got the password.
 
-# **Foothold**
+## **Foothold**
 
 Let's login to Jenkins.
 
@@ -116,7 +116,7 @@ Now setup a listener with `nc -lvnp 9001` and run the command.
 
 We got the shell.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's do some basic enumeration.
 
@@ -166,5 +166,3 @@ Great! We got a shell as root.
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
 
 ---
-
-# References
