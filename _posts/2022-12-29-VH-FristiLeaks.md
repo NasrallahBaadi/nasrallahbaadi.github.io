@@ -12,13 +12,13 @@ img_path: /assets/img/vulnhub/fristileaks
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [FristiLeaks](https://www.vulnhub.com/entry/fristileaks-13,133/) from [VulnHub](https://www.vulnhub.com/).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -45,7 +45,7 @@ MAC Address: 08:00:27:A5:A6:76 (Oracle VirtualBox virtual NIC)
 
 There is only one open port which is port 80 running Apache 2.2.15.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -109,7 +109,7 @@ After decoding the base64 string we can see that it's a PNG file, so let's save 
 
 We found what looks like a password.
 
-# **Foothold**
+## **Foothold**
 
 With the username and the password we now have, let's login into fristi page.
 
@@ -133,7 +133,7 @@ Great! The file now is located at **/uploads**, so let's setup a listener with `
 
 Great! We a shell, and stabilized with python pty.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 The current user we have now is `apache` so we obviously we need to escalate our privileges. Checking files on the web directory, we find the following note.
 
@@ -216,7 +216,3 @@ Let's make a copy of `/bin/bash` in `/tmp` directory and give it suid permission
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

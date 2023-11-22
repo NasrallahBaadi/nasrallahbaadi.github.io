@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/nerdherd
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [NerdHerd](https://tryhackme.com/room/nerdherd) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -85,7 +85,7 @@ Host script results:
 
 We have 4 ports open, 21 running vsftpd with anonymous login allowed, 22 running OpenSSH and 139/445 belongs to SMB.
 
-## FTP
+### FTP
 
 Let's login to the ftp server as anonymous and see what can we find.
 
@@ -95,7 +95,7 @@ We found two files and downloaded them to our machine using the command `get {fi
 
 the text file contains the following message.
 
-```
+```text
 all you need is in the leet
 ```
 
@@ -114,7 +114,7 @@ Image Size                      : 894x894
 Megapixels                      : 0.799
 ```
 
-## SMB
+### SMB
 
 Let's list the available share on this smb server using the command `sudo smbclient -L 10.10.128.42 -N`.
 
@@ -165,7 +165,7 @@ PORT     STATE SERVICE VERSION
 |_http-title: Apache2 Ubuntu Default Page: It works
 ```
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -198,7 +198,7 @@ Let's login using the credentials we found.
 ![](8.png)
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's check the kernel version of this machine.
 
@@ -220,7 +220,3 @@ And just like that we got root. The root flag can be found in **/opt** directory
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

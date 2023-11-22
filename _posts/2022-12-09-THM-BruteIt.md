@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/bruteit
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Brute It](https://tryhackme.com/room/bruteit) from [TryHackMe](https://tryhackme.com). This machine is running a webserver where we find a login page that we brute force and find a user's password, Once we're logged in we find an ssh private key that we use to gain foothold. After that we exploit a sudo entry to read the shadow file and crack the root's hash to get his password thus getting root shell.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -47,7 +47,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 There are two open ports, 22 running OpenSSH and 80 running Apache http web server.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -108,7 +108,7 @@ We got the password, let's login.
 
 ![](5.png)
 
-# **Foothold**
+## **Foothold**
 
 We found john ssh private key, let's copy it to our machine, give it the right permissions and connect with it.
 
@@ -120,7 +120,7 @@ Let's reconnect.
 
 ![](7.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's check our current privileges with `sudo -l`
 
@@ -165,7 +165,3 @@ root@bruteit:~#
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

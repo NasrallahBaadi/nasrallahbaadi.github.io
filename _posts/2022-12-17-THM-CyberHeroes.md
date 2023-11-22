@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/cyberheroes
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [CyberHeroes](https://tryhackme.com/room/cyberheroes) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -45,7 +45,7 @@ PORT   STATE SERVICE VERSION
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -89,7 +89,3 @@ Let's login and get the flag.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

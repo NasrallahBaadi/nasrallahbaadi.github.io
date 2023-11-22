@@ -12,13 +12,13 @@ img_path: /assets/img/vulnhub/kioptrix2
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Kioptrix level 2](https://www.vulnhub.com/entry/kioptrix-level-11-2,23/) from [VulnHub](https://www.vulnhub.com/).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -76,7 +76,7 @@ MAC Address: 08:00:27:82:C2:D8 (Oracle VirtualBox virtual NIC)
 
 We found a couple of open ports running multiple services on Linux CentOS. We see OpenSSH running on port 22, Apache on port 80 and mysql on port 3306.
 
-## Web
+### Web
 
 Let's check the webpage on port 80.
 
@@ -92,7 +92,7 @@ We see a web console giving us the ability to ping machines on the network. I in
 
 ![](3.png)
 
-# **Foothold**
+## **Foothold**
 
 Now it's time to get a reverse shell, first we setup a netcat listener with `nc -lvnp 1234` and then submit the following command in the web console.
 
@@ -106,7 +106,7 @@ After that i upgraded the shell using python pty.
 
 ![](5.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 We saw earlier from the nmap scan that the linux flavor of the machine is `CentOS`, let's check it's version with `lsb_release -a`.
 
@@ -141,7 +141,3 @@ Great! The exploit worked and we got a root shell.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

@@ -12,13 +12,13 @@ img_path: /assets/img/vulnhub/kioptrix1
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Kioptrix level 1](https://www.vulnhub.com/entry/kioptrix-level-1-1,22/) from [VulnHub](https://www.vulnhub.com/).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 -p- {target_IP}`.
 
@@ -90,7 +90,7 @@ We found 6 open ports:
 
  - 443/mod_ssl/2.8.4
 
-## SMB
+### SMB
 
 We found out from the scan that samba is running on port 139 but nmap couldn't detect a version, for that we're going to use the `metasploit` module `auxiliary/scanner/smb/smb_version`.
 
@@ -109,9 +109,9 @@ rhosts => 192.168.56.4
 
 The version of the running Samba is 2.2.1a.
 
-# **Foothold**
+## **Foothold**
 
-## Samba
+### Samba
 
 Searching for vulnerabilities in Samba, i found this remote code execution [exploit](https://www.exploit-db.com/exploits/10)
 
@@ -129,7 +129,7 @@ $ ./exploit -v 192.168.56.4 -b 0
 
 Great! We got a shell as root.
 
-## SSL
+### SSL
 
 On port 433, we have mod_ssl/2.8.4 which is also vulnerable to a remote code execution. We can find a working exploit [here](https://github.com/heltonWernik/OpenLuck).
 
@@ -155,7 +155,7 @@ And run the compiled exploit with this command:
 
 We got a shell as `apache`, which means it's privilege escalation time.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 By running `uname -a`, we find that the version of linux running is `linux 2.4.7-10` and it's vulnerable to Local Privilege Escalation. Here is the [exploit](https://www.exploit-db.com/exploits/3)
 
@@ -168,7 +168,3 @@ Let's upload the exploit to the target, compile it and run it.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

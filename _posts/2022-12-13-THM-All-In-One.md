@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/allinone
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [All in One](https://tryhackme.com/room/allinonemj) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -62,7 +62,7 @@ Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 
 There are three open ports, 22 running an FTP server with anonymous login allowed, port 22 running OpenSSH and port 80 running Apache web server.
 
-## FTP
+### FTP
 
 Let's login to the ftp server as `anonymous`.
 
@@ -88,7 +88,7 @@ ftp>
 
 We logged in but couldn't find anything.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -273,7 +273,7 @@ Now let's decode it on [CyberChef](https://gchq.github.io/CyberChef/)
 
 ![](6.png)
 
-# **Foothold**
+## **Foothold**
 
 Now that we have a username and a password, let's login to wordpress.
 
@@ -292,9 +292,9 @@ Now we setup a listener with the command `nc -lvnp 1234` and navigate to `wp-con
 ![](9.png)
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
-## Elyana
+### Elyana
 
 Checking elyana's home directory, we find a hint informing us that elyana's password is somewhere in the system.
 
@@ -302,9 +302,9 @@ Checking elyana's home directory, we find a hint informing us that elyana's pass
 
 We searched for file that belongs to `elyana` with the command `find / -type f -user elyana 2>/dev/null`, and we found the file with elyana's password, now we can either switch to that user or ssh into the machine.
 
-## root
+### root
 
-### Method 1
+#### Method 1
 
 We check our current privileges with `sudo -l`.
 
@@ -323,7 +323,7 @@ We can run `socat` as root, if we check [GTFOBins](https://gtfobins.github.io/gt
 sudo socat stdin exec:/bin/sh
 ```
 
-### Method 2
+#### Method 2
 
 Next i checked cronjobs and found the following.
 
@@ -345,6 +345,6 @@ Thank you for taking the time to read my write-up, I hope you have learned somet
 
 ---
 
-# References
+## References
 
 https://www.hackingarticles.in/wordpress-reverse-shell/

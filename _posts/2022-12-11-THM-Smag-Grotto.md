@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/smaggrotto
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Smag Grotto](https://tryhackme.com/room/smaggrotto) from [TryHackMe](https://tryhackme.com). On a webpage we find a pcap file that contains credentials for a login page, we use them to login and find out we can run commands on the system so we use that to get a reverse shell. After that we exploit a cronjob running to escalate to another user on the system. A sudo entry then is used to get root.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -47,7 +47,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We found two open ports, 22 running OpenSSH and port 80 running Apache http web server.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -55,7 +55,7 @@ Let's navigate to the web page.
 
 We see the welcome page of Smag informing us that the site in under development.
 
-## Ffuf
+### Ffuf
 
 Let's run a directory scan.
 
@@ -98,7 +98,7 @@ We found a page called **page**, let's check it out.
 
 As expected, we see emails between the website's admins/developers, in one of the emails we see a pcap file, let's download it and inspect it using `wireshark`.
 
-## Wireshark
+### Wireshark
 
 ![](3.png)
 
@@ -124,7 +124,7 @@ Using the credentials we found in the pcap file, let's login.
 
 ![](8.png)
 
-# **Foothold**
+## **Foothold**
 
 We can enter commands here, i tried some commands like `id` and `whoami` but didn't get any response, so i tried to get a reverse shell using the following command:
 
@@ -136,7 +136,7 @@ I setup a netcat listener, run the command and got the shell.
 
 ![](9.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 After some enumeration, we check the crontab file and find the following:
 
@@ -206,7 +206,3 @@ sudo apt-get update -o APT::Update::Pre-Invoke::=/bin/sh
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

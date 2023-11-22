@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/cmspit
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [CMSpit](https://tryhackme.com/room/cmspit) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -49,7 +49,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We found two open ports on a Ubuntu machine, port 22 running OpenSSH and port 80 running Apache web server.
 
-## Web
+### Web
 
 Let's check the web page.
 
@@ -87,7 +87,7 @@ Great we got the password, let's log in.
 
 ![](4.png)
 
-# **Foothold**
+## **Foothold**
 
 Navigating through the different pages, i find a page called **/finder** where i can browse file of the web server and create files.
 
@@ -102,7 +102,7 @@ Then i setup a listener to catch the shell and requested the file.
 ![](7.png)
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Searching through the files of the web server, we find `mongo` file, we try to connect to the mondo database and we succeed.
 
@@ -144,7 +144,3 @@ sudo /usr/local/bin/exiftool -filename=./root.txt /root/root.txt
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

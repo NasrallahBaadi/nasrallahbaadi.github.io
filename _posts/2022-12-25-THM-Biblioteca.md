@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/biblioteca
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Biblioteca](https://tryhackme.com/room/biblioteca) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -46,7 +46,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 There are two open ports, port 22 running OpenSSH 8.2p1 and port 8000 running Werkzeug httpd 2.0.2.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -58,9 +58,9 @@ It's a login page, let's try logging in using sql injection.
 
 We managed to login as **Smokey** using this payload `' or 1=1 -- -`
 
-# **Foothold**
+## **Foothold**
 
-## Sqlmap
+### Sqlmap
 
 Let's run `sqlmap` on the login page and tell it to dump everything.
 
@@ -76,11 +76,11 @@ Let's try ssh into the machine with that password.
 
 ![](4.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 If we check the `/home` directory we find a folder named `hazel` which belongs the user `hazel`.
 
-## Hydra
+### Hydra
 
 The hint for the user flag says `Weak password`, so let's brute force `hazel`'s ssh password using hydra.
 
@@ -137,7 +137,7 @@ import os; os.system("/bin/bash")
 
 Now we run the sudo command with the environment variable `PYTHONPATH` set to `/tmp` to get root.
 
-```
+```bash
 sudo PYTHONPATH=/tmp /usr/bin/python3 /home/hazel/hasher.py
 ```
 
@@ -146,7 +146,3 @@ sudo PYTHONPATH=/tmp /usr/bin/python3 /home/hazel/hasher.py
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/cybercrafted
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [CyberCrafted](https://tryhackme.com/room/cybercrafted) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 -p- {target_IP}`.
 
@@ -50,7 +50,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We found tree open ports, 22 running OpenSSH, 80 running Apache web server and 25565 running a minecraft server.
 
-## Web
+### Web
 
 As we can see from the nmap scan, when we navigate to the web page we get redirected to `cybercrafted.thm`, so let's add that domain to our /etc/hosts file and navigate to it.
 
@@ -129,7 +129,7 @@ Let's test for SQL injection with this payload: `' or 1=1 -- -`
 
 Great! We managed to dump the hole table and confirm that this search function is vulnerable to injection.
 
-# **Foothold**
+## **Foothold**
 
 ### Sqlmap
 
@@ -170,7 +170,7 @@ Let's copy it to our machine and connect with it.
 We found out that the key is protected with a password, so we use `ssh2john` to get a hash of that password, then we crack the hash using `john`.
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 After we logged in successfully, we saw that we're part of a group called `minecraft`, so we look for directories and file that belong to that group using this command `find / -group minecraft 2>/dev/null` and we find a directory in /opt called minecraft. Let's check it out.
 
@@ -204,7 +204,3 @@ We can run `/usr/bin/screen -r cybercrafted` as root which would give us an in-g
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

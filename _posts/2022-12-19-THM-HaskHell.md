@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/haskhell
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [HaskHell](https://tryhackme.com/room/haskhell) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -47,7 +47,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We found two open ports, 22 running OpenSSH and 5001 running Gunicorn http web server.
 
-## Web
+### Web
 
 Let's navigate to the web page on port 5001.
 
@@ -92,7 +92,7 @@ Great! We found the page.
 
 ![](3.png)
 
-# **Foothold**
+## **Foothold**
 
 Now we can upload the following haskell code that would give us a reverse shell.
 
@@ -112,7 +112,7 @@ After setting up a listener and uploading the file, we successfully receive a sh
 ![](4.png)
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Checking other users' home directories, we find an ssh private key of `prof` user.
 
@@ -164,7 +164,3 @@ Congrats, we've rooted the machine.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

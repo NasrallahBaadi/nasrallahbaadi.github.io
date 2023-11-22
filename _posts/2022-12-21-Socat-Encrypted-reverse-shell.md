@@ -15,13 +15,13 @@ img_path: /assets/img/others/socat
 ---
 
 
-# **Description**
+## **Description**
 
 Reverse shells are used a lot for getting foothold on the target systems, but these reverse shells use a clear text-based communication which allows administrators monitoring the network to not only see the commands that are run on the target but also see the output that is displayed to the attacker, which leaves the latter in a vulnerable position.
 
 We are going to use `socat` that utilizes an encryption key created with `openssl` and set `socat` to use that key to enforce encryption as it listens for incoming connections.
 
-# **Socat**
+## **Socat**
 
 We create the key with `openssl` using the following command:
 
@@ -94,7 +94,7 @@ Thank you for taking the time to read my write-up, I hope you have learned somet
 
 ---
 
-# References
+## References
 
 https://tryhackme.com/room/redteamnetsec
 
