@@ -64,25 +64,25 @@ I see the number 13, so i'm guessing it's rot13.
 
 ![](5.png)
 
-### #7 : *@F DA:? >6 C:89E C@F?5 323J C:89E C@F?5 Wcf E:>6DX
+### #7
 
 This is rot47.
 
 ![](6.png)
 
-### #8 : - . .-.. . -.-. --- -- -- ..- -. .. -.-. .- - .
+### #8
 
 This looks like morse code.
 
 ![](7.png)
 
-### #9 : 85 110 112 97 99 107 32 116 104 105 115 32 66 67 68
+### #9
 
 This is decimal.
 
 ![](8.png)
 
-### #10 : LS0tLS0gLi0tLS0gLi0tLS0gLS0tLS0gLS0tL
+### #10
 
 We got a very long string here, let's inspect it.
 

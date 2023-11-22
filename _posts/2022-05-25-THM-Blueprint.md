@@ -126,7 +126,7 @@ Now let's dump the hashes.
 
 ![](/assets/img/tryhackme/blueprint/7.png)
 
-We can't do that because the current meterpreter we're using (php/meterpreter) is not supported. Let's upgrade to **windows/meterpreter*.
+We can't do that because the current meterpreter we're using (php/meterpreter) is not supported. Let's upgrade to **windows/meterpreter**.
 
 
 ## **Shell Stabilization**
@@ -136,7 +136,8 @@ First, we need to create an executable using msfvenom with this command.`msfveno
 ![](/assets/img/tryhackme/blueprint/8.png)
 
 Great. Now we need to setup a listener on metasploit. We use **exploit/multi/handler** for that, and set the options LPORT, LHOST and payload. After that we run the module in the background with `run -j`.
->Press `ctrl + z` to background meterpreter and then select the handler.
+
+> Press `ctrl + z` to background meterpreter and then select the handler.
 
 ![](/assets/img/tryhackme/blueprint/9.png)
 

@@ -79,7 +79,7 @@ Let's navigate to the webpage.
 
 Nothing interesting, let's run a gobuster scan.
 
-#### Gobuster.
+#### Gobuster
 
 We run a directory scan with the following command. `gobuster dir -w /usr/share/wordlists/dirb/common.txt -u http://10.10.10.10/`
 
@@ -211,7 +211,7 @@ We got a file named `source_code.php`, let's see what it holds.
 
 ![](20.png)
 
-We got a base64 encoded password and the username `Anurodh`. Let's decode the password and login to *Anurodh* account.
+We got a base64 encoded password and the username `Anurodh`. Let's decode the password and login to `Anurodh` account.
 
 ![](21.png)
 

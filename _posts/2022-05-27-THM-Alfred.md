@@ -69,8 +69,6 @@ It's Jenkins login page. If we some of the most used credentials, we'll be able 
 
 ![](/assets/img/tryhackme/alfred/3.png)
 
-
-
 ## **Foothold**
 
 We need to find a place where we can execute command. To do that, go to `project`.

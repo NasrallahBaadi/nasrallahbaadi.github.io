@@ -192,7 +192,7 @@ Found a hidden encoded string, use [CyberChef](https://gchq.github.io/CyberChef/
 
 ![](7.png)
 
-We got a page, let's navigate to it: http://10.10.10.10:65524/n0th1ng3ls3m4tt3r
+We got a page, let's navigate to it: `http://10.10.10.10:65524/n0th1ng3ls3m4tt3r`
 
 ![](8.png)
 
