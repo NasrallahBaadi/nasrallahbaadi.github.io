@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/poster
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Poster](https://tryhackme.com/room/poster) from [TryHackMe](https://tryhackme.com). The target is running a database that uses weak credentials for authentication, we brute force that and get valid credentials which allowed us to execute commands on the target after that. Enumerating the files in the system we find that multiple passwords have been stored in plain text which allowed us to escalate privileges easily.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -66,7 +66,7 @@ To dump hashes, we use this module `auxiliary/scanner/postgres/postgres_hashdump
 
 ![](3.png)
 
-# **Foothold**
+## **Foothold**
 
 To execute commands on the target, we use this module `exploit/multi/postgres/postgres_copy_from_program_cmd_exec`
 
@@ -80,7 +80,7 @@ Let's login now via ssh.
 
 ![](6.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Checking the web server's file, we find a config file that holds some credentials of the other user.
 
@@ -95,7 +95,3 @@ We checked the privileges of alison with `sudo -l` and found that the user can r
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

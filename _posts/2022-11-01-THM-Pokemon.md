@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/pokemon
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Gotta Catch'em All!](https://tryhackme.com/room/pokemon) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -47,7 +47,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We found 2 open ports, port 22 running OpenSSH and port 80 running an Apache web server.
 
-## Web
+### Web
 
 Let's go to the web page.
 
@@ -67,7 +67,7 @@ Let's login to the machine via ssh.
 ![](3.png)
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Checking the directories and files inside the home directory we find a zip file inside Desktop directory.
 
@@ -120,7 +120,3 @@ We found the flag encoded with base64 and managed to decode it using `base64 -d`
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

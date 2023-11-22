@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/glitch
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Glitch](https://tryhackme.com/room/glitch) from [TryHackMe](https://tryhackme.com). The machine is running a NodeJS application with a vulnerable api that we use to get foothold. After that we find a firefox profile that we run locally to get a password. Then we exploit a binary to get root.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -42,7 +42,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We found port 80 open running nginx 1.14.0.
 
-## Web
+### Web
 
 Let's go to the web page.
 
@@ -135,7 +135,7 @@ ffuf -c -X POST -w /usr/share/seclists/Discovery/Web-Content/api/objects.txt -u 
 
 We found the parameter and it's called `cmd`, so maybe we can execute command with it.
 
-# **Foothold**
+## **Foothold**
 
 Let's use burp suite repeater to try the cmd parameter.
 
@@ -168,7 +168,7 @@ We send the request and get a shell.
 ![](12.png)
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Inside user home directory, we find a hidden `.firefox` directory, maybe it has some saved passwords inside of it.
 
@@ -244,7 +244,3 @@ Great! We got root.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

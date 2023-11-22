@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/jack
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Jack-of-All-Trades](https://tryhackme.com/room/jackofalltrades) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -48,7 +48,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We have two open ports, 22 running Apache web server and 80 running OpenSSH, weird.
 
-## Web
+### Web
 
 Let's navigate to the web page at port 22.
 
@@ -95,7 +95,7 @@ Now let's login.
 ![](8.png)
 
 
-# **Foothold**
+## **Foothold**
 
 The page says we `GET` it a `cmd` and it will run it.
 
@@ -127,7 +127,7 @@ In jack home directory, we find an image named user.jpg, we download it using th
 
 We got the flag.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 If we run the command `id`, we see that jack is part of a group called **dev**. Let's search for files that belongs to this group with `find / -type f -group dev 2>/dev/null`.
 
@@ -144,7 +144,3 @@ We found `strings` and `find`. I tried to use strings and print out /root/root.t
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

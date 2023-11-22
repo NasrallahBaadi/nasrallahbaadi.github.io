@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/jokerctf
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Ha Joker CTF](https://tryhackme.com/room/jokerctf) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -54,7 +54,7 @@ Service Info: Host: localhost; OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We found 2 open ports, 80 and 8080 both running Apache http web server.
 
-## Web
+### Web
 
 Let's navigate to port 80.
 
@@ -205,7 +205,7 @@ Let's login.
 
 ![](6.png)
 
-# **Foothold**
+## **Foothold**
 
 I searched for ways to get a reverse shell in `joomla` and found this [article](https://www.hackingarticles.in/joomla-reverse-shell/) that describes how to do so.
 
@@ -225,7 +225,7 @@ Click `save`, then setup a netcat listener and go back to the web page and click
 
 ![](10.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 We the user `www-data` is part of the `lxd` group.
 
@@ -247,6 +247,7 @@ Then we setup a http server in lxd-alpine-builder directory to server the archiv
 ```bash
 sudo python3 -m http.server 80
 ```
+
 ![](11.png)
 
 Now on the compromised machine, we download the archive file with the following command:
@@ -287,7 +288,3 @@ And just like that we got root.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

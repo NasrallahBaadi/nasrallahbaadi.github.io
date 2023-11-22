@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/catpictures
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Cat Pictures](https://tryhackme.com/room/catpictures) from [TryHackMe](https://tryhackme.com). In this machine, we get to use a technique called `port knocking` that would make a port open automatically. We find a password of one service in the ports we open and use it to get foothold. Then we exploit a cronjob to escape a docker container.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -70,7 +70,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We found 3 open ports, 22 running OpenSSH and 8080 running Apache http web server. We also found port 21 filtered which is the default port for ftp.
 
-## Web
+### Web
 
 Let's go to the web page.
 
@@ -82,7 +82,7 @@ We can find one post that hints for a technique.
 
 ![](2.png)
 
-## Port knocking
+### Port knocking
 
 Port-knocking the a obfuscation-as-security technique. It basically means that after knocking on ports in a specific sequence a certain port will open automatically.
 
@@ -102,7 +102,7 @@ The note contains the password of port 4420, let's connect to that port with `nc
 
 We got a shell
 
-# **Foothold**
+## **Foothold**
 
 I setup a listener and run the following command to get a reverse shell.
 
@@ -156,7 +156,7 @@ Let's copy that to our machine, give it the right permissions and connect with i
 
 ![](9.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 We can clearly see that we're in a docker container because of the name of the host and the docker file in root directory.
 
@@ -183,6 +183,6 @@ Thank you for taking the time to read my write-up, I hope you have learned somet
 
 ---
 
-# References
+## References
 
 https://sushant747.gitbooks.io/total-oscp-guide/content/port_knocking.html

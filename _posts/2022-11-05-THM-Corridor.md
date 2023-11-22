@@ -13,11 +13,11 @@ img_path: /assets/img/tryhackme/corridor
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Corridor](https://tryhackme.com/room/corridor) from [TryHackMe](https://tryhackme.com). In this challenge, you will explore potential IDOR vulnerabilities. Examine the URL endpoints you access as you navigate the website and note the hexadecimal values you find (they look an awful lot like a hash, don't they?). This could help you uncover website locations you were not expected to access.
 
-## Web
+### Web
 
 Let's go to the web page.
 
@@ -50,7 +50,3 @@ If go the that page, we get the flag.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

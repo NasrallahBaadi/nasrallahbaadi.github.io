@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/goldeneye
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [GoldenEye](https://tryhackme.com/room/goldeneye) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan for all ports using the following command: `sudo nmap --min-rate 5000 -p- {target_IP}`.
 
@@ -67,7 +67,7 @@ PORT      STATE SERVICE  VERSION
 
 We server is running an Apache http server on port 80, and we see smtp and pop3 running which mean there is a mail server running also.
 
-## Web
+### Web
 
 Let's check the web page.
 
@@ -136,7 +136,7 @@ Now let's go to the login page.
 
 Nothing can be found here that we don't already know. Let's move on.
 
-## Mail
+### Mail
 
 Let's try logging in to the pop3 server using the same credentials.
 
@@ -192,7 +192,7 @@ We found his credentials for the website, let's login.
 
 We found secret file on Doak's private file, let's check it out.
 
-```
+```text
 007,
 
 I was able to capture this apps adm1n cr3ds through clear txt. 
@@ -215,7 +215,7 @@ We found the password, let's login as admin.
 ![](17.png)
 
 
-# **Foothold**
+## **Foothold**
 
 We now that Aspell is installed, so let's set it up to give a reverse shell.
 
@@ -239,7 +239,7 @@ Back the the listener we should see a shell.
 
 ![](20.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's check the kernel version with the command `uname -a`.
 
@@ -269,7 +269,3 @@ Now we can compile and run the exploit to get root.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

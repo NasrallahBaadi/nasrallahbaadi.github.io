@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/gallery
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Gallery](https://tryhackme.com/room/gallery666) from [TryHackMe](https://tryhackme.com). The target is running a web server with a CMS that has a login page vulnerable to sql injection. After logging in we find an upload feature that we exploit to upload a reverse shell to the target and get a foothold. Looking through the system's files and directories we manage to find a password inside of a backup, we use that password to upgrade to another user. The new user is able to run a script that executes nano as root, so we exploit that to get a root shell.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -51,7 +51,7 @@ PORT     STATE SERVICE VERSION
 
 We have 2 open ports, port 80 running an Apache web server nad port 8080 running the same Apache server with Simple Image Gallery System.
 
-## Web
+### Web
 
 Let's check the web page on port 80.
 
@@ -93,7 +93,7 @@ I tried some default credentials but couldn't login, but i managed to do so with
 
 ![](3.png)
 
-# **Foothold**
+## **Foothold**
 
 Now let's get a reverse shell.
 
@@ -112,7 +112,7 @@ Now setup a listener and click on the reverse shell file in the browser.
 Great! we got a reverse shell.
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 I run linpeas on the target and found a password.
 
@@ -160,7 +160,3 @@ Congrats, we have rooted the machine successfully.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

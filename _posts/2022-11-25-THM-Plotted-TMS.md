@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/plotted
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Plotted-TMS](https://tryhackme.com/room/plottedtms) from [TryHackMe](https://tryhackme.com). The target is running a web application vulnerable to remote code execution giving us the initial foothold. Looking through the system files, we find a cronjob running, so we exploit it to upgrade to use plot_admin. After that we find that we can run openssl as root so we use that to get root access.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -50,7 +50,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We found three open ports, ssh is running on port 22 as usual, an apache web server on port 80 and the same on port 445 which is weird because this port is usually for SMB.
 
-## Web
+### Web
 
 Let's go to the web page on port 80.
 
@@ -131,7 +131,7 @@ Found a page called **/management**, let's check it.
 
 It's the default page of `Traffic Offense Management System`
 
-# **Foothold**
+## **Foothold**
 
 Searching on google for this management system, i found it's vulnerable to Remote Code Execution, here is the [exploit](https://www.exploit-db.com/exploits/50221).
 
@@ -151,7 +151,7 @@ python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SO
 
 ![](6.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 After some manual enumeration, we find a cronjob running as `plot_admin`.
 
@@ -216,7 +216,3 @@ Then we can ssh to the target as root without any password.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

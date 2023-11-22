@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/vulnnetinternal
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [VulnNet: Internal](https://tryhackme.com/room/vulnnetinternal) from [TryHackMe](https://tryhackme.com). The target is running multiple services each one has it's own weaknesses. After jumping from one service to another, we find a misconfigured service that gives us the ability to download and upload files to the server, we exploit that by upload our public key and key access to the server. We find a service running locally that we can't access from outside the target so we use an ssh tunnel and get to it, then we use the service feature to get a reverse shell as root.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -95,7 +95,7 @@ Host script results:
 
 We found a bunch open ports running multiple services, we have ssh, smb, nfs, rsync and rpc.
 
-## SMB
+### SMB
 
 Let's start with smb by listing the available shares with the command `sudo smbclient -L //10.10.68.193 -N `.
 
@@ -158,7 +158,7 @@ We found 3 text file that we downloaded with the command `get {filename}`.
 
 One of the files contains the first flag, the others are not really helpful.
 
-## NFS
+### NFS
 
 Let's enumerate nfs by listing the available share using this command `showmount -e 10.10.10.10`
 
@@ -201,7 +201,7 @@ I changed the directory to /tmp/share and listed the content of every directory 
 
 The file contains a password for redis.
 
-## Redis
+### Redis
 
 The scan didn't show a redis server earlier, maybe if we scanned all ports we would have found it.
 Any way, let's connect to redis using `redis-cli -h 10.10.10.10`
@@ -249,7 +249,7 @@ echo 'QXV0aG9yaXphdGlvbiBmb3IgcnN5bmM6Ly9yc3luYy1jb25uZWN0QDEyNy4wLjAuMSB3aXRoIH
 Authorization for rsync://rsync-connect@127.0.0.1 with password Hcg3HP67@TW@xxx
 ```
 
-## Rsync Hcg3HP67@TW@Bc72v
+### Rsync Hcg3HP67@TW@Bc72v
 
 We got credentials for rsync, let's connect.
 
@@ -269,7 +269,7 @@ drwxr-xr-x          4,096 2021/02/06 07:49:29 sys-internal
 
 Now if we list `sys-internal`, we get tons of file, but we notice a .ssh directory,
 
-# **Foothold**
+## **Foothold**
 
 Let's download the content of the ssh directory to our machine.
 
@@ -286,7 +286,7 @@ Now let's connect.
 ![](4.png)
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 After some basic enumeration, we find an unusual directory in `/`.
 
@@ -361,7 +361,3 @@ Gongrats, we have finally rooted the machine.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

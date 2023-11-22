@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/madness
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Madness](https://tryhackme.com/room/madness) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -47,7 +47,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We got 2 open ports, 22 running OpenSSH and 80 running Apache web server.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -121,7 +121,7 @@ Let's check it on the browser.
 
 We got a password.
 
-# **Foothold**
+## **Foothold**
 
 Let's try to extract any hidden files in the image with the command `steghide --extract -sf thm.jpg` and use the password we just got.
 
@@ -141,7 +141,7 @@ We got the password, let's ssh into the machine.
 
 ![](20.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 I uploaded a copy of linpeas, run it and found the following.
 
@@ -163,6 +163,6 @@ Thank you for taking the time to read my write-up, I hope you have learned somet
 
 ---
 
-# References
+## References
 
 https://en.wikipedia.org/wiki/List_of_file_signatures

