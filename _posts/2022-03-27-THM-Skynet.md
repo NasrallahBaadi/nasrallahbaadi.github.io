@@ -12,13 +12,13 @@ tags: [tryhackme, linux, web, lfi, rfi, cronjob, wildcard, smb]
 ---
 
 
-# **Description**
+## **Description**
 
 Hello l33ts, I hope you are doing well. We are doing [Skynet](https://tryhackme.com/room/skynet) from [TryHackMe](https://tryhackme.com)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -74,7 +74,7 @@ Host script results:
 
 There are 5 open ports, let's start enumerating the webserver.
 
-## WebServer
+### WebServer
 
 Let's navigate to the webpage `http://{target_IP}/`
 
@@ -82,7 +82,7 @@ Let's navigate to the webpage `http://{target_IP}/`
 
 We see what looks like search engine, nothing in the source code, let's do a directory enumeration.
 
-## Gobuster
+### Gobuster
 
 ```Terminal
 ===============================================================
@@ -115,7 +115,7 @@ We found the interesting directory **/squirrelmail**, let's navigate to it.
 
 It is a login page of SquirrelMail, since we don't have any credentials for that, let's continue our enumeration elsewhere.
 
-## SMB
+### SMB
 
 We can enumerate SMB using `enum4linux`, the commands is `enum4linux {target_IP}`
 
@@ -197,7 +197,7 @@ It's a login page of Cuppa CMS, i tried some knows credentials but it didn't wor
 Indeed, we found a Local/Remote File inclusion vulnerability. With this vulnerability, we can read file on the server and upload files and run them on the server. Let's see how to exploit this.
 
 
-# **Foothold**
+## **Foothold**
 
 Let's navigate to the exploit we have found.
 
@@ -212,7 +212,7 @@ I setup a http server that has a php reverse shell code in it, i then setup a ne
 Great! We got a shell, i used python pty trick to stabilize my shell. Let's do some enumeration on the machine now.
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's do some basic enumeration first.
 

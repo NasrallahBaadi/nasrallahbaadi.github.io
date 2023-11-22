@@ -12,13 +12,13 @@ tags: [tryhackme, linux, sudo, lfi]
 ---
 
 
-# **Description**
+## **Description**
 
 Hello l33ts, I hope you are doing well. We are doing [Inclusion](https://tryhackme.com/room/inclusion) from [TryHackMe](https://tryhackme.com). It's an easy machine where we use local file inclusion vulnerability and find a user credentials that gives us access to the machine via ssh. We Find we can run a program as root, we leverage that to become root.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -46,7 +46,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We have ssh on port 22 and a webserver running on port 80, let's check the webserver.
 
-## Webserver
+### Webserver
 
 ![](/assets/img/tryhackme/inclusion/i1.png)
 
@@ -65,7 +65,7 @@ Let's add it now to the url, `http://{target_IP}/article?name=../../../../../etc
 We found a username and password inside the file.
 
 
-# **Foothold**
+## **Foothold**
 
 Let's use the username and password we found to login with ssh.
 
@@ -73,7 +73,7 @@ Let's use the username and password we found to login with ssh.
 
 Great! We are in the machine now, let's move to privesc.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 We can run `sudo -l` to check our current privileges.
 

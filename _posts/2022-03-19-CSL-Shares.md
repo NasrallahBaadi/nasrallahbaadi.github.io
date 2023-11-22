@@ -9,7 +9,7 @@ tags: [cyberselabs, linux, nfs, john, crack]
 
 ---
 
-# **Description**
+## **Description**
 
 Hello l33ts, I hope you are doing well. Today we are going to look at **Shares** from [Shares](https://www.cyberseclabs.co.uk/labs/info/Shares/) from [CyberSecLabs](https://www.cyberseclabs.co.uk).
 
@@ -36,7 +36,7 @@ There are 4 open port.
 
 Since the machine is called shares, i decided to look for any nfs shares.
 
-## NFS
+### NFS
 
 We can list nfs shares using the following command: `showmount -e {target_IP}`
 

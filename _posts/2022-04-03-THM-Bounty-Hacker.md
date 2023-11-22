@@ -12,13 +12,13 @@ tags: [tryhackme, linux, ftp, hydra, bruteforce, tar, sudo]
 ---
 
 
-# **Description**
+## **Description**
 
 Hello l33ts, I hope you are doing well. We are doing [Bounty Hacker](https://tryhackme.com/room/cowboyhacker) from [TryHackMe](https://tryhackme.com)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -66,7 +66,7 @@ We got 3 open ports
  - 22 ssh OpenSSH 7.2p2
  - 80 http Apache httpd 2.4.18
 
-## FTP
+### FTP
 
 From the nmap scan we see that Anonymous login is allowed is this ftp server, let's login and see what we can find.
 
@@ -79,7 +79,7 @@ We found two interesting files, locks.txt and task.txt, we can download them to 
 The first file, locks.txt, contains a list of words that i assume are passwords, the other file, task.txt, contains a notes from someone called **lin**, which is a possible username. Now we the information we have, let's try to brute force ssh and see if we can find something.
 
 
-# **Foothold**
+## **Foothold**
 
 To brute force ssh, we can use `hydra`.
 
@@ -89,7 +89,7 @@ We managed to get the correct password for **lin**, let's login with ssh now.
 
 ![](/assets/img/tryhackme/bountyhunter/b4.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Now that we have access to the machine, let's what we can do.
 

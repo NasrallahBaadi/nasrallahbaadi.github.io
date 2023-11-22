@@ -12,13 +12,13 @@ tags: [tryhackme, linux, ftp, cryptography, gpg, john, hashcat, crack]
 ---
 
 
-# **Description**
+## **Description**
 
 Hello l33ts, I hope you are doing well. Today we are going to look at [Anonforce](https://tryhackme.com/room/bsidesgtanonforce) from [TryHackMe](https://tryhackme.com), an easy machine where we are able to login to ftp as anonymous and see all of the system files of the machine, we find an unusual directory that contains an encrypted file, we decrypt it and get some hashes that we will be able to crack one of them and get root access.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -79,14 +79,14 @@ Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 
 There are two open port, 21(FTP) and 22(SSH).
 
-## FTP
+### FTP
 
 From the nmap scan, anonymous login seems to be enabled on the ftp server. Let's login by typing the following command `ftp {target_IP}`, for the username enter **anonymous** and password can be submitted blank.
 
 ![ftp](/assets/img/tryhackme/anonforce/ftp.png)
 
 
-# **Foothold**
+## **Foothold**
 
 We see that we are in the root of the file system of a linux machine. Looking at these directories/files, we see an unusual directory called **notread**, let's see what's there.
 
@@ -112,7 +112,7 @@ Great! We managed to crack the hash and get the private key's password, let's de
 
 After decrypting the file, we get a copy of shadow file that contains password hashes for **melodias** and **root**.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's try to crack the root hash with `hashcat`, first copy the hash to a file and run the command `hashcat -m 1800 roothash /usr/share/wordlists/rockyou.txt`
 

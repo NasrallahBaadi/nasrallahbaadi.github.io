@@ -12,13 +12,13 @@ tags: [tryhackme, linux, web, metasploit, rce, cronjob, suid]
 ---
 
 
-# **Description**
+## **Description**
 
 Hello l33ts, I hope you are doing well. Today we are going to look at [Thompson](https://tryhackme.com/room/bsidesgtthompson) from [TryHackMe](https://tryhackme.com). It's an easy machine where we find a mis-configured Apache Tomcat server that leads to an information disclosure where where get a username and password for Tomcat manager. We use an exploit that gives us a remote shell on the machine, with some enumeration we find a cronjob that runs a world writable script as root, we exploit that and get root access.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -48,13 +48,13 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 There are 3 open ports, port 8080 is running apache tomcat, let's navigate to the webpage at `{target_IP}:8080`
 
-## WebPage
+### WebPage
 
 ![the web page](/assets/img/tryhackme/thompson/webpage.png)
 
 We see the default page of Apache Tomcat.Let's run a directory scan to see if there is anything useful.
 
-## Gobuster
+### Gobuster
 
 ```terminal
 ===============================================================
@@ -87,7 +87,7 @@ We get redirected to this unauthorized access error page, where we can find the 
 
 ![tomcat_manager](/assets/img/tryhackme/thompson/manager.png)
 
-# **Foothold**
+## **Foothold**
 
 Now that we have access to Tomcat manager, i searched on google for ways to get code execution on tomcat, and i found a module on metasploit that can give us a shell on the machine, the module is called `exploit/multi/http/tomcat_mgr_upload`.
 
@@ -100,7 +100,7 @@ We need to set the username and password of the Tomcat manager along with the ot
 We have successfully gained a shell on our target.
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's do some manual enumeration on the machine.
 

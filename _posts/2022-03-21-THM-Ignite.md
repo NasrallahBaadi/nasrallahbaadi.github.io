@@ -12,13 +12,13 @@ tags: [tryhackme, linux, rce, exploit]
 ---
 
 
-# **Description**
+## **Description**
 
 Hello l33ts, I hope you are doing well. Today we are going to look at [Ignite](https://tryhackme.com/room/ignite) from [TryHackMe](https://tryhackme.com), and easy machine where we find a CMS vulnerable to RCE, we use an exploit to help us get a reverse shell on the machine, then we look through the CMS files to find a plain text password of root.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -42,7 +42,7 @@ PORT   STATE SERVICE VERSION
 
 We only have port 80 open, and there is a robots.txt file, let's run a directory scan while we go check the webpage.
 
-## WebPage
+### WebPage
 
 Let's navigate to the webpage.
 
@@ -50,7 +50,7 @@ Let's navigate to the webpage.
 
 We have Fuel CMS with version 1.4 running on the webserver. There is nothing else, let's check what we got from the directory scan.
 
-## Gobuster
+#### Gobuster
 
 ```terminal
 ===============================================================
@@ -103,7 +103,7 @@ Let's check if there is any exploit for this version of fuel cms.
 
 We found 3 RCE exploit, let's download one of the exploit and try run some commands. I will be using this [exploit](https://www.exploit-db.com/exploits/50477).
 
-# **Foothold**
+## **Foothold**
 
 Let's run the exploit now.
 
@@ -121,7 +121,7 @@ First, setup a listener on your attacking machine(`nc -lnvp 9001`) and execute t
 
 I used the python import pty trick to stabilize my shell.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 For Privilege Escalation, i uploaded linpeas to the machine to do the scan for me.
 
