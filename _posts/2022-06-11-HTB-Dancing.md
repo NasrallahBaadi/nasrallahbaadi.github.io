@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/dancing/
 ---
 
 
-# **Description**
+## **Description**
 
 Hello l33ts, I hope you are doing well. Today we are going to look at [Dancing](https://app.hackthebox.com/starting-point?tier=0) from [HackTheBox](https://www.hackthebox.com). It's a windows machine running smb with a misconfigured share that permits to log in to it without valid credentials.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 -Pn {target_IP}`.
 
@@ -64,7 +64,7 @@ First, we need to list available share in the server, we do that with the follow
  - IPC$ - The inter-process communication share. Used for inter-process communication via named pipes and is not part of the file system.
  - WorkShares - Custom share.
 
-# **Foothold**
+## **Foothold**
 
 Let's connect to the custom share '**WorkShares**'. `sudo smbclient \\\\10.129.196.235\\WorkShares`.
 
@@ -97,5 +97,3 @@ To exit smb, enter `quit`, after that we can see the file we downloaded in our c
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
-# References

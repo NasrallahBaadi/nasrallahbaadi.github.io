@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/explosion
 ---
 
 
-# **Description**
+## **Description**
 
 Hello l33ts, I hope you are doing well. Today we are going to look at [Explosion](https://app.hackthebox.com/starting-point?tier=0) from [HackTheBox](https://www.hackthebox.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -64,7 +64,7 @@ Host script results:
 
 We see that we are dealing with a windows machine running smb and RDP on port 3389.
 
-# **Foothold**
+## **Foothold**
 
 Let's try to connect to RDP using `xfreerdp`.
 

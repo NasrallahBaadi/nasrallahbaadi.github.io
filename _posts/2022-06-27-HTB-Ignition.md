@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/ignition/
 ---
 
 
-# **Description**
+## **Description**
 
 Hello l33ts, I hope you are doing well. Today we are going to look at [Ignition](https://app.hackthebox.com/starting-point?tier=1) from [HackTheBox](https://www.hackthebox.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -41,7 +41,7 @@ PORT   STATE SERVICE VERSION
 
 Port 80 is open running nginx web server.
 
-##  Web
+###  Web
 
 Let's navigate to the web page.
 
@@ -57,9 +57,9 @@ Let's try again.
 
 Nothings really useful.
 
-## Gobuster
+#### Gobuster
 
-Let's run a directory scan.`gobuster dir -w /usr/share/wordlists/dirb/common.txt -u http://ignition.htb/ `
+Let's run a directory scan `gobuster dir -w /usr/share/wordlists/dirb/common.txt -u http://ignition.htb/`
 
 ```terminal
 ===============================================================
@@ -104,9 +104,9 @@ Let's see what's on **/admin** page.
 
 ![](4.png)
 
-Found a Magento login page. 
+Found a Magento login page.
 
-# **Foothold**
+## **Foothold**
 
 Let's try some of the common used passwords with the username admin.
 

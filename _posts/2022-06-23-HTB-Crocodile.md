@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/crocodile/
 ---
 
 
-# **Description**
+## **Description**
 
 Hello l33ts, I hope you are doing well. Today we are going to look at [Crocodile](https://app.hackthebox.com/starting-point?tier=1) from [HackTheBox](https://www.hackthebox.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -59,7 +59,7 @@ Service Info: OS: Unix
 
 We found 2 open ports, 21 running a ftp server that allows anonymous login, and port 80 running apache web server.
 
-## FTP
+### FTP
 
 Let's login to the ftp server and download the files there.
 
@@ -71,7 +71,7 @@ Let's see what's on those file.
 
 We have a list of username and a list of password.
 
-## Web
+### Web
 
 Navigate to the webpage. http://10.129.1.15/
 
@@ -79,7 +79,7 @@ Navigate to the webpage. http://10.129.1.15/
 
 It's a Bootstrap Business Template, nothing useful for us.
 
-## Gobuster
+### Gobuster
 
 Let's run a directory scan using gobuster:`gobuster dir -w /usr/share/wordlists/dirb/common.txt -u http://10.129.1.15/`
 
@@ -118,7 +118,7 @@ There is /dashboard page. Let's navigate to it.
 
 We get redirected to a login page.
 
-# **Foothold**
+## **Foothold**
 
 Let's use the username and password lists we found earlier and attempt to login.
 
@@ -151,5 +151,3 @@ Great! We got the valid credentials. Let's login.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
-# References

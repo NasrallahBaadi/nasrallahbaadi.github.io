@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/responder/
 ---
 
 
-# **Description**
+## **Description**
 
 Hello Hackers, I hope you are doing well. Today we are doing [Responder](https://app.hackthebox.com/starting-point?tier=1) from [HackTheBox](https://www.hackthebox.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 -p- {target_IP}`.
 
@@ -43,7 +43,7 @@ Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
 
 The target is a windows machine having 2 open ports, port 80 running Apache web server as well as WINRM on port 5985.
 
-## Web
+### Web
 
 Navigate to the web page. http://10.129.230.170/
 
@@ -72,7 +72,7 @@ performed on this input, then the attacker can exploit it by using the ../ strin
 and eventually view sensitive files in the local file system. In some limited cases, an LFI can lead to code
 execution as well.
 
-# **Foothold**
+## **Foothold**
 
 Since this is a windows machine, one of the files we use to test for lfi is `C:\Windows\System32\drivers\etc\hosts`.
 
@@ -115,5 +115,3 @@ Excellent! We got in.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
-# References

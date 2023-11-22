@@ -13,11 +13,11 @@ img_path: /assets/img/hackthebox/machines/redeemer/
 ---
 
 
-# **Description**
+## **Description**
 
 Hello l33ts, I hope you are doing well. Today we are going to look at [Redeemer](https://app.hackthebox.com/starting-point?tier=0) from [HackTheBox](https://www.hackthebox.com). It's part of Tier 0 machines from Starting Point. The machines is running redis server.
 
-# **Enumeration**
+## **Enumeration**
 
 ## nmap
 
@@ -41,7 +41,7 @@ Port 6379 redis open running `redis`.
 
 Redis (**RE**mote **DI**ctionary **S**erver) is an open-source advanced NoSQL key-value data store used as a database, cache, and message broker. The data is stored in a dictionary format having key-value pairs. It is typically used for short term storage of data that needs fast retrieval. Redis does backup data to hard drives to provide consistency.
 
-# **Redis**
+### **Redis**
 
 Let's connect to redis server with the following command: `redis-cli -h 10.129.190.211`.
 
@@ -131,4 +131,3 @@ To view the value of a key, we use `get {key}`.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-

@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/preignition/
 ---
 
 
-# **Description**
+## **Description**
 
 Hello l33ts, I hope you are doing well. Today we are going to look at [Preignition](https://app.hackthebox.com/starting-point?tier=0) from [HackTheBox](https://www.hackthebox.com). It's an easy machine running a webserver, we find a login page through a directory scan, and use some default credentials to get in.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -41,7 +41,7 @@ PORT   STATE SERVICE VERSION
 
 We have a linux machine running nginx 1.14.2 on port 80.
 
-## Web
+### Web
 
 let's navigate to the webpage.
 
@@ -49,7 +49,7 @@ let's navigate to the webpage.
 
 It's the default page of nginx.
 
-## Gobuster
+#### Gobuster
 
 Let's run directory scan:`gobuster dir -w /usr/share/wordlists/dirb/common.txt -u http://10.129.200.99/`
 
@@ -80,7 +80,7 @@ Found /admin.php page. Let's navigate to it.
 
 It's a login page.
 
-# **Foothold**
+## **Foothold**
 
 The first things to do when presented with a login page is to try some default credentials like : admin:admin - admin:password - root:root.
 
@@ -93,5 +93,3 @@ We managed to login using admin:admin.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
-# References

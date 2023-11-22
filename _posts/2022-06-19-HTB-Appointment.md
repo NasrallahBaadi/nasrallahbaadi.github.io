@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/appointment/
 ---
 
 
-# **Description**
+## **Description**
 
 Hello l33ts, I hope you are doing well. Today we are going to look at [Appointment](https://app.hackthebox.com/starting-point?tier=1) from [HackTheBox](https://www.hackthebox.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -41,15 +41,15 @@ PORT   STATE SERVICE VERSION
 
 Port 80 is open running Apache.
 
-## Web
+### Web
 
 Let's navigate to the webpage.
 
 ![login page](1.png)
 
-It's a login form. 
+It's a login form.
 
-# **Foothold**
+## **Foothold**
 
 One of the first things to try is default credentials like admin:admin, admin:password, root:root.
 
@@ -57,7 +57,7 @@ Unfortunately the default credentials don't work.
 
 Next things is to test the login form for SQL injection vulnerability.
 
->SQL Injection is a common way of exploiting web pages that use `SQL Statements` that
+> SQL Injection is a common way of exploiting web pages that use `SQL Statements` that
 retrieve and store user input data. If configured incorrectly, one can use this attack
 to exploit the well-known `SQL Injection` vulnerability, which is very dangerous. There
 are many different techniques of protecting from SQL injections, some of them being
@@ -79,7 +79,7 @@ When we submit our payload as username and password, the sql query would look li
 
 `SELECT * FROM users WHERE username = '' OR 1=1--' AND password = ''`
 
-If the database executes the SQL statement above, all the users in the users table are returned. Consequently, the attacker bypasses the application's authentication mechanism and is logged in as the first user returned by the query. 
+If the database executes the SQL statement above, all the users in the users table are returned. Consequently, the attacker bypasses the application's authentication mechanism and is logged in as the first user returned by the query.
 
 Let's break down the payload:
 

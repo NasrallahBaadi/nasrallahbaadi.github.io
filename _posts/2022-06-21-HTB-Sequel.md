@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/sequel/
 ---
 
 
-# **Description**
+## **Description**
 
 Hello l33ts, I hope you are doing well. Today we are going to look at [Sequel](https://app.hackthebox.com/starting-point?tier=1) from [HackTheBox](https://www.hackthebox.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -53,7 +53,7 @@ PORT     STATE SERVICE VERSION
 
 Port 3306 is open and running mysql. MySQL is a service designed for database management: creating, modifying, and updating databases, changing and adding data, and more.
 
-# **Foothold**
+## **Foothold**
 
 In order to communicate with the mysql database, we need a username and password, but sometimes there might be a misconfiguration allowing a passwordless authentication.
 
@@ -95,5 +95,3 @@ There are two tables. Let's check their content with the `SELECT * FROM {table_n
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
-# References
