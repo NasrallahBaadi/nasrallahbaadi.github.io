@@ -60,7 +60,7 @@ It's the default page for Apache2. Let's check the source code.
 We found a comment and some weird tags separated by a colon, maybe it's username:password.
 
 
-# **Foothold**
+## **Foothold**
 
 Let's login to the machine via ssh.
 
