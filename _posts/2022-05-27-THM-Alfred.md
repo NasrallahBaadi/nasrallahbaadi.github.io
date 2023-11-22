@@ -176,6 +176,7 @@ We choose the **services** process, now use the command `migrate` with the proce
 ![](/assets/img/tryhackme/alfred/17.png)
 
 And we that, we have successfully rooted **Alfred**.
+
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).

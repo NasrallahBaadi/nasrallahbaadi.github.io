@@ -13,7 +13,7 @@ img_path: /assets/img/tryhackme/capture/
 ---
 
 
-##**Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [c4ptur3th3fl4g](https://tryhackme.com/room/c4ptur3th3fl4g) from [TryHackMe](https://tryhackme.com).
 
@@ -38,7 +38,7 @@ This one is binary, we can go to [CyberChef](https://gchq.github.io/CyberChef/) 
 
 ![](1.png)
 
-### #3 : MJQXGZJTGIQGS4ZAON2XAZLSEBRW63LNN5XCA2LOEBBVIRRHOM======
+### #3
 
 This one looks a base. Let's use [CyberChef](https://gchq.github.io/CyberChef/).
 
@@ -46,19 +46,19 @@ This one looks a base. Let's use [CyberChef](https://gchq.github.io/CyberChef/).
 
 It's a bse32.
 
-### #4 : RWFjaCBCYXNlNjQgZGlnaXQgcmVwcmVzZW50cyBleGFjdGx5IDYgYml0cyBvZiBkYXRhLg==
+### #4
 
 This is base64.
 
 ![](3.png)
 
-### #5 : 68 65 78 61 64 65 63 69 6d 61 6c 20 6f 72 20 62 61 73 65 31 36 3f
+### #5
 
 This one is hex.
 
 ![](4.png)
 
-### #6 : Ebgngr zr 13 cynprf!
+### #6 : Ebgngr zr 13 cynprf
 
 I see the number 13, so i'm guessing it's rot13.
 
@@ -163,5 +163,3 @@ At the very end we can see the answer to the last questions.
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
 
 ---
-
-## References

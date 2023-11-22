@@ -62,5 +62,3 @@ To solve the challenge, we need to specify the name of the poem as **../index.ht
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
-# References

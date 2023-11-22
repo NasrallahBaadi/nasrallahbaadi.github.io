@@ -79,7 +79,7 @@ Let's navigate to the webpage.
 
 Nothing interesting, let's run a gobuster scan.
 
-### Gobuster.
+#### Gobuster.
 
 We run a directory scan with the following command. `gobuster dir -w /usr/share/wordlists/dirb/common.txt -u http://10.10.10.10/`
 
