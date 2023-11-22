@@ -12,13 +12,13 @@ tags: [tryhackme, linux, hydra, bruteforce, steganography]
 ---
 
 
-# **Description**
+## **Description**
 
 Hello l33ts, I hope you are doing well. We are doing [Brooklyn Nine Nine](https://tryhackme.com/room/brooklynninenine) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -62,7 +62,7 @@ Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 
 There are 3 open ports, FTP on port 21, SSH on port 22, and HTTP on port 80. Let's start with FTP.
 
-## FTP
+### FTP
 
 Let's login to the ftp server as anonymous. `ftp {target_IP}`.
 
@@ -76,7 +76,7 @@ Now let's see what's on that file.
 
 It's a note from Amy to Jake saying that Jake's password is too weak.
 
-## Web
+### Web
 
 Let's navigate to the webpage.
 
@@ -88,9 +88,9 @@ We have a picture of Brooklyn nine-nine and some text, let's view the source cod
 
 We found an HTML comment talking about steganography
 
-# **Foothold**
+## **Foothold**
 
-## Method 1
+### Method 1
 
 Let's use `hydra` to brute force Jake's password. `hydra -l jake -P /usr/share/wordlists/rockyou.txt 10.10.168.172 ssh -t 30`
 
@@ -102,7 +102,7 @@ Great! We got Jake's password, let's login.
 
 And we're in.
 
-## Method 2
+### Method 2
 
 First, let's download the picture to our machine using this command. `wget http://{target_ip}/brooklyn99.jpg}`.
 Now let's use `steghide` to extract any hidden files on the picture.`steghide --extract -sf brooklyn99.jpg`.
@@ -125,9 +125,9 @@ We got Holt's password. Let's use it to login.
 
 We're in. To privesc.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
-## Jake
+### Jake
 
 Let's check our current privileges by running `sudo -l`.
 
@@ -144,7 +144,7 @@ We found a way to get root access by executing some commands, so let's run them.
 
 Good! We are root now.
 
-## Holt
+### Holt
 
 Let's check our privileges with `sudo -l`.
 
@@ -174,7 +174,7 @@ Thank you for taking the time to read my write-up, I hope you have learned somet
 
 ---
 
-# References
+## References
 
 https://github.com/RickdeJager/stegseek
 

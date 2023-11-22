@@ -13,12 +13,13 @@ tags: [tryhackme, linux, easy, burp, hydra, bruteforce, steganography, cracking,
 ---
 
 
-# **Description**
+## **Description**
 
 Hello l33ts, I hope you are doing well. We are doing [Agent Sudo](https://tryhackme.com/room/agentsudoctf) from [TryHackMe](https://tryhackme.com). We start off by a nmap scan where we find 3 open port, ftp-ssh-http. We brute force the user-agent of the webserver to access a hidden page which gives us a hints for ftp. The ftp server contains some pictures that holds hidden files inside them, extracting those files gives us ssh credentials. To escalate our privileges, we find a vulnerable version of sudo on the machine that we leverage to become root.
 
-# **Enumeration**
-## nmap
+## **Enumeration**
+
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -46,13 +47,14 @@ Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
 There are 3 open ports:
+
  - 21 open  ftp  vsftpd 3.0.3
  - 22 open  ssh  OpenSSH 7.6p1
  - 80 open  http Apache httpd 2.4.29
 
 There is no anonymous login for ftp, we have no credentials for ssh so let's start off by enumerating the http webserver.
 
-## Web
+### Web
 
 Let's navigate to the webpage. http://{target_IP}/
 
@@ -64,7 +66,7 @@ The User-Agent request header is a characteristic string that lets servers and n
 
 So we need to change the user-agent header to a codename, but what is this codename. We see that the note is written by **Agent R**, and the letter **R** can be the first letter of his name, and there can be other agents like **Agent A** **Agent T** for example. So the first letter must be the codename.
 
-## Burp
+### Burp
 
 Let's fire up burp suite and try to brute force the user-agent header with different Letters. First let's intercept the request and send it to intruder.
 
@@ -90,7 +92,7 @@ We got redirected to a page. Therem we got a username, and another message from 
 
 Let's try brute forcing ftp and see if we can get a password.
 
-## Hydra
+### Hydra
 
 Let's hydra to brute force ftp. `hydra -l {username} -P /usr/share/wordlists/rockyou.txt {target_IP} ftp`
 
@@ -98,7 +100,7 @@ Let's hydra to brute force ftp. `hydra -l {username} -P /usr/share/wordlists/roc
 
 Great! We got a valid password.
 
-## FTP
+### FTP
 
 Let's now login to ftp using the credentials we have.
 
@@ -112,7 +114,7 @@ Let's see what on the text file.
 
 It's a message from Agent C saying that there is a login password inside a picture. This indicates the use of steganography.
 
-## Steganography
+### Steganography
 
 Let's start with **cutie.png** picture. For .png files, we can use `binwalk` to extract hidden files. `binwalk -e cutie.png`
 
@@ -135,7 +137,7 @@ For the other picture, we can use `steghide` to extract files from the picture. 
 We extracted a text file that contains a message from Agent C, giving us a password and username for ssh.
 
 
-# **Foothold**
+## **Foothold**
 
 Let's use the credentials we have to login via ssh.
 
@@ -152,7 +154,7 @@ And we can upload the picture to google images and get results.
 ![](/assets/img/tryhackme/agentsudo/15.png)
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's check our current privileges on the machine by running `sudo -l`
 
@@ -174,6 +176,6 @@ Thank you for taking the time to read my writeup, I hope you have learned someth
 
 ---
 
-# References
+## References
 
 https://www.exploit-db.com/exploits/47502

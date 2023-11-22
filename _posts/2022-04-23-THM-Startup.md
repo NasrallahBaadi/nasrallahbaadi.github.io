@@ -12,13 +12,13 @@ tags: [tryhackme, linux, ftp, wireshark, reverse-shell]
 ---
 
 
-# **Description**
+## **Description**
 
 Hello l33ts, I hope you are doing well. We are doing [Startup](https://tryhackme.com/room/startup) from [TryHackMe](https://tryhackme.com). We start off with nmap scan that reveals 3 open port, we get an FTP server with anonymous login allowed and is linked to the http webserver. We upload a php reverse shell to the ftp server, run it via the webserver and get access to the machine. We find a strange directory in the file system that contains a pcap file, we inspect the file and find a password of a user. Inside that user's home directory is a scripts that runs regularly, we leverage that to get root.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -64,7 +64,7 @@ Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 
 There are 3 open ports. We have FTP that runs on port 21 and allows anonymous login, SSH on port 22 and HTTP on port 80.
 
-## FTP
+### FTP
 
 Since FTP allows anonymous login, let's start off with that.
 
@@ -82,7 +82,7 @@ Let's inspect these files.
 
 The file **.test.log** has nothing interesting, in the other hand, the file **important.txt** gives us a possible username. The picture is just an AmongUs meme as mentioned in the text file.
 
-## WEB
+### WEB
 
 Moving to the webserver, let's navigate to the webpage.
 
@@ -90,7 +90,7 @@ Moving to the webserver, let's navigate to the webpage.
 
 It's a message from the dev team, nothing really useful. Let's now do some directory busting.
 
-## Feroxbuster
+### Feroxbuster
 
 For directory busting, I'll be using `feroxbuster` with the **common.txt** list.
 
@@ -103,7 +103,7 @@ We found **files** directory, let's navigate to it.
 Wow, These are the same files we found on the ftp server.
 
 
-# **Foothold**
+## **Foothold**
 
 Now, we our ability to login to ftp with no password, and access the ftp server via the web, let's upload a php reverse shell to ftp, navigate to it on the webpage and get a shell on the machine. 
 
@@ -124,9 +124,9 @@ We see that the file is there, now before clicking the file, setup a listener on
 We have successfully recieved a reverse shell on the machine and I used the python pty trick to stabalize my shell. To privesc now.
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
-## Horizontal
+### Horizontal
 
 Let's inspect this machine and see what we can find.
 
@@ -158,7 +158,7 @@ We are right, it is a reverse shell, looking throught the data, we see a passwor
 
 Great! We switch to lennie now.
 
-## Vertical
+### Vertical
 
 Let's see what's on lennie's home directory.
 
@@ -194,6 +194,6 @@ Thank you for taking the time to read my writeup, I hope you have learned someth
 
 ---
 
-# References
+## References
 
 https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php

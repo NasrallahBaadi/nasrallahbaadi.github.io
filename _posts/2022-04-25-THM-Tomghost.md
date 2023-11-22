@@ -12,13 +12,13 @@ tags: [tryhackme, linux, gpg, scp]
 ---
 
 
-# **Description**
+## **Description**
 
 Hello l33ts, I hope you are doing well. We are doing [Thomghost](https://tryhackme.com/room/tomghost) from [TryHackMe](https://tryhackme.com)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -50,7 +50,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 There are 4 open ports, we have ssh on port 22 and two web services, ajp13 on port 8009 and http on 8080.
 
-## Web
+### Web
 
 Let's navigate to the webpage on port 8080.
 
@@ -68,7 +68,7 @@ Let's check if any of the services we found are vulnerable. I wasn't able to fin
 
 We have a file read/inclusion vulnerability.
 
-# **Foothold**
+## **Foothold**
 
 Let's the download the [exploit](https://www.exploit-db.com/exploits/48143) and use it.
 
@@ -81,9 +81,9 @@ Great! We managed to retrieve some ssh credentials. Let's login using those cred
 Great! We're in. To privilege escalation.
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
-## Horizontal
+### Horizontal
 
 Let's see what's on our user's home directory.
 
@@ -107,7 +107,7 @@ We got the password for the user *merlin*, let's switch to that user now. `su me
 
 ![](/assets/img/tryhackme/tomghost/10.png)
 
-## Vertical
+### Vertical
 
 Let's check our current privileges with `sudo -l`.
 
@@ -127,7 +127,7 @@ And just like that we got root.
 
 Thank you for taking the time to read my writeup, I hope you have learned something with this, if you have any questions or comments, please feel free to reach out to me. See you in the next hack :) .
 
-# References
+## References
 
 https://www.exploit-db.com/exploits/48143
 

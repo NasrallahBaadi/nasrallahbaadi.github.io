@@ -12,13 +12,13 @@ tags: [tryhackme, linux, crack, easy]
 ---
 
 
-# **Description**
+## **Description**
 
 Hello l33ts, I hope you are doing well. We are doing [LazyAdmin](https://tryhackme.com/room/lazyadmin) from [TryHackMe](https://tryhackme.com). We find a webserver running a vulnerable 
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -47,7 +47,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 We got ssh on port 22 and a http webserver on port 80, let's check the webserver.
 
 
-## Webserver
+### Webserver
 
 Let's navigate to the web page.
 
@@ -55,7 +55,7 @@ Let's navigate to the web page.
 
 It's the default page of Apache, nothing useful, let's run directory scan.
 
-## Gobuster
+### Gobuster
 
 ```Terminal
 ===============================================================
@@ -143,7 +143,7 @@ Great! We found a login page, let's use the credentials we found to login.
 ![](/assets/img/tryhackme/lazyadmin/l9.png)
 
 
-# **Foothold**
+## **Foothold**
 
 We have access, now what? Earlier when we searched for possible exploits, there was an *arbitrary file upload* exploit in [Exploitdb](https://www.exploit-db.com/).
 
@@ -162,7 +162,7 @@ Now let's set up a listener on our machine with `nc -lvnp {port_number}` and vis
 Great! We managed to get a shell, and i used the python3 pty trick to get a functional shell, now the privesc part.
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's check our privileges by running `sudo -l`
 

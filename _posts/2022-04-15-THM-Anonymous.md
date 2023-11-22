@@ -12,13 +12,13 @@ tags: [tryhackme, linux, smb, ftp]
 ---
 
 
-# **Description**
+## **Description**
 
 Hello l33ts, I hope you are doing well. We are doing [Anonymous](https://tryhackme.com/room/anonymous) from [TryHackMe](https://tryhackme.com)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -90,7 +90,7 @@ There are 4 open ports:
 
 Let's start off by enumerating ftp since it allows anonymous login.
 
-## FTP
+### FTP
 
 We can connect to the ftp server with `ftp {target_IP}`, we supply the name as `anonymous` and we can left the password blank.
 
@@ -104,7 +104,7 @@ Now that the files are downloaded, let's see what's on them.
 
 First, we have `clean.sh` script that seems to be a cleaning script. The `to_do.txt` file has a note for removing the anonymous login. The third file, `removed_file.log`, has a bunch of text that's beings repeated, and it is the same text we saw in the `clean.sh` script ,so there must be a cronjob that runs `clean.sh` regularly.
 
-## SMB
+### SMB
 
 We can check the shares of the smb server by running : `sudo smbclient -L {target_IP} -N`.
 
@@ -117,7 +117,7 @@ We found `pics` share, we can connect to that share with this command : `sudo sm
 There are two pictures there, i downloaded them using `get {filename}`, inspected them for hidden content but i got nothing.
 
 
-# **Foothold**
+## **Foothold**
 
 We can use the `clean.sh` script to get access to the machine, let's check it's permissions first.
 
@@ -140,7 +140,7 @@ Waiting for some time, i got the shell.
 ![](/assets/img/tryhackme/anonymous/a6.png)
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 For privesc, I uploaded linpeas and ran it.
 
