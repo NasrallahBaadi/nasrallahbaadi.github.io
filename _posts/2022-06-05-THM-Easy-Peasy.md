@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/easypeasy/
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Easy Peasy](https://tryhackme.com/room/easypeasyctf) from [TryHackMe](https://tryhackme.com). The machines has 3 open ports, 2 webservers and ssh on a non-default port. One of the webservers contains an image that has a hidden file inside of it, and the latter contains ssh credentials. For root access, there is a cronjob running every minute as root, modify the file to escalate privileges.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -77,11 +77,11 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 The first port is running ssh and the second port is another web server running apache.
 
-## Web
+### Web
 
 Let's run some directory scans on the webserver we found.
 
-### Gobuster
+#### Gobuster
 
 Starting with the webserver on port 80: `gobuster dir -w /usr/share/wordlists/dirb/common.txt -u http://10.10.10.10/`
 
@@ -208,7 +208,7 @@ Use john to crack the hash : `john --wordlist=easypeasy.txt --format=gost hash`
 
 We got a password.
 
-# **Foothold**
+## **Foothold**
 
 Let's download the image to our machine.
 
@@ -228,7 +228,7 @@ Using the credentials we found, login as *boring* via ssh.
 
 We are in.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Doing some basic enumeration on the target, we found a cronjob.
 
@@ -256,4 +256,4 @@ Thank you for taking the time to read my write-up, I hope you have learned somet
 
 ---
 
-# References
+## References

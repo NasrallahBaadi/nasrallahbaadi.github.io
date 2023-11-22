@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/chillhack/
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Chill Hack](https://tryhackme.com/room/chillhack) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -63,7 +63,7 @@ Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 
 Found 3 open ports
 
-## FTP
+### FTP
 
 From the nmap scan, we see that ftp allows anonymous login.
 
@@ -71,7 +71,7 @@ From the nmap scan, we see that ftp allows anonymous login.
 
 Found *note.txt* file, and downloaded it with `get note.txt`.
 
-## Web
+### Web
 
 Let's navigate to the webpage.
 
@@ -79,7 +79,7 @@ Let's navigate to the webpage.
 
 Nothing interesting, let's run a gobuster scan.
 
-## Gobuster.
+### Gobuster.
 
 We run a directory scan with the following command. `gobuster dir -w /usr/share/wordlists/dirb/common.txt -u http://10.10.10.10/`
 
@@ -147,7 +147,7 @@ Next, let's print the `index.php` file of the command execution page in order to
 We can see every word that is being filtered. We can see that the `curl` command is not black listed, so we can try to upload a reverse shell.
 
 
-# **Foothold**
+## **Foothold**
 
 First, let's make our reverse shell payload.
 
@@ -167,9 +167,9 @@ If we go back to the listener we setup we should have received a reverse shell.
 
 I used the python pty trick to stabilize my shell.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
-## Anurodh
+### Anurodh
 
 Pocking around the files in the machine, i found the following file.
 
@@ -217,7 +217,7 @@ We got a base64 encoded password and the username `Anurodh`. Let's decode the pa
 
 Great! I managed to login to Anurodh account via ssh.
 
-## Root
+### Root
 
 Run the command `id`.
 
@@ -238,6 +238,6 @@ Thank you for taking the time to read my write-up, I hope you have learned somet
 
 ---
 
-# References
+## References
 
 https://gtfobins.github.io/gtfobins/docker/#shell

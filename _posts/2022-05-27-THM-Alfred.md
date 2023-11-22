@@ -12,13 +12,13 @@ tags: [tryhackme, windows, easy, jenkins, powershell, metasploit, msfvenom, mete
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Alfred](https://tryhackme.com/room/alfred) from [TryHackMe](https://tryhackme.com). Easy windows machine running Jenkins in a webserver. We use some known credentials to login to Jenkins and run some command that would give us a reverse shell. After that we generate a payload using msfvenom and upload it to the target to get a meterpreter shell that would make it easy to escalate our privileges on the machine.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -53,7 +53,7 @@ Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
 
 We got 3 ports open, webserver on port 80, probably rdp on port 3389, and another webserver on port 8080.
 
-## Web
+### Web
 
 Let's go to the webserver on port 80.
 
@@ -71,7 +71,7 @@ It's Jenkins login page. If we some of the most used credentials, we'll be able 
 
 
 
-# **Foothold**
+## **Foothold**
 
 We need to find a place where we can execute command. To do that, go to `project`.
 
@@ -109,7 +109,7 @@ Now if we go to our listener, we should see that we have received a shell.
 ![](/assets/img/tryhackme/alfred/7.png)
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 For this part, we can upgrade our shell to meterpreter in order to easily escalate our privileges.
 
@@ -182,6 +182,6 @@ Thank you for taking the time to read my write-up, I hope you have learned somet
 
 ---
 
-# References
+## References
 
 https://github.com/samratashok/nishang/blob/master/Shells/Invoke-PowerShellTcp.ps1
