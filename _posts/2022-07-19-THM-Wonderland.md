@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/wonderland/
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Wonderland](https://tryhackme.com/room/wonderland) from [TryHackMe](https://tryhackme.com). It's a medium machine running a webserver and ssh. After some enumeration we find some ssh credentials on a page. After getting access to the machine we start a series of privilege escalation where we use different techniques until we get root.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -46,7 +46,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 There are two open ports, 22(SSH) and 80(HTTP).
 
-## Web
+### Web
 
 Navigate to the webpage.
 
@@ -54,7 +54,7 @@ Navigate to the webpage.
 
 We have to follow the rabbit the page says.
 
-## Gobuster
+#### Gobuster
 
 Let's run a directory scan with gobuster: `gobuster dir -w /usr/share/wordlists/dirb/common.txt -u http://10.10.10.10/`.
 
@@ -123,16 +123,16 @@ Nothing really helpful in this page, let's look at the source code `ctrl + U`.
 Nice! We found alice's credentials.
 
 
-# **Foothold**
+## **Foothold**
 
 Let's use that username and password and login via ssh.
 
 ![](6.png)
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
-## Alice
+### Alice
 
 Let's check our current privileges with `sudo -l`
 
@@ -177,13 +177,14 @@ The python script we will be using is the following:
 ```python
 import os; os.system("/bin/bash")
 ```
+
 >This will spawn a shell
 
 Put that script in a file and name it random.py, when we execute the walrus_and_the_carpenter.py script as `rabbit`, we will get a shell as rabbit.
 
 ![](9.png)
 
-## Rabbit
+### Rabbit
 
 Let's go the rabbit's home directory.
 
@@ -223,7 +224,7 @@ Now if we run the `teaParty` program we should get a shell as another user.
 
 ![](14.png)
 
-## Hatter
+### Hatter
 
 After some enumeration, we check the capabilities and find the following.
 
@@ -248,5 +249,3 @@ Congrats, we have successfully rooted the machine.
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
 
 ---
-
-# References

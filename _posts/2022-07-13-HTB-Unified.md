@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/unified/
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Unified](https://app.hackthebox.com/starting-point?tier=2) from [HackTheBox](https://www.hackthebox.com). The target is running Unifi Network with a version vulnerable to log4j, we use that to get a reverse shell. The application(Unifi) is using Mongodb without authentication, so we add a shadow admin to login to the application as administrator, and there we find some ssh credentials.
 
-# Enumeration
+## Enumeration
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -61,7 +61,7 @@ PORT     STATE    SERVICE         VERSION
 
 We see 4 open ports, ssh on 22 http on port 8080 and some other things.
 
-## Web
+### Web
 
 Let's go to the webpage on port 8080.
 
@@ -97,13 +97,13 @@ Now send the request and you should see show in `tcpdump`.
 
 ![](6.png)
 
-# Foothold
+## Foothold
 
 Now that we know the target is vulnerable, we're going to proceed to get a reverse shell.
 
 First, we need to clone this [Github repository](https://github.com/veracode-research/rogue-jndi) and build the tool.
 
-```
+```bash
 git clone https://github.com/veracode-research/rogue-jndi && cd rogue-jndi && mvn package
 ```
 
@@ -141,7 +141,7 @@ stty raw -echo;fg
 ```
 
 
-# Privilege Escalation
+## Privilege Escalation
 
 According to the [article](https://www.sprocketsecurity.com/resources/another-log4j-on-the-fire-unifi), there is a MongoDB instance storing application information listening on localhost without authentication.
 

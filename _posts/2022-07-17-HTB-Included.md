@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/included/
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Included](https://app.hackthebox.com/starting-point?tier=2) from [HackTheBox](https://www.hackthebox.com). The target is running a webserver on port 80 and a TFTP server on udp port 69 which is unusual. The webpage is vulnerable to lfi, and the tftp server requires no authentication. We upload a reverse shell to the tftp server and request it using the lfi to get access to the target. After that we find some credentials in one of the  web files that belongs to a user named `mike`. That user is part of a group called `lxd`, and we find a way to escalate privilege with that. 
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -56,7 +56,7 @@ PORT   STATE         SERVICE
 
 We have port 69 open running `tftp`.
 
-## Web
+### Web
 
 Let's navigate to the webpage.
 
@@ -64,7 +64,7 @@ Let's navigate to the webpage.
 
 Nothing really interesting here, but if we take a look at the URL `http://10.129.95.185/?file=home.php` we see that the website is including resources from the system(home.php) via the parameter `file`, and this might be vulnerable to LFI(**L**ocal **F**ile **I**nclusion).
 
-## LFI
+### LFI
 
 Let's see if we can read the `/etc/passwd` file by including it in the file parameter: `http://10.129.95.185/?file=/etc/passwd`.
 
@@ -72,7 +72,7 @@ Let's see if we can read the `/etc/passwd` file by including it in the file para
 
 We now confirmed that the website is vulnerable to LFI.
 
-## TFTP
+### TFTP
 
 We found earlier that TFTP server is running on udp port 69. We can connect to that service but first we need to install it on our machine.
 
@@ -85,7 +85,7 @@ By default, TFTP needs no authentication. We can connect to it like so `tftp {ta
 ![](3.png)
 
 
-# **Foothold**
+## **Foothold**
 
 From the help menu, we see the command `put` that gives us the ability to upload file to the server.
 
@@ -122,7 +122,7 @@ stty raw -echo;fg
 ![](7.png)
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Searching in the webserver's directory, i found a password for user `mike` in on the files.
 

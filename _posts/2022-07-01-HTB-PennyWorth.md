@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/pennyworth/
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Pennyworth](https://app.hackthebox.com/starting-point?tier=1) from [HackTheBox](https://www.hackthebox.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -43,7 +43,7 @@ PORT     STATE SERVICE VERSION
 
 Found port 8080 open running jetty web server.
 
-## Web
+### Web
 
 Let's navigate to port 8080.
 
@@ -51,7 +51,7 @@ Let's navigate to port 8080.
 
 Found a login page for Jenkins.
 
-## ffuf
+#### ffuf
 
 Let's run a directory scan.
 
@@ -65,7 +65,7 @@ This page reveals Jenkins version number. This version doesn't seem to be vulner
 
 Let's try some default default credentials and attempt to login.
 
-```
+```text
  - admin:admin
  - admin:password
  - admin:qwerty123
@@ -77,7 +77,7 @@ Let's try some default default credentials and attempt to login.
 
 We managed to login using `root:password`.
 
-# **Foothold**
+## **Foothold**
 
 Now that we managed to login as root, we can use script console to get a reverse shell.
 

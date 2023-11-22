@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/tactics/
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Tactics](https://app.hackthebox.com/starting-point?tier=1) from [HackTheBox](https://www.hackthebox.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 -Pn {target_IP}`.
 
@@ -52,7 +52,7 @@ Host script results:
 
 We have a windows machine running SMB.
 
-## SMB
+### SMB
 
 We can enumerate SMB using `smbclient`. The full command is as follows:`sudo smbclient -L 10.129.195.131`
 
@@ -70,7 +70,7 @@ We found 3 shares.
 
 The other two, ADMIN$ and C$ are disk shares so we might be able to login into them.
 
-# **Foothold**
+## **Foothold**
 
 Let's try login to the ADMIN$ share.`sudo smbclient \\\\10.129.195.131\\ADMIN$ -U Administrator`.
 

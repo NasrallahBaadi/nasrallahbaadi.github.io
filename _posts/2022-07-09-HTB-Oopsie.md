@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/oopsie/
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Oopsie](https://app.hackthebox.com/starting-point?tier=2) from [HackTheBox](https://www.hackthebox.com). The target is running a webserver on port 80, we find a login page that permits us to login as a guest. Once we're in we exploit an IDOR vulnerability to get information disclosure, we modify our cookies with the information we got and upload a reverse shell after that and get access into the target. Once inside we enumerate the web server's files to find credentials for a user in the system, that user is part of a group that can run a binary with suid bit, the script is not well written and permits us to elevate to root easily.
 
-# Enumeration
+## Enumeration
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -47,7 +47,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We have 2 open ports, port 22 running ssh and 80 running Apache web server.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -55,7 +55,7 @@ Let's navigate to the web page.
 
 Nothing interesting.
 
-## Gobuster
+### Gobuster
 
 Let's run a directory scan using gobuster: `gobuster dir -w /usr/share/wordlists/dirb/common.txt -u http://10.10.10.10/`.
 
@@ -132,7 +132,7 @@ Now we are able to upload anything.
 ![](10.png)
 
 
-# Foothold
+## Foothold
 
 Let's upload a [Pentest Monkey](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php)'s reverse shell.
 > Change the ip in the code to your tun0 ip.
@@ -153,7 +153,7 @@ We should get a shell after that.
 
 Great! We got in.
 
-# Privilege Escalation
+## Privilege Escalation
 
 As a good practice, I stabilized my shell using the python pty trick:
 

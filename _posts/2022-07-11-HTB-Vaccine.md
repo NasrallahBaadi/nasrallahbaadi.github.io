@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/vaccine/
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Vaccine](https://app.hackthebox.com/starting-point?tier=2) from [HackTheBox](https://www.hackthebox.com). The target is running a ftp server with anonymous login allowed, we login and find a backup.zip file protected with a password, we use zip2john and get a password. The zip file has a index.php file that contains a username and password that we use to login in a webpage. The page has a search section vulnerable to sql injection, we use `sqlmap` to get command execution on the target and a reverse shell after that. Inside the web server's directory, we find a file that has a password for a user, and the latter is able to run a program as root, so we leverage that to get escalate to root.
 
-# Enumeration
+## Enumeration
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -65,12 +65,13 @@ PORT   STATE SERVICE VERSION
 Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
-We found 3 open ports. 
+We found 3 open ports.
+
  - Port 21 running a FTP server with anonymous login allowed.
  - Port 22 running SSH.
  - Port 80 running Apache web server.
 
-## FTP 
+### FTP
 
 Let's login to the ftp server by providing the name `anonymous` and a blank password.
 
@@ -100,7 +101,7 @@ Found the username **admin** and a MD5 hash. Let's use [Crackstation](https://cr
 
 Great! Now let's move to the web server.
 
-## Web
+### Web
 
 Let's navigate to the webpage.
 
@@ -114,7 +115,7 @@ We're in an admin dashboard. Notice that there is a Search section. Everything w
 
 ![](9.png)
 
-# Foothold
+## Foothold
 
 Let's give the url to `sqlmap` along with the PHPSESSID cookie and see if the website is vulnerable to sql injection
 
@@ -136,7 +137,7 @@ Go to the listener and you should see the shell.
 
 ![](13.png)
 
-# Privilege Escalation
+## Privilege Escalation
 
 After getting a shell, i used python pty trick to stabilize the shell.
 

@@ -13,13 +13,13 @@ img_path : /assets/img/tryhackme/dogcat/
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Dogcat](https://tryhackme.com/room/dogcat) from [TryHackMe](https://tryhackme.com). The target is running a Apache web server which has a page vulnerable to an lfi. We use that and do a log poisoning to get a reverse shell. After that we use our ability to run a binary as root and escalate our privileges. We find that we are on a docker container and modify a script that runs regularly to sends us a reverse shell and escape the container.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -47,7 +47,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 There are two open ports, port 22 running ssh and port 80 running Apache web server.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -128,9 +128,9 @@ Now we can easily read the `etc/passwd` file by adding `&ext` at the end of our 
 
 ![](8.png)
 
-# Foothold
+## Foothold
 
-## Log Poisoning
+### Log Poisoning
 
 We will use a technique called [log poisoning](https://owasp.org/www-community/attacks/Log_Injection) to get a reverse shell. Since the server is Apache, the log file is located at `/var/log/apache2/access.log`, we can see it with the following query`cat/../../../../var/log/apache2/access.log&ext`
 
@@ -164,9 +164,9 @@ Now set up a netcat listener with `nc -lvnp 1234` and go to request the reverse 
 
 Great! We got a reverse shell.
 
-# Privilege Escalation
+## Privilege Escalation
 
-## Escalate to root
+### Escalate to root
 
 Let's check our current privileges with `sudo -l`.
 
@@ -184,7 +184,7 @@ Great! We got root, but we are not done yet. If we list all the content of the r
 
 ![](17.png)
 
-## Docker escape
+### Docker escape
 
 If we go to /opt directory, we find some interesting file.
 
@@ -208,7 +208,7 @@ Thank you for taking the time to read my write-up, I hope you have learned somet
 
 ---
 
-# References
+## References
 
 https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php
 

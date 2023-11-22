@@ -14,13 +14,13 @@ img_path: /assets/img/tryhackme/githappens/
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Git Happens](https://tryhackme.com/room/githappens) from [TryHackMe](https://tryhackme.com). The machine is running a webserver on port 80 with a exposed git directory. We pull that directory using GitTools, check the history of commits and find a password on one of the commits.
 
-# Enumeration
+## Enumeration
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -47,7 +47,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 Only port 80 is open.
 
-## Web
+### Web
 
 Let's navigate to the webpage.
 
@@ -81,7 +81,7 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 
 ![](2.png)
 
-## Git
+### Git
 
 We can use a tool called [GitTools](https://github.com/internetwache/GitTools) to pull that directory to our machine.
 
@@ -114,5 +114,3 @@ Great! Found the password.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
