@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/legacy
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Legacy](https://app.hackthebox.com/machines/Legacy) from [HackTheBox](https://www.hackthebox.com). The machine is running an old version of windows with SMB, we use a module from metasploit to get access.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -59,7 +59,7 @@ Host script results:
 
 We have a windows XP machine running SMB.
 
-# **Foothold**
+## **Foothold**
 
 Searching for windows XP SMB exploit we find that there is a metasploit module named `(MS08–067)` allowing us to get remote code execution.
 
@@ -68,7 +68,6 @@ Let's fire up `metasploit` and use the following module `exploit/windows/smb/ms0
 ![](1.png)
 
 After setting the lhost and rhost options, we run the exploit and get a reverse shell with system privileges.
-
 
 ---
 

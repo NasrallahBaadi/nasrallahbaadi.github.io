@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/netmon
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Netmon](https://app.hackthebox.com/machines/Netmon) from [HackTheBox](https://www.hackthebox.com), an easy box where there is PRTG on a webserver and ftp running with anonymous access allowed giving us the ability to read PRTG netmon config files storing passwords. The PRTG version is vulnerable to RCE which can be exploited to gain a shell with privileged access.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -70,7 +70,7 @@ Host script results:
 
 We have a windows machine running FTP with anonymous login enabled on port 21, an HTTP web server on port 80, and SMB on it's default ports.
 
-## FTP
+### FTP
 
 Let's login to FTP as `anonymous`.
 
@@ -82,7 +82,7 @@ Wow, We're in the file system of this windows machine. We can grab the user flag
 
 There is a lot to search in windows system so let's go see what's on the web server to help us narrow our enumeration.
 
-## Web
+### Web
 
 ![](3.png)
 
@@ -102,7 +102,7 @@ Let's inspect the file.
 
 Found some credentials. Let's test them in the login page.
 
-# **Foothold**
+## **Foothold**
 
 ![](6.png)
 

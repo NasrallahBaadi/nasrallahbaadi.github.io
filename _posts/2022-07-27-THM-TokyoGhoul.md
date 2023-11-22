@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/tokyoghoul
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Tokyo Ghoul](https://tryhackme.com/room/tokyoghoul666) from [TryHackMe](https://tryhackme.com). This machine is based on Tokyo Ghoul anime. Lot of stuff are put in this box, like steganography, exploiting LFI, cracking hahses, and escaping python jails. Let's have some fun.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -63,7 +63,7 @@ Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 
 There are 3 open ports on a linux system, port 21 running FTP with anonymous login enabled, port 22 runs ssh and port 80 running an Apache web server.
 
-## Web
+### Web
 
 Let's navigate to the website.
 
@@ -81,7 +81,7 @@ Nothing interesting in this page, let's view the source code `ctrl + u`.
 
 We need to go to the FTP server.
 
-## FTP
+### FTP
 
 Since FTP allows anonymous login, let's go see what there.
 
@@ -91,9 +91,9 @@ Found a total of three files, one text file, one executable and on image file. W
 
 Let's investigate the files.
 
-### Aogiri_tree.txt
+#### Aogiri_tree.txt
 
-```
+```text
 Why are you so late?? i've been waiting for too long .
 So i heard you need help to defeat Jason , so i'll help you to do it and i know you are wondering how i will. 
 I knew Rize San more than anyone and she is a part of you, right?
@@ -103,7 +103,7 @@ Bye Kaneki.
 
 Nothing really useful in this text file, let's move on to the executable.
 
-### need_to_talk
+#### need_to_talk
 
 ![](5.png)
 
@@ -119,7 +119,7 @@ We see multiple words that might be the passphrase we need. Let's try them.
 
 Nice, we found the passphrase, and got a response of a compound word. Let's note it and move to the image file.
 
-### rize_and_kaneki.jpg
+#### rize_and_kaneki.jpg
 
 Let's try to extract any hidden files inside the image using the command : `steghide extract -sf rize_and_kaneki.jpg`.
 
@@ -135,7 +135,7 @@ We got some dots and dashes, which look like morse code. Let's take it to [Cyber
 
 We managed to decode that, and it had multiple levels. We got a possible web directory, let's check it out.
 
-## Web
+### Web
 
 ![](11.png)
 
@@ -187,7 +187,7 @@ Let's try it in the browser.
 Great! We can see there is a user named `kamishiro` and we can see his hash!
 
 
-# **Foothold**
+## **Foothold**
 
 Let's crack the hash using `john`.
 
@@ -198,7 +198,7 @@ Got the password, let's login to the machine using ssh.
 ![](16.png)
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's check our privileges on the machine with `sudo -l`.
 
@@ -225,10 +225,9 @@ __builtins__.__dict__['__IMPORT__'.lower()]('OS'.lower()).__dict__['SYSTEM'.lowe
 ![](20.png)
 
 Great! We saved Kaneki.
+
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
 
 ---
-
-# References

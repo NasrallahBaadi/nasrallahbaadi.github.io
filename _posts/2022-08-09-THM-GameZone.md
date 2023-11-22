@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/gamezone
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Game Zone](ttps://tryhackme.com/room/gamezone) from [TryHackMe](https://tryhackme.com). The machine is running a website vulnerable to sql injection, we use `sqlmap` to get a hash and a username, we crack the hash for a password and use the credentials to login via ssh. Once we're in, we found a service listening on an odd port and can't be accessed from outside the target machine. For that, we use ssh tunneling to access the service and found out it's vulnerable to rce. We exploit the vulnerability and get root access. 
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -51,7 +51,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We have two open port, 22 running ssh and 80 running Apache http server.
 
-## Web
+### Web
 
 Let's navigate to the webserver.
 
@@ -85,7 +85,7 @@ sqlmap -u 'http://10.10.26.156/portal.php' --forms --batch --cookies "PHPSESSID=
 
 Great! We got a password hash for user `agent47`.
 
-# **Foothold**
+## **Foothold**
 
 Using `hash-identifier` we found that it's `SHA256` hash. Let's use john and crack the hash.
 
@@ -93,7 +93,7 @@ Using `hash-identifier` we found that it's `SHA256` hash. Let's use john and cra
 
 We can login to the target via ssh now that we have the password.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 If we check our privileges as `agent47` we find that we can do anything.
 
@@ -107,7 +107,7 @@ We can solve that problem using [ssh tunneling](https://www.hackingarticles.in/c
 
 Executing the following command enables us to access that service on our attacking machine.
 
-```
+```bash
 ssh -L 8000:0.0.0.0:10000 [agent47@10.10.41.70](mailto:agent47@10.10.41.70) -F
 ```
 
@@ -138,7 +138,7 @@ This version of webmin is vulnerable to RCE. There is metasploit module for that
 
 The name of the exploit module is `unix/webapp/webmin_show_cgi_exec` and we need to set the following options before running it.
 
-```
+```bash
 set password videogamer124
 set username agent47
 set rhosts 127.0.0.1
@@ -159,6 +159,6 @@ Thank you for taking the time to read my write-up, I hope you have learned somet
 
 ---
 
-# References
+## References
 
 [https://www.hackingarticles.in/comprehensive-guide-on-ssh-tunneling/](https://www.hackingarticles.in/comprehensive-guide-on-ssh-tunneling/)

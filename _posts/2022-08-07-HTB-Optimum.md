@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/optimum
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Optimum](https://app.hackthebox.com/machines/Optimum) from [HackTheBox](https://www.hackthebox.com). This Box is running a version of HFS vulnerable to remote code execution allowing us to easily get access to the machine, then we use a metasploit module to escalate our privileges to SYSTEM. 
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -62,7 +62,7 @@ Shellcodes: No Results
 
 This version of HFS is vulnerable to remote command execution.
 
-# **Foothold**
+## **Foothold**
 
 There is a module in metasploit named `windows/http/rejetto_hfs_exec` that would give us a reverse shell on the target, so let's use it.
 
@@ -76,7 +76,7 @@ Waiting a little bit for the exploit to fully run, we go back to metasploit comm
 
 ![](3.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Running the command `sysinfo` reveals that we're in a x64 architecture but our reverse shell is running on a x32 architecture.
 

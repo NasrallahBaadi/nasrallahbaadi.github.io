@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/markup
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Markup](https://app.hackthebox.com/starting-point?tier=2) from [HackTheBox](https://www.hackthebox.com). The target is running a website vulnerable to XXE, we exploit that and get an ssh private key. We connect to the target and run `winpeas` which finds an administrator's password.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -63,7 +63,7 @@ PORT    STATE SERVICE  VERSION
 
 There are 3 open port,22,80 and 433.
 
-## Web
+### Web
 
 Let's navigate to the webserver on port 80.
 
@@ -71,7 +71,7 @@ Let's navigate to the webserver on port 80.
 
 We got a login page, We can try submit some default credentials like the following:
 
-```
+```text
 admin:admin
 administrator:administrator
 admin:administrator
@@ -87,7 +87,7 @@ Going through the website's different pages, we find that we can interact with t
 
 ![](3.png)
 
-## Burp
+### Burp
 
 Let's fill the input fields and intercept the request using `burp suite` and send it to repeater.
 
@@ -95,10 +95,10 @@ Let's fill the input fields and intercept the request using `burp suite` and sen
 
 The website uses `XML` for the orders, let's check if this is vulnerable to XEE.
 
->XEE: or XML External Entity attack is a type of attack against an application that parses XML input and allows XML entities. XML entities can be used to tell the XML parser to fetch specific content on the server.
+> XEE: or XML External Entity attack is a type of attack against an application that parses XML input and allows XML entities. XML entities can be used to tell the XML parser to fetch specific content on the server.
 
 
-# **Foothold**
+## **Foothold**
 
 Since this is a windows machine, we can test the vulnerability with the following payload:
 
@@ -137,7 +137,7 @@ Great! We found ssh private key of daniel, let's copy it to our machine, give it
 ![](8.png)
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's check ou current privileges on the machine with `whoami /priv`
 
