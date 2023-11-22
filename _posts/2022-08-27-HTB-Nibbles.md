@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/nibbles
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Nibbles](https://app.hackthebox.com/machines/Nibbles) from [HackTheBox](https://www.hackthebox.com). The target is running a vulnerable service allowing us to get foothold. Exploit sudo permission gives root.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -47,7 +47,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 There a webserver on port 80.
 
-## Web
+### Web
 
 Navigate the the website.
 
@@ -77,7 +77,7 @@ Shellcodes: No Results
 
 Great! There is arbitrary file upload vulnerability on metasploit.
 
-# **Foothold**
+## **Foothold**
 
 Fire up metasploit and use the exploit.
 
@@ -87,7 +87,7 @@ After setting up the required options, let's start the exploit.
 
 ![](5.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's check our privileges.
 

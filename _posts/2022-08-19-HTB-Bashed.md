@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/bashed
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Bashed](https://app.hackthebox.com/machines/Bashed) from [HackTheBox](https://www.hackthebox.com). The box is running a webserver that we scan for files and we find an important one that give us access to the machine. A cronjob running every minute makes it easy for us to get root.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -41,7 +41,7 @@ PORT   STATE SERVICE VERSION
 
 There is only 1 open port and it's running Apache web server on an Ubuntu machine.
 
-## Web
+### Web
 
 Let's navigate to the web server.
 
@@ -51,7 +51,7 @@ The website is about something called `phpbash` which is, according to the [auth
 
 Nothing else can be found useful except for the single.html page which contains example of `phpbash`.
 
-## Gobuster
+### Gobuster
 
 Let's run a directory scan. `gobuster dir -w /usr/share/wordlists/dirb/common.txt -u http://10.10.10.68/`
 
@@ -93,11 +93,11 @@ We found the `phpbash.php` file, and if we click on it, it does give us what it 
 
 ![](3.png)
 
-# **Foothold**
+## **Foothold**
 
 Knowing that we have command execution on the target, i though of uploading a php reverse shell to the server.
 
-I moved to the **/uploads** directory because it is writeable, then i set up a python http server with the command `sudo python3 -m http.server 80` that served [Pentest Monkey's](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php) php reverse shell code, then went to the web shell and uploaded the file. 
+I moved to the **/uploads** directory because it is writeable, then i set up a python http server with the command `sudo python3 -m http.server 80` that served [Pentest Monkey's](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php) php reverse shell code, then went to the web shell and uploaded the file.
 
 >Change the ip variable in the code to you tun0 ip.
 
@@ -111,7 +111,7 @@ As a good practice, i stabilized my shell using python pty.
 
 ![](6.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's check our privileges with `sudo -l`.
 
@@ -142,6 +142,7 @@ import os; os.system("chmod +s /bin/sh")
 ```
 
 This script gives the /bin/sh file the `suid` bit which permits us to run it as root.
+
 >the /bin/sh is a shell, just like /bin/bash or /bin/zsh, that's why we choose it.
 
 ![](11.png)

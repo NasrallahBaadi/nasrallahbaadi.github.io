@@ -13,14 +13,14 @@ img_path: /assets/img/tryhackme/gamingserver
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Gaming Server](https://tryhackme.com/room/gamingserver) from [TryHackMe](https://tryhackme.com). The machines is running a webserver that has some hidden directories and files in which we find a private ssh key. Being part of a specific group enables us to escalate to root.
 
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -48,7 +48,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We have ssh on port 22 and Apache webserver on port 80.
 
-## Web
+### Web
 
 Navigate to the webpage.
 
@@ -60,7 +60,7 @@ It's a website about House of Danak (whatever that is), looking through the webs
 
 The most interesting file there is the dict.lst which contains a list of possible passwords, so let's download it with the following command. `wget http://{target_IP}/uploads/dict.lst`.
 
-## Gobuster
+### Gobuster
 
 Let's run a directory scan.
 
@@ -101,7 +101,7 @@ It contains some secret key, let's download it and see what is it.
 Looks like a private ssh key.
 
 
-# **Foothold**
+## **Foothold**
 
 With the ssh private key, let's connect to the target, but wait, we need a username.
 
@@ -121,7 +121,7 @@ With the dict.lst file we got earlier, we managed to crack the hash and get the 
 
 Great! We got in.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Running the command `id` shows that john us part of a group called `lxd`.
 
@@ -149,5 +149,3 @@ And just like that we got root, for the root flag, go to `/mnt/root/root.txt`.
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
 
 ---
-
-# References

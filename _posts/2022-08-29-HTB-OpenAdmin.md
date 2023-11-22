@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/openadmin
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [OpenAdmin](https://app.hackthebox.com/machines/OpenAdmin) from [HackTheBox](https://www.hackthebox.com). It's an easy machine running a web server with a service vulnerable to rce allowing us to get easy foothold. Enumerating the server's file we find a password of a user that have access to another an internal web server that reveals an ssh key that we use to move to another user. A sudo misconfiguration in then exploited to gain root shell.
 
-# **Enumeration**
+## **Enumeration**
  
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -47,7 +47,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We have 2 ports open, 22(SSH) and 80 running Apache http webserver.
 
-## Web
+### Web
 
 Let's check the website.
 
@@ -55,7 +55,7 @@ Let's check the website.
 
 We got the Apache ubuntu  default page.
 
-### Gobuster
+#### Gobuster
 
 Let's run a directory scan.
 
@@ -86,14 +86,14 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 
 We found two interesting directories, **/artwork** and **music**, let's check the first one.
 
-### artwork
+#### artwork
 
 ![](2.png)
 
 It's a website template, nothing really useful. Let's check the other directory.
 
 
-### music
+#### music
 
 ![](3.png)
 
@@ -103,7 +103,7 @@ In this page we can see that we can login or create an account along with some o
 
 We get redirected to **/ona** where we are logged in as Guest, and it seems the service on this page is running on an old version and we are asked to download the latest version. The download link is going to **opennetadmin** page aka **ONA**.
 
-# **Foothold**
+## **Foothold**
 
 Let's check if there is any exploit in this version.
 
@@ -134,7 +134,7 @@ Now set up a listener and request the file the receive a reverse shell.
 
 We got a shell, and i stabilized it with python3 as you can see in the screenshot above. 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 After some very long enumeration in the target, we find a php file that contains mysql credentials.
 

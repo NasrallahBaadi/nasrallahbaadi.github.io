@@ -11,13 +11,13 @@ img_path: /assets/img/pwntilldawn/mrblue
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Mr. Blue](https://online.pwntilldawn.com/Target/Show/4) from [PwnTillDawn](https://online.pwntilldawn.com/).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -120,7 +120,7 @@ Host script results:
 
 Nmap tells us the it's a windows server machine with a bunch of open ports. We can see that it has SMB open with a domain name of `MRBLUE`, that made me think directly of the `ms17_010_eternalblue`.
 
-# **Foothold**
+## **Foothold**
 
 Let's fire up `metasploit` and use the `ms17_010_eternalblue` module.
 

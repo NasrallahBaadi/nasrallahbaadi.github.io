@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/blaster
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Blaster](https://tryhackme.com/room/blaster) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -57,7 +57,7 @@ Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
 
 We found 2 open port, port 80 running IIS windows server and port 3389 is RDP.
 
-## WEB
+### WEB
 
 Let's navigate to the webserver.
 
@@ -65,7 +65,7 @@ Let's navigate to the webserver.
 
 It's the default page for IIS windows server, nothing interesting.
 
-## Gobuster
+#### Gobuster
 
 Let's run a directory scan.
 
@@ -104,7 +104,7 @@ If we click on the post we find the following comment.
 
 ![](4.png)
 
-# **Foothold**
+## **Foothold**
 
 Let's login to the machine via RDP with username `wade` and the password we found.
 
@@ -117,7 +117,7 @@ xfreerdp /u:wade /p:{password} /v:10.10.183.181 /dynamic-resolution +clipboard
 ![](6.png)
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 On Wade's desktop, there is user.txt which is the flag and a file named `hhupd`. If we googled that we find that it's related to a privilege escalation vulnerability.
 
@@ -157,5 +157,3 @@ We got a shell as NT authority\system
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
 
 ---
-
-# References
