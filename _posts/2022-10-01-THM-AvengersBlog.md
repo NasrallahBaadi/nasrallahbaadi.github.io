@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/avengersblog
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Avengers Blog](https://tryhackme.com/room/avengers) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -47,7 +47,7 @@ Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 
 There are 3 open ports, 21(ftp), 22(ssh) and 80(http).
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -138,5 +138,3 @@ base64 ../flag5.txt | base64 -d
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----

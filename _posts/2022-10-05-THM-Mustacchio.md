@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/mustacchio
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Mustacchio](https://tryhackme.com/room/) from [TryHackMe](https://tryhackme.com). We find a webserver vulnerable to xxe allowing to read file on the system and getting an ssh key. After that we exploit an SUID binary to get root.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -49,7 +49,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We found 2 open ports on an Ubuntu machine, 22(ssh) and 80(http).
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -196,7 +196,7 @@ Great! We confirmed the XXE vulnerability, now let's get barry's ssh private key
 
 ![](10.png)
 
-# **Foothold**
+## **Foothold**
 
 Let's copy the key to our machine, give it the right permission and connect with it.
 
@@ -237,7 +237,7 @@ barry@mustacchio:~$ find / -type f -perm -u=s 2>/dev/null
 
 We find a binary in joe's home directory called `live_log`, let's check it out.
 
-```
+```bash
 barry@mustacchio:/home/joe$ file live_log                                     
 live_log: setuid ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=6c03a6809
 4c63347aeb02281a45518964ad12abe, for GNU/Linux 3.2.0, not stripped            
@@ -262,7 +262,3 @@ And just like that we got root.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

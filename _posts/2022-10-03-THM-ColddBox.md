@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/colddbox
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [ColddBox: easy](https://tryhackme.com/room/colddboxeasy) from [TryHackMe](https://tryhackme.com). We find a webserver running wordpress, we scan it with wpscan and find usernames that we user to brute force the login page and find a password. We easily get a reverse shell after that. Once we're in, we find a password in a config file giving access to a user that has the ability to run some programs as root, we exploit that to get elevated privileges.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -42,7 +42,7 @@ PORT   STATE SERVICE VERSION
 
 We have port 80 open running an Apache web server  and wordpress 4.1.31.
 
-## WPScan
+### WPScan
 
 Let's run `wpscan` and see what we can find.
 
@@ -51,7 +51,7 @@ wpscan --url http://10.10.238.77 -e vp,vt,u
 ```
 
  - -e: enumerate - vp: vulnerable plugins | vt: vulnerable themes | u: usernames
-        
+
 ![](1.png)
 
 The scan revealed 3 usernames, let's put them in a file and brute force the login for wordpress.
@@ -67,7 +67,7 @@ We found the password of user `c0ldd`. Let's login.
 
 ![](3.png)
 
-# **Foothold**
+## **Foothold**
 
 Following the steps described in this [article](https://www.hackingarticles.in/wordpress-reverse-shell/), let's get a reverse shell.
 
@@ -81,7 +81,7 @@ Now setup a listener with `nc -lvnp 1234` and visit this page `http://{target_IP
 
 ![](5.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's check the `wp-config.php` file of wordpress since it usually hold some credentials.
 
@@ -131,7 +131,3 @@ sudo vim -c ':!/bin/sh'
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

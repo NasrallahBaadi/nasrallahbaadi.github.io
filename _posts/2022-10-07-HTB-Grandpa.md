@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/grandpa
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Grandpa](https://app.hackthebox.com/machines/Grandpa) from [HackTheBox](https://www.hackthebox.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -54,7 +54,7 @@ Searching on google for `Microsoft IIS httpd 6.0 exploit` we find that this vers
 
 ![](1.png)
 
-# **Foothold**
+## **Foothold**
 
 There is a module in metasploit that helps us exploit this vulnerability called `exploit/windows/iis/iis_webdav_scstoragepathfromurl`.
 
@@ -65,7 +65,7 @@ Let's use the module and set the required options.
 ![](3.png)
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 For this part, i migrated to another stable process and run local_exploit_suggester module.
 

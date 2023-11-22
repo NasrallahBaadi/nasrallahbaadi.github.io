@@ -13,12 +13,12 @@ img_path: /assets/img/tryhackme/ninjaskills
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Ninja Skills](https://tryhackme.com/room/ninjaskills) from [TryHackMe](https://tryhackme.com).
 
 
-# Q1
+## Q1
 
 Which of the above files are owned by the **best-group** group.
 
@@ -34,7 +34,7 @@ find / -type f -group best-group 2>/dev/null
 /home/v2Vb
 ```
 
-# Q2
+## Q2
 
 Which of these files contain an IP address?
 
@@ -56,7 +56,7 @@ Our final command would look like this:
 find / -type f \( -name 8V2L -o -name bny0 -o -name c4ZX -o -name D8B3 -o -name FHl1 -o -name oiMO -o -name PFbD -o -name rmfX -o -name SRSq -o -name uqyw -o -name v2Vb -o -name X1Uy \) -exec grep -E -o '[0-9][0-9]*[.][0-9][0-9]*[.][0-9][0-9]*[.][0-9][0-9]*' * {} \; 2>/dev/null
 ```
 
-# Q3
+## Q3
 
 Which file has the SHA1 hash of 9d54da7584015647ba052173b84d45e8007eba94 ?
 
@@ -83,7 +83,7 @@ acbbbce6c56feb7e351f866b806427403b7b103d  /etc/ssh/SRSq
 
 ```
 
-# Q4
+## Q4
 
 Which file contains 230 lines?
 
@@ -109,7 +109,7 @@ find / -type f \( -name 8V2L -o -name bny0 -o -name c4ZX -o -name D8B3 -o -name 
 
 One file here is missing. It's the one we're looking for.
 
-# Q5
+## Q5
 
 Which file's owner has an ID of 502?
 
@@ -133,7 +133,7 @@ find / -type f \( -name 8V2L -o -name bny0 -o -name c4ZX -o -name D8B3 -o -name 
 -rw-rw-r-- 1 502 501 13545 Oct 23  2019 /X1Uy
 ```
 
-# Q6
+## Q6
 
 Which file is executable by everyone?
 
@@ -161,5 +161,3 @@ We can see only one file with x permission.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
