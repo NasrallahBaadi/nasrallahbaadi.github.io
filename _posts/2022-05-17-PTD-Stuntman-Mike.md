@@ -10,13 +10,13 @@ tags: [pwntilldawn, linux, hydra]
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing `Stuntman Mike` from [PwnTillDawn](https://online.pwntilldawn.com/) and [Wizlynxgroup](https://www.wizlynxgroup.com). This is an easy linux machine, running a ssh server on port 22 and a webserver on port 8089. When we try to connect to ssh, the server reveals some useful information, we use that to brute force ssh and we find valid credentials. After login to the machine via ssh, we find that we can run any command as root, so we can easily change user to root. Let's get started.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -46,7 +46,7 @@ PORT     STATE SERVICE  VERSION
 
 There are two open ports, 22(SSH) and 8089(ssl/http).
 
-## Web
+### Web
 
 Let's navigate to the webserver https://10.150.150.166:8089
 
@@ -54,7 +54,7 @@ Let's navigate to the webserver https://10.150.150.166:8089
 
 The webserver is running splunkd version 8.0.0, which there no vulnerabilities on this version.
 
-## SSH
+### SSH
 
 Let's try to connect to ssh.
 
@@ -62,7 +62,7 @@ Let's try to connect to ssh.
 
 Wow, we got the flag and a username.
 
-# **Foothold**
+## **Foothold**
 
 Let's brute force ssh using `hydra`.
 
@@ -98,7 +98,7 @@ Welcome to Ubuntu 18.04.4 LTS (GNU/Linux 4.15.0-96-generic x86_64)
 mike@stuntmanmike:~$ 
 ```
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's check our privileges wit `sudo-l`
 
@@ -129,5 +129,3 @@ root@stuntmanmike:~#
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
 
 ---
-
-# References

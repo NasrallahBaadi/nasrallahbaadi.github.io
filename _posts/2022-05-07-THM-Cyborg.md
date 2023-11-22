@@ -12,13 +12,13 @@ tags: [tryhackme, linux, sudo]
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing `Cyborg` from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -46,7 +46,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We have ssh on port 22 and http on port 80.
 
-## Web
+### Web
 
 Let's navigate to the webserver.
 
@@ -130,7 +130,7 @@ Second, we need to run this command : `borg extract ./home/field/dev/final_archi
 ![](/assets/img/tryhackme/cyborg/9.png)
 
 
-# **Foothold**
+## **Foothold**
 
 Now let's see what we extracted.
 
@@ -145,7 +145,7 @@ Great! We got Alex's password, let's use it and login with ssh.
 ![](/assets/img/tryhackme/cyborg/12.png)
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's check our current privileges by running `sudo -l`.
 
@@ -170,5 +170,3 @@ Great! Now let's run the script `sudo /etc/mp3backups/backup.sh`.
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack ;).
 
 ---
-
-# References

@@ -12,13 +12,13 @@ tags: [tryhackme, linux, sudo, wget]
 ---
 
 
-# **Description**
+## **Description**
 
 Hello l33ts, I hope you are doing well. We are doing [Wgel CTF](https://tryhackme.com/room/wgelctf) from [TryHackMe](https://tryhackme.com). We start by enumerating the machine with nmap, we find ssh on port 22 and a webserver on port 80. We run a directory scan and find private key, we use the latter with a username we found in the webpage source code to login with ssh. After getting access to the machine we find that we can run `wget` as root, we leverage that to get root access by replacing the shadow file with one we modified. Let's get started.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -46,7 +46,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We got 2 open ports. Let's check the webserver on port 80.
 
-## Web
+### Web
 
 Navigating to the webpage we get this.
 
@@ -58,7 +58,7 @@ It's the default page for apache, let's view the source code.
 
 We found a possible username.
 
-## Gobuster
+### Gobuster
 
 Let's run a directory scan with `gobuster`.
 
@@ -79,7 +79,7 @@ Wow, we found **.ssh** directory, let's go take a look and hope there is a priva
 Great! We got an ssh private key.
 
 
-# **Foothold**
+## **Foothold**
 
 Let's copy that key to a file in our machine and give it the right permission, then let's use it with the username we found earlier to login with ssh.
 
@@ -88,7 +88,7 @@ Let's copy that key to a file in our machine and give it the right permission, t
 Nice, we got access to the box. Let's escalate our privileges now.
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 First, let's check our current privileges with the command `sudo -l`.
 
@@ -142,6 +142,6 @@ Thank you for taking the time to read my write-up, I hope you have learned somet
 
 ---
 
-# References
+## References
 
 https://www.hackingarticles.in/linux-for-pentester-wget-privilege-escalation/

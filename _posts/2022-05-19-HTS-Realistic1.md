@@ -12,12 +12,12 @@ tags: [hackthissite, hts, easy, web, realistic]
 ---
 
 
-# **Description**
+## **Description**
 
 Hello l33ts, I hope you are doing well. We will be doing [Uncle Arnold's Local Band Review](https://www.hackthissite.org/missions/realistic/1/) from [HackThisSite](https://www.hackthissite.org/) which is part of the **realistic missions**.
 
 
-# **Solution**
+## **Solution**
 
 The challenge has the following message.
 
@@ -46,5 +46,3 @@ Let's forward the request.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
-# References

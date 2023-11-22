@@ -12,13 +12,13 @@ tags: [tryhackme, Windows, metasploit, msfvenom, usp]
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Steel Mountain](https://tryhackme.com/room/steelmountain) from [TryHackMe](https://tryhackme.com). It's a windows machine running a vulnerable webserver, the vulnerability permits us to execute commands remotely, so we used an exploit to get a reverse shell. Once we're in the machine, we find a service with an unquoted service path, we create and exploit for that and use it to escalate our privileges. 
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -73,7 +73,7 @@ Host script results:
 
 We got plenty of open ports, and we can see it's a windows machine.
 
-## Web
+### Web
 
 Let's navigate to the webserver on port 80.
 
@@ -91,23 +91,23 @@ On the other webserver, we see that it's running `http file server 2.3`, let's s
 
 There is a remote command execution vulnerability.
 
-# **Foothold**
+## **Foothold**
 
-## Metasploit
+### Metasploit
 
 To get foothold using `metasploit`, we can use this exploit `exploit/windows/http/rejetto_hfs_exec`.
 
 Launch metasploit by running `msfconsole`, and run `use exploit/windows/http/rejetto_hfs_exec`.
 
 After that, we need to specify the RHOSTS, RPORT and LHOST.
- 
+
  - RHOSTS: is the target machine's IP.
  - RPORT : is the port of the vulnerable web server (8080).
  - LHOST : is the attacker machine's IP, tun0.
 
 ![](/assets/img/tryhackme/steel/4.png)
 
-## Exploit
+### Exploit
 
 To get foothold without metasploit, we can use exploits found in [Exploit-DB](https://www.exploit-db.com/) or other places..
 
@@ -116,7 +116,7 @@ In this example, I'll be using this [Exploit](https://github.com/NullByte007/Exp
 ![](/assets/img/tryhackme/steel/5.png)
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 For this part, we're going to use the script suggested in the room; [PowerUp.ps1](https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1). We'll upload it using meterpreter, and load powershell in order to execute the script.
 
@@ -154,5 +154,3 @@ Now if we go to our multi handler listener, we should see a windows shell, and w
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
 
 ---
-
-# References

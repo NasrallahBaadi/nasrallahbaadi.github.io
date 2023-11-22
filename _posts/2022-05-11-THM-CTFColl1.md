@@ -12,11 +12,11 @@ tags: [tryhackme, linux, steganography, cipher, xxd, wireshark]
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [CTF Collection vol 1](https://tryhackme.com/room/ctfcollectionvol1) from [TryHackMe](https://tryhackme.com).
 
-# What does the base said?
+## What does the base said?
 
 In this task, we're given the following encoded string: VEhNe2p1NTdfZDNjMGQzXzdoM19iNDUzfQ==
 
@@ -28,13 +28,13 @@ We can also put the string in a file and decode it using the command `base64`.
 
 ![](/assets/img/tryhackme/ctfcoll/2.png)
 
-# Meta meta.
+## Meta meta.
 
 When we download the task file, we see that it's an image. To view the meta data of an image, we can use `exiftool`.
 
 ![](/assets/img/tryhackme/ctfcoll/3.png)
 
-# Mon, are we going to be okay?
+## Mon, are we going to be okay?
 
 Something is hiding. That's all you need to know.
 
@@ -45,7 +45,7 @@ To extract the hidden content in an image, we can use a tool called `steghide`.
 ![](/assets/img/tryhackme/ctfcoll/4.png)
 
 
-# Erm......Magick
+## Erm......Magick
 
 In this task, there is no file to download, so the flag must be in the task, but we don't see anything.
 
@@ -55,14 +55,14 @@ If we select the text in this task, we can actually see the flag.
 
 ![](/assets/img/tryhackme/ctfcoll/6.png)
 
-# QRrrr
+## QRrrr
 
 Downloading the task file we see that it's an image of a QR code. We can upload the image to an online qr code reader or use a smart phone to read it. I used this [Website](https://zxing.org/)
 
 ![](/assets/img/tryhackme/ctfcoll/7.png)
 
 
-# Reverse it or read it?
+## Reverse it or read it?
 
 The task file is a program that prints some text when we it's run.
 
@@ -72,7 +72,7 @@ The title of this task says we can reverse it or read it. We can use the command
 
 ![](/assets/img/tryhackme/ctfcoll/9.png)
 
-# Another decoding stuff
+## Another decoding stuff
 
 In this task, we got another encoded string : 3agrSy1CewF9v8ukcSkPSYm3oKUoByUpKG4L
 
@@ -84,7 +84,7 @@ The magic operation identifies string as a base58. We can now use `from base58` 
 
 ![](/assets/img/tryhackme/ctfcoll/11.png)
 
-# Left or right
+## Left or right
 
 Left, right, left, right... Rot 13 is too mainstream. Solve this
 
@@ -96,7 +96,7 @@ Since we don't have a key, this website can brute force the key and decode the f
 
 ![](/assets/img/tryhackme/ctfcoll/12.png)
 
-# Make a comment
+## Make a comment
 
 No downloadable file, no ciphered or encoded text. Huh .......
 
@@ -105,7 +105,7 @@ Let's check the source code of the page for any comments.
 ![](/assets/img/tryhackme/ctfcoll/13.png)
 
 
-# Can you fix it?
+## Can you fix it?
 
 I accidentally messed up with this PNG file. Can you help me fix it? Thanks.
 
@@ -149,7 +149,7 @@ Great! We fixed the file, now let's open it and get the flag.
 ![](/assets/img/tryhackme/ctfcoll/21.png)
 
 
-# Read it
+## Read it
 
 Some hidden flag inside Tryhackme social account.
 
@@ -157,7 +157,7 @@ If we check tryhackme's subreddit, we can find the flag in one of the posts.
 
 ![](/assets/img/tryhackme/ctfcoll/22.png)
 
-# Spin my head
+## Spin my head
 
 What is this?
 
@@ -167,7 +167,7 @@ This is a `brainfuck` code, `brainfuck` is a programming language. I used this [
 
 ![](/assets/img/tryhackme/ctfcoll/23.png)
 
-# An Exclusive!
+## An Exclusive!
 
 Exclusive strings for everyone!
 
@@ -178,13 +178,13 @@ In the hint we have `XOR`, searching for this xor thing, i found this [website](
 
 ![](/assets/img/tryhackme/ctfcoll/24.png)
 
-# Binary walk
+## Binary walk
 
 We can use a tool called `binwalk` that searches binary images for embedded files and executable code.
 
 ![](/assets/img/tryhackme/ctfcoll/25.png)
 
-# Darkness
+## Darkness
 
 The task file is an image, when we open it, we see that it's all dark.
 
@@ -192,7 +192,7 @@ We can use a tool called `stegoveritas`.
 
 ![](/assets/img/tryhackme/ctfcoll/26.png)
 
-# A Sounding QR
+## A Sounding QR
 
 We got another qr code, let's upload it to this[website](https://zxing.org/).
 
@@ -201,7 +201,7 @@ We got another qr code, let's upload it to this[website](https://zxing.org/).
 We got a link to a soundcloud clip, and it spells it to us.
 
 
-# Dig up the past
+## Dig up the past
 
 Sometimes we need a 'machine' to dig the past
 
@@ -224,7 +224,7 @@ Now hover the mouse over the number 2 and click the clock time.
 
 ![](/assets/img/tryhackme/ctfcoll/31.png)
 
-# Uncrackable!
+## Uncrackable!
 
 Can you solve the following? By the way, I lost the key. Sorry >.<
 
@@ -238,7 +238,7 @@ This looks like a vigenere cipher, we don't have a key, but we know that it star
 
 Since we don't have a key, we selected `knowing a plain text word` and entered `TRYHACKME`, with that, we were able to retrieve the flag.
 
-# Small bases
+## Small bases
 
 decode the following text.
 
@@ -256,7 +256,7 @@ Copy the result and go back to select hex to ascii converter, and convert to get
 
 ![](/assets/img/tryhackme/ctfcoll/34.png)
 
-# Read the packet
+## Read the packet
 
 Now with the final challenge, we need to read a packet. Let's load the file to `wireshark` and investigate the packets.
 
@@ -275,5 +275,3 @@ With that, we have successfully completed this wonderful room.
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
 
 ---
-
-# References

@@ -12,11 +12,11 @@ tags: [hackthebox, forensics, easy, challenges, git]
 ---
 
 
-# **Description**
+## **Description**
 
 Hello Hackers, I hope you are doing well. Today we are going to look at [Illumination](https://app.hackthebox.com/challenges/illumination#) from [HackTheBox](https://www.hackthebox.com). A Junior Developer just switched to a new source control platform. Can you find the secret token?
 
-# **Solution**
+## **Solution**
 
 After download the zip file and unzipping it, let's look at the files we've extracted.
 
@@ -45,5 +45,3 @@ And there is the token, it's encoded with base64, decode it to get the flag.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
-# References

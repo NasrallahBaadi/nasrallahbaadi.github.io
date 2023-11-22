@@ -12,15 +12,15 @@ tags: [tryhackme, linux, cracking, hashcat]
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Crack the hash](https://tryhackme.com/room/crackthehash) from [TryHackMe](https://tryhackme.com).
 
-# **Level 1**
+## **Level 1**
 
-## Hash 1
+### Hash 1
 
-### Hashcat
+#### Hashcat
 
 To crack a hash using `hashcat` we first need to know the type of the hash since hashcat does not auto identify the hash. For that, we can use `hash-identifier`.
 
@@ -32,15 +32,15 @@ This one is `MD5`, We can use thi [Table](https://hashcat.net/wiki/doku.php?id=e
 
 ![](/assets/img/tryhackme/crackthehash/3.png)
 
-### CrackStation
+#### CrackStation
 
 We can use [CrackStation](https://crackstation.net/) that uses tables to crack unsalted passwords. Let's give it our first password.
 
 ![](/assets/img/tryhackme/crackthehash/1.png)
 
-## Hash 2
+### Hash 2
 
-### Hashcat
+#### Hashcat
 
 Let's use `hash-identifier`.
 
@@ -53,15 +53,15 @@ It's a `SHA-1` hash, and the hash-mode for it is 100.
 ![](/assets/img/tryhackme/crackthehash/5.png)
 
 
-### CrackStation
+#### CrackStation
 
 Let's give the hash to crackstation.
 
 ![](/assets/img/tryhackme/crackthehash/6.png)
 
-## Hash 3
+### Hash 3
 
-### Hashcat
+#### Hashcat
 
 Let's identify the hash.
 
@@ -73,17 +73,17 @@ It's `SHA-256`, the hash-mode is **1400**
 
 ![](/assets/img/tryhackme/crackthehash/8.png)
 
-### CrackStation
+#### CrackStation
 
 On crackstation:
 
 ![](/assets/img/tryhackme/crackthehash/9.png)
 
-## Hash 4
+### Hash 4
 
 We ca see that this hash is salted, so we can't use crackstation.
 
-### Hashcat 
+#### Hashcat
 
 To identify the hash, i googled the first 4 characters `$2y$`.
 
@@ -102,9 +102,9 @@ Now, let's start cracking.
 ![](/assets/img/tryhackme/crackthehash/12.png)
 
 
-## Hash 5
+### Hash 5
 
-### Hashcat 
+#### Hashcat 
 
 Let's identify the hash.
 
@@ -116,18 +116,18 @@ It's `MD4`, the hash-mode is **900**
 
 I couldn't crack it because the password is not in rockyou.txt. Let's try crackstation. 
 
-### CrackStation
+#### CrackStation
 
 If we give the hash to crack station, it manages to crack it.
 
 ![](/assets/img/tryhackme/crackthehash/14.png)
 
 
-# **Level 2**
+## **Level 2**
 
 We will only be using `hashcat` in this level. Let's start.
 
-## Hash 1
+### Hash 1
 
 Hash-identifier:
 
@@ -139,7 +139,7 @@ It's `SHA-256`, the hash-mode is **1400**
 
 ![](/assets/img/tryhackme/crackthehash/16.png)
 
-## Hash 2 
+### Hash 2 
 
 This one is a `NTLM` hash, the hash-mode for it is **1000**.
 
@@ -148,7 +148,7 @@ This one is a `NTLM` hash, the hash-mode for it is **1000**.
 ![](/assets/img/tryhackme/crackthehash/17.png)
 
 
-## Hash 4
+### Hash 4
 
 This one is a `sha512crypt` hash, the hash-mode is **1800**
 
@@ -156,7 +156,7 @@ This one is a `sha512crypt` hash, the hash-mode is **1800**
 
 This can a long time, so the password is **waka99**
 
-## Hash 5
+### Hash 5
 
 The hash is `sha1`, the hash-mode is **110**.
 
@@ -169,5 +169,3 @@ The password is : **481616481616**
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
 
 ---
-
-# References

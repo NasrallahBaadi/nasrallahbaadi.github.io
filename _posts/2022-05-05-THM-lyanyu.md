@@ -12,13 +12,13 @@ tags: [tryhackme, linux, steganography]
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Lyan_yu](https://tryhackme.com/room/lianyu) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -59,7 +59,7 @@ Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 
 We found 4 open ports, let's enumerate the webserver on port 80.
 
-## Web
+### Web
 
 Navigating to the webpage we see the following.
 
@@ -162,7 +162,7 @@ We got what looks like an encoded text, let's go to [CyberChef](https://gchq.git
 
 We managed to decode it using base58, and it looks like a password.
 
-## FTP
+### FTP
 
 Using the code we found as a username and the password we decoded, let's login to the ftp server and see what's there.
 
@@ -185,7 +185,7 @@ Going back to the ftp server, we see that we can navigate freely on the machine,
 Great! We got our username.
 
 
-# **Foothold**
+## **Foothold**
 
 Now, let's use the credentials we managed to collect to login with ssh.
 
@@ -194,7 +194,7 @@ Now, let's use the credentials we managed to collect to login with ssh.
 Great! Let's move to privilege escalation.
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 First, let's check our current privileges on the machine by running `sudo -l`
 
@@ -217,7 +217,7 @@ Thank you for taking the time to read my write-up, I hope you have learned somet
 
 ---
 
-# References
+## References
 
 https://gchq.github.io/CyberChef/
 

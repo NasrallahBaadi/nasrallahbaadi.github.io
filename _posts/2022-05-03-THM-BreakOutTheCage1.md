@@ -12,13 +12,13 @@ tags: [tryhackme, linux, cipher, spectrogram]
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Break Out The Cage.1](https://tryhackme.com/room/breakoutthecage1) from [TryHackMe](https://tryhackme.com). We scan the machine for open port and find 3 open ports, the first port 21 is an ftp server with anonymous login enabled, there we find an file that has an encrypted password. We move to port 80 which is a webserver, we run a directory scan against it and find an audio file that has a text as spectrogram, we use it to decrypt the password we found on ftp and login as *Weston*. On the machine, a text gets printed on the screen every now and then, we found the script responsible for that and exploit the way it works and upgrade to the user *Cage*. After that we find some emails on Cage's home directory, one of the emails contains an encrypted password, and another email has a hint for the keyword we can use to decrypt the password. We do that and change user to root. Let's get started.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -62,7 +62,7 @@ Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 
 There are 3 open ports, 21(FTP), 22(SSH) and 80(HTTP).
 
-## FTP
+### FTP
 
 Since the ftp server allows anonymous login, let's login and see what's there.
 
@@ -76,7 +76,7 @@ Now let's see what the file has.
 
 The file contains a base64 encoded text, we decode it using `base64 -d dad_tasks`, but it gives us another encoded text, it look like a Vigenere cipher and we need a key to decrypt that, so let's move to other things.
 
-## Web
+### Web
 
 Navigating to the webserver we get this page.
 
@@ -84,7 +84,7 @@ Navigating to the webserver we get this page.
 
 Nothing really useful in this page.
 
-## Gobuster
+### Gobuster
 
 Let's run a directory scan.
 
@@ -101,7 +101,7 @@ When we play the file we hear nicholas Cage talking and weird noise. Let's load 
 We can see some text there, let's save it.
 
 
-# **Foothold**
+## **Foothold**
 
 Now that we have a possible key for the vigenere cipher, let's try to decode the text we got from the ftp server.
 
@@ -113,9 +113,9 @@ Great! We managed to decrypt the text and get the password of *Weston*. Let's lo
 
 Great! Let's move to privilege escalation. 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
-## Cage
+### Cage
 
 Let's start by checking our current privileges by running `sudo -l`
 
@@ -163,7 +163,7 @@ Now if we wait for the script to run, we should found a copy of bash in /tmp wit
 
 We can now grab Cage's ssh private key and connect with it.
 
-## Root
+### Root
 
 In Cage's home directory, there is an email folder with tree emails, one of them contains a possible password for Sean who has *root* as his username. If we tried to change user to root with that password, we fail. The password must be encrypted.
 
@@ -179,5 +179,3 @@ After decrypting the password we can change the user to root with it.
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
 
 ---
-
-# References
