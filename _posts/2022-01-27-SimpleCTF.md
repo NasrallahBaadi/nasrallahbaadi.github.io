@@ -11,13 +11,13 @@ tags: [tryhackme, linux, ftp, sqli, python, crack, sudo]
 
 ---
 
-# **Description**
+## **Description**
 
 Hello l33ts, I hope you are doing well. Today we are going to look at [Simple CTF](https://tryhackme.com/room/easyctf) from [TryHackMe](https://tryhackme.com/), an easy machine where we find an outdated CMS, us an exploit for that to get ssh credentials, and finally escalate to root using Vim. If you have any questions please feel free to ask me on any of my [socials](https://nasrallahbaadi.github.io/about).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 As always, we run a nmap scan:
 
@@ -58,11 +58,12 @@ Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
 We have 3 open port:
+
  - 21 - FTP
  - 80 - HTTP
  - 2222 - SSH
 
-## FTP
+### FTP
 
 From the nmap scan, we see that anonymous FTP login is allowed, so let's take a look:
 
@@ -106,7 +107,7 @@ ftp>
 
 The file we found is a note indicating that the password is so weak and can be cracked in seconds!
 
-## HTTP
+### HTTP
 
 Let's now check the web server and see what's there:
 
@@ -145,7 +146,7 @@ We found **/robots.txt** file and **/simple** directory, robots file has nothing
 
 We found that this version of the CMS is vulnerable to SQL injection, here is the [exploit](https://www.exploit-db.com/exploits/46635).
 
-## SQLi
+### SQLi
 
 After downloading the exploit, we can launch the attack with the following command:`python <exploit>.py -u http://{target_IP}/simple/ -c -w {path/to/the/wordlist}`
 
@@ -163,7 +164,7 @@ After downloading the exploit, we can launch the attack with the following comma
 > Note: I have masked the the data above, but if you run the exploit, you will get the username and the password.
 
 
-# **Foothold**
+## **Foothold**
 
 Now that we have a username and password, we can try to connect to SSH
 
@@ -196,7 +197,7 @@ User m___h may run the following commands on Machine:
 ```
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 With our current user, we can run `vim` as root, this is great, if we go to [GTFPBins](https://gtfobins.github.io/) we can see that there is a way to escalate our privileges to root using this command: `sudo vim -c ':!/bin/bash'` , so let's do it:
 
