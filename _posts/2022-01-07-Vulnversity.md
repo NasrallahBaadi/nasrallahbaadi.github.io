@@ -13,13 +13,13 @@ tags: [tryhackme, linux, web, reverse-shell, suid, filter]
 
 Hello l33ts, I hope you are doing well. Today we are going to look at [Vulnversity](https://tryhackme.com/room/vulnversity), an easy machine from [TryHackMe](https://tryhackme.com/), let's dive into it.
 
-# **Description**
+## **Description**
 
 Learn about active recon, web app attacks and privilege escalation.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 As always, let's start our nmap scan, i will be using this command:`sudo nmap -sC -sV -T4 {target_IP} | tee scans/nmap`
 
@@ -30,7 +30,6 @@ As always, let's start our nmap scan, i will be using this command:`sudo nmap -s
 - -T4: Aggressice scan to provide faster results.
 
 - | tee scan/nmap: Save the output to a file named nmap.
-
 
 ```terminal
 $ sudo nmap -sC -sV -T4 10.10.131.61 | tee scans/nmap
@@ -161,7 +160,7 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 
 We found **/uploads** directory, this is where the uploads go, when we navigate to it, we find our shell there.
 
-# **Foothold**
+## **Foothold**
 
 Let's set a listener on our machine: `nc -nlvp 1234`, after that, we need to click on the payload to receive a reverse shell.
 
@@ -192,7 +191,7 @@ www-data@vulnuniversity:/$
 The commands i executed are for getting a fully functional shell, so that we can use the arrow keys, TAB key and more, you don't have to use them if you don't want to.
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Time to upgrade to root, i will be running `sudo -l`, `id` commands and search for some SUID binaries using this command: `find / -type f -perm -04000 2>/dev/null`
 

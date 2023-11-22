@@ -12,13 +12,13 @@ tags: [tryhackme, linux, web, privesc, reverse-shell, wordpress, bruteforce, hyd
 
 Hello l33ts, I hope you are doing weel. This is my first Writeup, and we will be doing [Mr robot CTF](https://tryhackme.com/room/mrrobot) from tryhackme, it is a medium machine based on the Mr. RObot show. let's dive into it.
 
-# **Description**
+## **Description**
  
 Can you root this Mr. Robot styled machine? This is a virtual machine meant for beginners/intermediate users. There are 3 hidden keys located on the machine, can you find them?
 
-# **Enumeration**
+## **Enumeration**
 
-## Nmap
+### Nmap
 First, let's start our nmap scan using this command:
 `sudo nmap -sV -sC {target_IP} -oN nmap.scan`
 
@@ -51,7 +51,7 @@ Nmap done: 1 IP address (1 host up) scanned in 29.23 seconds
 ```
 There are three ports open: 22(SSH), 80(http), 443(https), let's navigate to port 80 and see what's there, but before that, let's run a Gobuster directory scan on the target using this command: `gobuster dir -w /usr/share/wordlists/dirb/common.txt  -u {target_IP}`
 
-## Gobuster
+### Gobuster
 
 When we visit the website, we see some cool stuff going on. Unfortunately, there is nothing useful for us there, let's take a look at what Gobuster found for us:
 
@@ -122,7 +122,7 @@ We can see that Gobuster has found robots.txt along with other files and directo
 
 ![robots](/assets/img/tryhackme/mrrobotctf/robots.png)
 
-Great! we found our first key, as well as fsocity.dic, the file contain a bunch of words in seperate lines, it seems that it is a wordlist, it contains more than 850k words, let's remove repeated words using this commad: `sort fsocity.dic | uniq > sorted.dic `.
+Great! we found our first key, as well as fsocity.dic, the file contain a bunch of words in seperate lines, it seems that it is a wordlist, it contains more than 850k words, let's remove repeated words using this commad: `sort fsocity.dic | uniq > sorted.dic`.
 
 Let's continue our enumeration, gobuster also found wp-login, let's visit that page.
 
@@ -171,7 +171,7 @@ Great, we got the password, now let's login using the credentials we found.
 
 ![elliot.png](/assets/img/tryhackme/mrrobotctf/elliot.png)
 
-# **Foothold**
+## **Foothold**
 
 Now that we got access to wordpress account, i googled 'wordpress reverse shell' and found this useful [article](https://www.hackingarticles.in/wordpress-reverse-shell/), it explains how we can get a reverse shell by injecting a malicious php code as a wordpress theme, for that i used pentestmonkey php reverse shell that you can find [here](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php), you have to change the ip in the code to your machine's ip, and then set up a listener on your machine using the following command: `nc -nlvp 1234`.
 
@@ -201,9 +201,9 @@ $ stty raw -echo;fg                                                             
 daemon@linux:/$
 ```
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
-## robot
+### robot
 
 Navigating to /home/robot we find out 2nd key, but we can read it, there is also a file called password.raw-md5 and we can read it, i cracked it using [crackstation](https://crackstation.net/) and got robot's password.
 Now let's change the user using the command `su robot` and supplying the password we cracked.
@@ -216,7 +216,7 @@ robot
 ```
 
 Now we can read our 2nd key.
-## root
+### root
 
 Let's now upgrade to root and get the 3rd key.
 Before running any privilege escalation or enumeration script, let's check the basic commands for elevating
