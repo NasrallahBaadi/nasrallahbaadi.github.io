@@ -185,7 +185,7 @@ According to the js file, we can execute command on `http://{APIURL}:8081/ping?i
 
 Let's test this functionality by running the command `id` for example:
 
-```url
+```text
 http://10.10.216.105:8081/ping?ip=`id`
 ```
 
@@ -242,5 +242,3 @@ Great! We got root.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----

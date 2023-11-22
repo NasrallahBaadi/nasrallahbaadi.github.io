@@ -13,7 +13,7 @@ img_path: /assets/img/tryhackme/archangel
 ---
 
 
-##**Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Archangel](https://tryhackme.com/room/archangel) from [TryHackMe](https://tryhackme.com).
 
@@ -172,7 +172,7 @@ We know that the web server is Apache, so we're going to use a technique called 
 
 The file we're going to poison is `/var/log/apache2/access.log`. We can access it through the lfi with the following payload.
 
-```url
+```text
 http://mafialive.thm/test.php?view=/var/www/html/development_testing//..//..//..//log/apache2/access.log
 ```
 
@@ -256,5 +256,3 @@ We got root.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----

@@ -283,5 +283,3 @@ The key can be found on http://{Target_ip}/key_rev_key, we run `strings` on the 
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----

