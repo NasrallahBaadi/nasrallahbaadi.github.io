@@ -55,7 +55,7 @@ We have OpenSSH running on port 22 and an Apache web server with Drupal on port 
 
 We also see there is a robots.txt with a total of 36 disallowed entries.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 

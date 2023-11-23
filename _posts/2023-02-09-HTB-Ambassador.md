@@ -97,7 +97,7 @@ We got redirected to a Grafana login page. We see the version of grafana is 8.2.
 
 This version is vulnerable to arbitrary file read, we can find the exploit [here](https://www.exploit-db.com/exploits/50581)
 
-# **Foothold**
+## **Foothold**
 
 We can manually do the exploit by requesting the following url.
 
