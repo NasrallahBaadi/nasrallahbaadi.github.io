@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/jacobtheboss
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [JacobTheBoss](https://tryhackme.com/room/jacobtheboss) from [TryHackMe](https://tryhackme.com). We find a vulnerable instance of jboss that exploit to get foothold. On the target system we find a SUID binary that we exploit to get a root shell.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -88,11 +88,11 @@ PORT     STATE SERVICE     VERSION
 
 There are a lot of open ports here, but the one we're probably interested in is port 8080 that's running jboss.
 
-## Web
+### Web
 
 ![](1.png)
 
-# **Foothold**
+## **Foothold**
 
 Using the tool [JexBoss](https://github.com/joaomatosf/jexboss), let's see if this jboss instance has any vulnerabilities.
 
@@ -104,7 +104,7 @@ Let's submit our tun0 ip and listening port to the tool to get a reverse shell.
 
 ![](3.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 By running `linpeas` on the target we manage to find an suid binary
 

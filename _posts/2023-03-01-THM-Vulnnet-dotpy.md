@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/dotpy
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [VulnNet: dotpy](https://tryhackme.com/room/) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -42,7 +42,7 @@ PORT     STATE SERVICE VERSION
 
 There is only one ports open which is 8080 and it's running Wekzeug http web server that uses python 3.6.9
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -68,7 +68,7 @@ Since the server is using python, one of the first things we should test for is 
 
 Using the payload `{{7*7}}`, we managed to confirm that the website is vulnerable to SSTI
 
-# **Foothold**
+## **Foothold**
 
 Now let's try command injection. Thanks to [PayloadsAllThings](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Template%20Injection#jinja2---remote-code-execution), we can find multiple payloads for command execution.
 
@@ -112,9 +112,9 @@ Now we setup a listener and send our payload.
 
 ![](7.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
-## system-adm
+### system-adm
 
 Let's check out current privileges as use `web`
 
@@ -147,7 +147,7 @@ sudo -u system-adm /usr/bin/pip3 install . --upgrade --force-reinstall
 
 ![](8.png)
 
-## root
+### root
 
 Let'a again check our privileges as the `system-adm`.
 

@@ -12,13 +12,13 @@ img_path: /assets/img/tryhackme/develpy
 
 ---
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Develpy](https://tryhackme.com/room/) from [TryHackMe](https://tryhackme.com). This is an easy machine although it is rated medium. We find a python script listening on a high port which accepts input from us. We exploit that by injecting commands and getting a foothold. Once on the machine we find a multiple cronjobs running making easy for is to get root.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -72,7 +72,7 @@ Let's connect to the port 10000 using netcat.
 
 The script asks us to enter a number then proceeds to do what looks like to me a ping to localhost.
 
-# **Foothold**
+## **Foothold**
 
 Searching for `python command injection`, i found this [article](https://www.stackhawk.com/blog/command-injection-python/) showcasing how to do so.
 
@@ -94,7 +94,7 @@ __import__('os').system("bash")
 
 Great! We got a shell as user `king`.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 On king's home directory two shell file.
 

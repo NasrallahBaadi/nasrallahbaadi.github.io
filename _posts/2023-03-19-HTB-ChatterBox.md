@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/chatterbox
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [ChatterBox](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -76,7 +76,7 @@ Host script results:
 
 We have a windows 7 machine running SMb and a chat system called `AChat` on port 9256.
 
-## SMB
+### SMB
 
 Let's list shares of the smb server.
 
@@ -92,7 +92,7 @@ SMB1 disabled -- no workgroup available
 
 We managed to login as anonymous but couldn't list shares.
 
-## Searchsploit
+### Searchsploit
 
 Let's use `searchsploit` to see if there is any vulnerabilities in `AChat`
 
@@ -111,7 +111,7 @@ Shellcodes: No Results
 
 We found a buffer overflow exploit.
 
-# **Foothold**
+## **Foothold**
 
 Let's copy the exploit with `searchsploit -m windows/remote/36025.py`.
 
@@ -129,7 +129,7 @@ After replacing the old payload with the new one, we setup a listener and run th
 
 Great! We got a shell as `Alfred`.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 After uploading a copy of winpeas to the target, i run it and managed to get the following result.
 

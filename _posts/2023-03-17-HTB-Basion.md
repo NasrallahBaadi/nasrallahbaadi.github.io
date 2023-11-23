@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/bastion
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Bastion](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -67,7 +67,7 @@ Host script results:
 
 We have OpenSSH running on port 22 and SMB on it's default ports.
 
-## SMB
+### SMB
 
 Let's enumerate shares using `smbmap`
 
@@ -143,7 +143,7 @@ guestmount --add /mnt/bastion/WindowsImageBackup/L4mpje-PC/Backup\ 2019-02-22\ 1
 ![](2.png)
 
 
-# **Foothold**
+## **Foothold**
 
 Great! now we go to `Windows/system32/config` and copy the SAM and SYSTEM files to our machine and then extract the hashes using `impacket secretsdump.py`
 
@@ -203,7 +203,7 @@ With the password, let's ssh to the target.
 ![](3.png)
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Checking the installed program on the machine we find something interesting.
 

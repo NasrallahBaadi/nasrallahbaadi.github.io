@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/jeeves
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [jeeves](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -62,7 +62,7 @@ Host script results:
 
 We found 4 open ports, port 80 is running MS IIS web server, port 135 is MSRPC, port 445 is SMB and port 50000 is Jetty http web server.
 
-## Web
+### Web
 
 Let's navigate to the web page on port 80.
 
@@ -125,7 +125,7 @@ There is a directory called `askjeeves`, let's check it out.
 
 This is Jenkins admin dashboard and we're not even logged in!
 
-# **Foothold**
+## **Foothold**
 
 To get a reverse shell, we can use `script console` that runs groovy script and execute the following code:
 
@@ -145,9 +145,9 @@ We setup a listener and click run
 We got a shell!
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
-## Method 1
+### Method 1
 
 Checking `kohsuke`'s Documents directory, we find a keepass file called `CEH.kdbx`.
 
@@ -181,7 +181,7 @@ We couldn't crack the NTLM hash, but we can try the `passthehash` attack using `
 
 ![](9.png)
 
-## Method 2
+### Method 2
 
 Let's check our privileges.
 

@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/pandora
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Pandora](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -47,7 +47,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We found two ports, 22 running SSH and 80 running Apache web server.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -57,7 +57,7 @@ Nothing interesting in this page, and the links don't go anywhere. However we fi
 
 Running a directory scan shows nothing new and that's same case for subdomain scan.
 
-## UDP
+### UDP
 
 Running a udp scan with nmap we find the following result.
 
@@ -90,7 +90,7 @@ The output is going to be big so we save to output in a file.
 
 We can see a lot of information about the system and in the screenshot above we can see processes running on the system.
 
-# **Foothold**
+## **Foothold**
 
 Looking through the output we can see a username and a password.
 
@@ -103,9 +103,9 @@ Let's see if we can ssh to the target using those credentials.
 Bingo!
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
-## matt
+### matt
 
 Running linpeas show the following interesting results.
 
@@ -233,7 +233,7 @@ We setup a listener and navigate to `pandora.panda.htb:8000/pandora_console/imag
 
 We got a shell as `matt`.
 
-## root
+### root
 
 From the linpeas scan earlier, i found an suid binary called `pandora_backup`.
 

@@ -15,13 +15,13 @@ img_path: /assets/img/hackthebox/machines/active
 ![](0.png)
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Active](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com). This is a windows server 2008 machine where we find group policy file in one of the readable shares in an smb share, the file contains a username and a password that allows us to make a kerberoasting attack to get the administrator hash that we crack to get into the machine
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -72,7 +72,7 @@ There are a bunch of open ports on this windows server 2018 box.
 
 We have DNS on 53/tcp, kerberos is listening on port 88, ldap on 389 revealing the domain `active.htb` and SMB is on port 445 
 
-## SMB
+### SMB
 
 Let's list the smb shares.
 
@@ -153,9 +153,9 @@ Password:
 
 That didn't work.
 
-# **Foothold**
+## **Foothold**
 
-## Kerberoasting
+### Kerberoasting
 
 Using the `GetUserSPNs.py` script from Impacket, we'll do a kerberoasting attack against the box to get a list of service usernames associated with normal user accounts and also get a ticket encrypted with the user's password hash that we can use to get a password.
 
@@ -163,7 +163,7 @@ Using the `GetUserSPNs.py` script from Impacket, we'll do a kerberoasting attack
 
 The script identified the The SPN `active/CIFS:445` Which is associated with the user `administrator`. The script then tryed to authenticate to the service by contacting the DC, the latter responded with a ticked encrypted using the administrator's password hash. Instead of submitting the ticket to the service, the script saved it to be then cracked by the attacker and get the passwrod.
 
-## hashcat
+### hashcat
 
 Let's crack the hash using `hashcat`.
 

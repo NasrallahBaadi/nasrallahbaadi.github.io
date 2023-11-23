@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/revenge
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Revenge](https://tryhackme.com/room/revenge) from [TryHackMe](https://tryhackme.com). We find a webpage vulnerable to sql injection where we use sqlmap to extract data. With that we get a username and password hash that we crack giving us credentials to ssh into the machine. With the current user we can edit a service file and restart it, so we easily exploit that to run our own script that gives us root.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -48,7 +48,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We found two ports, 22 running OpenSSH and 80 running Nginx http web server.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -66,9 +66,9 @@ Let's give that url to `sqlmap` and see what happens.
 
 The target is vulnerable to sql injection and we managed to get system users and password hashes.
 
-# **Foothold**
+## **Foothold**
 
-## Cracking
+### Cracking
 
 Let's try cracking the hashes using `hashcat`.
 
@@ -83,7 +83,7 @@ We got a hashes, le's ssh to the target
 ![](5.png)
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's check our privileges on the system
 

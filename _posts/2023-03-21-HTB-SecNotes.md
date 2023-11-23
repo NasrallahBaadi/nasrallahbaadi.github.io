@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/secnotes
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [SecNotes](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -69,7 +69,7 @@ Host script results:
 
 We found 3 open ports, 80 and 8808 are IIS http web server and 455 is SMB.
 
-## Web
+### Web
 
 Let's navigate to the web page on port 8808.
 
@@ -130,7 +130,7 @@ I setup a web server on my local machine and sent a link of my address to tyler 
 The link got clicked
 
 
-# **Foothold**
+## **Foothold**
 
 Knowing that we can change password using a GET request, and that `tyler` do click links we send him, let's send him the GET request for password change and see if it works.
 
@@ -197,7 +197,7 @@ Then used it to execute netcat for a shell.
 ![](15.png)
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 On `tyler`'s desktop we find the following.
 

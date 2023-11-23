@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/inferno
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Inferno](https://tryhackme.com/room/) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -68,7 +68,7 @@ PORT      STATE SERVICE           VERSION
 
 We found a whole bunch of open ports, but the one's returning a banner are 22 and 80.
 
-## Web
+### Web
 
 Let's check the web page on port 80.
 
@@ -84,7 +84,7 @@ Let's run a directory scan.
 
 We found a directory called inferno that requires http authentication.
 
-## Hydra
+### Hydra
 
 Let's brute force the password with the username `admin` using `hydra`.
 
@@ -102,7 +102,7 @@ We got a login page for `Codiad`, trying the same credential as before we manage
 
 ![](5.png)
 
-# **Foothold**
+## **Foothold**
 
 Searching for `Codiad` exploit, we find a remote code execution vulnerability on [exploit-db](https://www.exploit-db.com/exploits/50474).
 
@@ -116,9 +116,9 @@ Now we setup a listener and request the reverse shell file at `http://10.10.155.
 
 ![](8.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
-## dante
+### dante
 
 Checking dante's home directories, we find a hidden file in the Downloads directory.
 
@@ -130,7 +130,7 @@ The file has some hex data, let's decode.
 
 We got dante's password.
 
-## root
+### root
 
 After switching to user `dante`, let's check his privileges
 
@@ -151,7 +151,3 @@ And just like that we got root.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

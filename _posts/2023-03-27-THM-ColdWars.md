@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/coldwars
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [ColdWars](https://tryhackme.com/room/) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -67,7 +67,7 @@ Host script results:
 
 There are 4 open ports, SMB is running on ports 139/445, Apache web server on port 8080 and Node.js on port 8082.
 
-## Web
+### Web
 
 Let's navigate to the web page on port 8080.
 
@@ -164,7 +164,7 @@ Trying some default credentials fails but when we try doing injection we manage 
 
 We got username and passwords.
 
-## SMB
+### SMB
 
 Let's list share in the SMB server.
 
@@ -205,7 +205,7 @@ Secure File Upload and Testing Functionality
 
 We found the same note in the /dev directory.
 
-# **Foothold**
+## **Foothold**
 
 Let's upload a php reverse shell.
 
@@ -241,7 +241,7 @@ We see use `marston` has multiple tmux windows, one of them is logged on as root
 
 We can switch to user `ArthurMorgan` using his original password.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Running linpeas we see ssh listening on localhost.
 
@@ -295,7 +295,3 @@ We found the window that logged in as root.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

