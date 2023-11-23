@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/bountyhunter
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing **BountyHunter** from [HackTheBox](https://www.hackthebox.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -47,7 +47,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We found two open ports, port 22 running OpenSSH and port 80 is an Apache http web server.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -104,7 +104,7 @@ Before we send it we need to re-encode it to base64 then as url.
 
 Great! We confirmed the XXE vulnerability.
 
-# **Foothold**
+## **Foothold**
 
 Now we use a slightly different payload than before which is:
 
@@ -116,7 +116,7 @@ This allows us to view php code without it being executed by the web server.
 
 I checked `index.php`, `portal.php` and the `log_submit.php` files but didn't find anything useful.
 
-## Gobuster
+### Gobuster
 
 Let's scan for php files using gobuster.
 
@@ -169,7 +169,7 @@ With that password, let's ssh to the machine as the user we found in /etc/passwd
 
 ![](11.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's check our current privileges.
 
@@ -355,6 +355,6 @@ root@bountyhunter:/home/development#
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
 
 
-# References
+## References
 
 https://medium.com/swlh/hacking-python-applications-5d4cd541b3f1

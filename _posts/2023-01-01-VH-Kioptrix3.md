@@ -12,13 +12,13 @@ img_path: /assets/img/vulnhub/kioptrix3
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Kioptrix level 3](https://www.vulnhub.com/entry/kioptrix-level-12-3,24/) from [VulnHub](https://www.vulnhub.com/).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -56,7 +56,7 @@ We found two open port:
  - Port 80 running Apache 2.2.8
 
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -64,7 +64,7 @@ Let's navigate to the web page.
 
 Nothing interesting in this page.
 
-## Gobuster
+### Gobuster
 
 Let's run a directory scan
 
@@ -103,7 +103,7 @@ We see a login form powered by `LotusCMS`.
 I tried to enter some default credentials as well as do a sql injection but no luck.
 
 
-# **Foothold**
+## **Foothold**
 
 On google i searched for `lotuscms exploit` and managed to find a remote code execution exploit [here](https://github.com/Hood3dRob1n/LotusCMS-Exploit/blob/master/lotusRCE.sh).
 
@@ -119,7 +119,7 @@ Great! We got a shell. After that we stabilize the shell using python pty.
 
 ![](4.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 After the foothold, I checked the config file inside `gallery` directory and managed to find the password of the database.
 
@@ -180,7 +180,3 @@ Great! Now we run `sudo /bin/bash` to get a root shell.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

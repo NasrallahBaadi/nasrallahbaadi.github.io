@@ -13,11 +13,11 @@ img_path: /assets/img/hackthebox/challenges/spooky
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing **Wrong Spooky Season** from [HackTheBox](https://www.hackthebox.com).
 
-# **Challenge**
+## **Challenge**
 
 In this challenge, we got a pcap file that we need to analyze, so let's open the file on `wireshark`.
 

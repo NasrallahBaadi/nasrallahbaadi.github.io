@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/mindgames
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Mindgames](https://tryhackme.com/room/mindgames) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -47,7 +47,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We found two ports, 22/tcp running OpenSSH and 80/tcp running a Goland http server.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -59,7 +59,7 @@ At the bottom of the page we find a section where we can execute brainfuck code.
 
 ![](2.png)
 
-# **Foothold**
+## **Foothold**
 
 We can use this feature to give the page a reverse shell code in brainfuck and get a foothold.
 
@@ -77,7 +77,7 @@ Now setup a listener and run the reverse shell on the web page.
 
 ![](4.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 After we the shell, i run linpeas and found the following:
 
@@ -120,7 +120,3 @@ We run the command `openssl req -engine ./exploit.so` to get a root shell.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

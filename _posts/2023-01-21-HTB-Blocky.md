@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/blocky
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing **Blocky** from [HackTheBox](https://www.hackthebox.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -201,7 +201,7 @@ We found some interesting directories, checking each one of them we find that /p
 
 Let's download the blockycore.jar file and inspect it.
 
-# **Foothold**
+## **Foothold**
 
 Jar files are zip compressed files so we can unzip it.
 
@@ -213,7 +213,7 @@ Using that password, we can ssh to the target as user `notch`.
 
 ![](4.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's check notch's privileges.
 

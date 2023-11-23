@@ -12,13 +12,13 @@ img_path: /assets/img/vulnhub/kioptrix4
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Kioptrix level 4](https://www.vulnhub.com/entry/kioptrix-level-13-4,25/) from [VulnHub](https://www.vulnhub.com/).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -75,7 +75,7 @@ Found 4 open ports:
  - 445/tcp Samba smbd 3.0.28a
 
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -95,7 +95,7 @@ Nothing interesting, let's enumerate users.
 
 We found user john and robert.
 
-# **Foothold**
+## **Foothold**
 
 Back to the login page, i tried to login using one of the username with different password but didn't succeed.
 
@@ -108,7 +108,7 @@ Great! We got john's password, let's use it to ssh into the machine.
 ![](5.png)
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 After we logged in, we saw that we can't execute lot of commands, but one command we can exploit is `echo`.
 
@@ -139,7 +139,3 @@ Using Mysql [UDF](https://bernardodamele.blogspot.com/2009/01/command-execution-
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

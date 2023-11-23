@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/scriptkiddie
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing **ScriptKiddie** from [HackTheBox](https://www.hackthebox.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -46,7 +46,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 there are two open ports, port 22 running OpenSSh and port 80 running Werkzeug http webserver with python 3.8.5
 
-## Web
+### Web
 
 Let's check the web page.
 
@@ -67,7 +67,7 @@ Metasploit Framework 6.0.11 - msfvenom APK template command injection           
 ---------------------------------------------------------------------------------------------------------------------------- ---------------------------------
 ```
 
-# **Foothold**
+## **Foothold**
 
 Let's copy the exploit to our directory using `searchsploit -m multiple/local/49491.py`.
 
@@ -94,7 +94,7 @@ Now setup a listener and click generate.
 
 ![](4.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 On pwn's home directory, we find the following shell script.
 

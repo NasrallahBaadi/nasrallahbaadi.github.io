@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/shoppy
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing **Shoppy** from [HackTheBox](https://www.hackthebox.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -49,7 +49,7 @@ We found to open ports, port 22 running OpenSSH and port 80 running Nginx.
 
 We see that the http-title nmap script shows a redirect to `http://shoppy.htb`, so let's add that to our /ets/hosts file.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -179,7 +179,7 @@ We found a login page, let's login as `josh`.
 
 Great! We got in.
 
-# **Foothold**
+## **Foothold**
 
 Checking different tabs we find a conversation between `josh` and `jaeger` where the latter has gave his credentials.
 
@@ -189,7 +189,7 @@ Let's use that and ssh to the machine.
 
 ![](13.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's check `jaeger`'s privileges on this machine.
 
