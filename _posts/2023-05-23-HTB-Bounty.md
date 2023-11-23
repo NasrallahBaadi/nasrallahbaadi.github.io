@@ -13,15 +13,15 @@ img_path: /assets/img/hackthebox/machines/bounty
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Bounty](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
 ![](0.png)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -46,7 +46,7 @@ Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
 
 We only found port 80 open and it's Microsoft IIS http 7.5 web server.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -54,7 +54,7 @@ Let's navigate to the web page.
 
 Nothing interesting.
 
-### Feroxbuster
+#### Feroxbuster
 
 Let's run a directory scan and add the extension `aspx` since this is `IIS`.
 
@@ -94,7 +94,7 @@ We found an upload directory and a page at `transfer.aspx`, let's check it out.
 
 It's an upload page. The next thing to do it upload an aspx reverse shell.
 
-### msfvenom
+#### msfvenom
 
 Let's generate the payload using `msfvenom`.
 
@@ -114,7 +114,7 @@ Now let's upload it.
 
 Invalid file, there must be a filter.
 
-# **Foothold**
+## **Foothold**
 
 After some research I found that we can upload a web.config file that contains the aspx script, check [here](https://web.archive.org/web/20150328012634/https://soroush.secproject.com/blog/2014/07/upload-a-web-config-file-for-fun-profit/) for more.
 
@@ -166,7 +166,7 @@ bounty\merlin
 
 We got a shell as `merlin`.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's check our privileges.
 
@@ -200,7 +200,7 @@ It gave us multiple exploits to try, the one I had luck with before is [MS10-059
 Great! We got SYSTEM.
 
 
-# **Resources**
+## **Resources**
 
 [https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/iis-internet-information-services#execute-.config-files](https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/iis-internet-information-services#execute-.config-files)
 

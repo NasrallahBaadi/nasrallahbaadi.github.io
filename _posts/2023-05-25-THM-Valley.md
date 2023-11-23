@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/valley
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Valley](https://tryhackme.com/room/valleype) from [TryHackMe](https://tryhackme.com). The target is a linux machine running a web server, after some enumeration we find a note that leaks a hidden login page, the latter uses clientside javascript code for authentication so we we're able to read clear text credentials, we use that to authenticate to an FTP server where we find some pcap files, inside one of the captures we find other credentials that works for ssh. Once got access to the machine we find a binary that checks for username and password, we use `strings` to get the password and access another user. A cronjob running every minute executes a python file that imports a writable library, so we write the latter to get root access.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -47,7 +47,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We found SSH and HTTP.
 
-## Web
+### Web
 
 Let's check the web page.
 
@@ -168,7 +168,7 @@ Found port 37370 open, it must be the FTP server.
 
 We logged using the credentials we got earlier and found three pcap files.
 
-## Wireshark
+### Wireshark
 
 After opening the files with wireshark, we check them one by one, and in one of the files we find an HTTP POST request.
 
@@ -180,7 +180,7 @@ We right click on the packet and follow the http stream
 
 We found another pair of credentials.
 
-# **Foothold**
+## **Foothold**
 
 Let's now ssh to the target.
 
@@ -210,7 +210,7 @@ valleyDev@valley:~$
 Great! We got in.
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 On the `/home` directory we find an unusual binary file.
 
@@ -256,7 +256,7 @@ valley@valley:/home/valleyDev$
 
 It is.
 
-## valley --> root
+### valley --> root
 
 Checking the crontab file:
 
@@ -328,7 +328,3 @@ Nice, we got root.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

@@ -13,15 +13,15 @@ img_path: /assets/img/hackthebox/machines/celestial
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Celestial](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com). We exploit a deserialization vulnerability in a node.js website and get foothold. For root we find a cronjob running a python script that we can write to, so we add a python reverse shell and get root privileges.
 
 ![](0.png)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -43,7 +43,7 @@ PORT     STATE SERVICE VERSION
 
 There is a web server on port 3000 running node.js.
 
-## Web
+### Web
 
 Let's check the web server.
 
@@ -65,7 +65,7 @@ The cookie looks base64 encoded, let's try to decode it.
 
 We can see different key/value pairs, two of them get returned to us: `username` and `num`.
 
-# **Foothold**
+## **Foothold**
 
 Since this is `Node.js`, let's see if it's vulnerable to Deserialization attack
 
@@ -120,7 +120,7 @@ sun@celestial:~/.ssh$
 
 ```
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Running `pspy64` we see a cronjob executing a python script
 

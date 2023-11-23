@@ -13,15 +13,15 @@ img_path: /assets/img/hackthebox/machines/laboratory
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Laboratory](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
 ![](0.png)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -61,7 +61,7 @@ We found three open ports, 22 is SSH, 80 is an http server and 443 is https.
 
 We can see the TLS certificate reveals the domain names `laboratory.htb` and `git.laboratory.htb` so let's add them to `/etc/hosts`.
 
-## Web
+### Web
 
 Let's navigate the `http://laboratory.htb`
 
@@ -175,9 +175,9 @@ We can see the author of the script has provided the [official report](https://h
 
 ![](5.png)
 
-# **Foothold**
+## **Foothold**
 
-## Method #2
+### Method #2
 
 To get an RCE we need to exploit a deserialization vulnerability of the `experimentation_subject_id` cookie. So wee need to create a malicious cookie that when it gets decode our code would get executed.
 
@@ -288,7 +288,7 @@ We got the cookie, now we setup a listener and send the cookie with curl.
 
 We got a shell.
 
-## Easy and headache free way using metasploit
+### Easy and headache free way using metasploit
 
 The module `exploit/multi/http/gitlab_file_read_rce` can be used to get the shell.
 
@@ -331,9 +331,9 @@ uid=998(git) gid=998(git) groups=998(git)
 
 ```
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
-## dexter
+### dexter
 
 With `gitlab-rails console` we can list users:
 
@@ -388,7 +388,7 @@ We copy the key and ssh as dexter.
 
 ![](11.png)
 
-## root
+### root
 
 Let's run linpeas.
 

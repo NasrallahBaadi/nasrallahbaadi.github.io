@@ -13,15 +13,15 @@ img_path: /assets/img/hackthebox/machines/solidstate
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [SolidState](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
 ![](0.png)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -61,7 +61,7 @@ PORT     STATE SERVICE VERSION
 
 We found 6 open ports.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -69,7 +69,7 @@ Let's navigate to the web page.
 
 Nothing look interesting and only static pages.
 
-### Feroxbuster
+#### Feroxbuster
 
 Let's run a directory scan
 
@@ -114,7 +114,7 @@ by Ben "epi" Risher 🤓                 ver: 2.7.2
 
 Still nothing useful to be found
 
-## James Remote Administration Tool
+### James Remote Administration Tool
 
 There is an administration tool version 2.3.2 running on port 4555, after we google this tool we find it's vulnerable to a remote code execution.
 
@@ -199,7 +199,7 @@ Let's set `mindy`'s password and see if she got an email with a password.
 We found two emails and the second one had a password.
 
 
-# **Foothold**
+## **Foothold**
 
 Let's ssh to mindy's account.
 
@@ -213,7 +213,7 @@ To get a normal bash shell, we add `-t "bash"` to our ssh command
 
 ![](6.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Randomly checking directories on the target system I came across a python script called `tmp.py` in the `/opt` directories
 

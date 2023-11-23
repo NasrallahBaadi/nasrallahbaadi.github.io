@@ -13,15 +13,15 @@ img_path: /assets/img/hackthebox/machines/flight
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Flight](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com). This is the first hard machine i complete on Hackthebox, the reason i even gave a try is I saw it's writeup from my friend [darknite](https://twitter.com/d4rKn19t) and it seemed easy and fun so i jump right into it. The box is an AD DC with a website vulnerable to LFI, we use responder to get a hash that we crack for a password, with those credentials we enumerate users and use password spraying to find another user that has write access over a share, with that we upload a file that provokes an smb login to our responder and get another hash and a password after the crack. THe newly obtained credentials gives us the right to write in the Web root folder so we upload a php reverse shell and get foothold. After running winpeas we discover another web server running locally so we use chisel and do a port forward. One of the users can write on the web root folder so we switch to that user and upload an aspx shell for a horizontall privesc. We got shell as a service account that has the seimpersonateprivilege so we use potato attack to get system.
 
 ![](0.png)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -118,7 +118,7 @@ Host script results:
 
 From the open ports, we can assume we're dealing with a domain controller of an active directory with the domain name `flight.htb`.
 
-## Web
+### Web
 
 We say port 80 open so let's check it out.
 
@@ -126,7 +126,7 @@ We say port 80 open so let's check it out.
 
 This is a website of an airline company, the page is static and the link doesn't go anywhere.
 
-### feroxbuster
+#### feroxbuster
 
 Let's run a directory/file scan.
 
@@ -181,7 +181,7 @@ by Ben "epi" Risher 🤓                 ver: 2.7.2
 
 Nothing interesting.
 
-## ffuf
+### ffuf
 
 Let's use `ffuf` to scan for subdomains.
 
@@ -238,7 +238,7 @@ Let's try reading a local file this time, how about `/windows/system32/drivers/e
 
 Great! The website is vulnerable to LFI, but there isn't much useful file to read in windows so let's test for RFI.
 
-### responder
+#### responder
 
 First we run `responder`:
 
@@ -319,7 +319,7 @@ We wait for a second for the website to make the request and we see in responder
 
 The hash belongs to the user `svc_apache` and it's NTLMv2 hash.
 
-## john
+### john
 
 Let's crack the hash using hashcat with mode 5600.
 
@@ -365,7 +365,7 @@ Candidates.#1....: SAESH21 -> Ryanpetter
 
 Great! We got the password.
 
-## SMB
+### SMB
 
 Let's start enumerating smb now. I tried before listing share with no credentials and failed, but now that we have creds, let's try that again.
 
@@ -616,7 +616,7 @@ crackmapexec smb flight.htb -u c.bum -p 'Tikkycoll_431012284' --shares
 
 Great! We got write permission on `Web`.
 
-# **Foothold**
+## **Foothold**
 
 For a shell, we can upload a php reverse shell to the `Web` share. I found this awesome [php_revshell](https://raw.githubusercontent.com/ivan-sincek/php-reverse-shell/master/src/reverse/php_reverse_shell.php) from ivan which work on both windows and linux.
 
@@ -628,7 +628,7 @@ Great! We finally got a shell.
 
 > I should note when obtaining credentials in windows, one thing to try is login in via `winrm`, but in this case it doesn't work.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Once got a shell i uploaded a copy of `winpeas.exe` and run it:
 

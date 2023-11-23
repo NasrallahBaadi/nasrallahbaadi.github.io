@@ -13,15 +13,15 @@ img_path: /assets/img/hackthebox/machines/friendzone
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [FriendZone](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
 ![](0.png)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -95,7 +95,7 @@ There are 7 ports open:
 
 From the ssl certificate we find the domain `friendzone.red`, so let's add it to `/etc/hosts`.
 
-## DNS
+### DNS
 
 DNS on tcp is rare since it's usually found running on a udp ports.
 
@@ -123,7 +123,7 @@ friendzone.red.         604800  IN      SOA     localhost. root.localhost. 2 604
 
 We found three subdomains, let's add them to /etc/hosts
 
-## SMB
+### SMB
 
 First let's run the smb-enum-shares script from nmap
 
@@ -240,7 +240,7 @@ smb: \>
 
 The share is empty
 
-## Web
+### Web
 
 Let's navigate to the web page at `friendzone.red`
 
@@ -363,7 +363,7 @@ We got it, now let's decode it on `CYberChef`
 
 As we expected, the `pagename` uses include function to request files and add `.php` extension at the end.
 
-# **Foothold**
+## **Foothold**
 
 Remember the `Development` shares right? It's writeable and located at `/etc/Development`. What if we uploaded a php reverse shell to the share and use the `pagename` parameter to request the file and get a reverse shell? Let's see if this works.
 
@@ -372,9 +372,9 @@ Remember the `Development` shares right? It's writeable and located at `/etc/Dev
 It worked and we got a shell.
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
-## friend
+### friend
 
 Checking the web files we find a config file with some credentials.
 
@@ -384,7 +384,7 @@ Let's use the password and ssh as `friend`.
 
 ![](13.png)
 
-## root
+### root
 
 Checking directories on the system i came across a python script in `/opt`.
 

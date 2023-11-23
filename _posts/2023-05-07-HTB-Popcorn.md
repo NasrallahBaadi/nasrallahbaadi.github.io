@@ -13,15 +13,15 @@ img_path: /assets/img/hackthebox/machines/popcorn
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [PopCorn](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com). 
 
 ![](0.png)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -48,7 +48,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We found two open ports, 22 running SSH and 80 is an Apache http web server, and this is an Ubuntu box.
 
-## Web
+### Web
 
 Let's check the web page.
 
@@ -56,7 +56,7 @@ Let's check the web page.
 
 It's a default web page, nothing interesting.
 
-### Feroxbuster
+#### Feroxbuster
 
 Let's scan for directories and files.
 
@@ -124,7 +124,7 @@ I tried default credentials but no luck with that, then i tried sql injection an
 
 ![](5.png)
 
-# **Foothold**
+## **Foothold**
 
 Now i can access the upload page, i tried uploading files with different format but i get invalid format every time.
 
@@ -166,7 +166,7 @@ Now we setup a listener and go to `http://10.10.10.6/rename/shell.php`
 
 We got a shell!
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 After some manual enumeration that led to nothing useful I checked for linux kernel.
 

@@ -13,15 +13,15 @@ img_path: /assets/img/hackthebox/machines/spectra
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Spectra](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
 ![](0.png)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -47,7 +47,7 @@ PORT     STATE SERVICE VERSION
 
 We found 3 open ports, 22 is SSH as usual, port 80 running nginx web server and 3306 is mysql but we can't authenticate.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -77,7 +77,7 @@ Since the file has `.save` extension at end means that we can read it.
 
 After checking the source code of the file we find the database credentials.
 
-# **Foothold**
+## **Foothold**
 
 We can't login to the `mysql` server we found earlier so let's try logging in as Administrator with the DB password at `http://spectra.htb/main/wp-login.php`
 
@@ -89,9 +89,9 @@ I used the module `exploit/unix/webapp/wp_admin_shell_upload` from `metasploit` 
 
 ![](7.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
-## katie
+### katie
 
 Checking different directories in the system we came across a config file in `/opt`
 
@@ -122,7 +122,7 @@ Let's see if we can ssh to any of those users.
 
 We logged as `katie`.
 
-## root
+### root
 
 Let's check `katie`'s permission.
 
