@@ -13,15 +13,15 @@ img_path: /assets/img/hackthebox/machines/haircut
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Hair](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com). The box is running an nginx web server, and after some enumeration we find a page that executes curl, we used that to upload a shell and get foothold. For root we find a vulnerable suid binary that we exploit to get a root shell.
 
 ![](0.png)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -49,7 +49,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 There are two open ports, 22 running SSH and 80 running nginx 1.10, and it's an ubuntu machine.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -68,7 +68,7 @@ We found the image above, and the source code shows nothing interesting.
 
 ```
 
-### Feroxbuster
+#### Feroxbuster
 
 Let's run a directory/file scan and add the `php` extension.
 
@@ -130,7 +130,7 @@ Now let's see what does `exposed.php` uses to request the pages, and for that we
 
 We can see that curl is the command being used, with that let's move to the next part.
 
-# **Foothold**
+## **Foothold**
 
 For a reverse shell, we can upload a php reverse shell to the `uploads` directory since it's writable by our user `http://10.10.17.90/htbshell.php -o uploads.php`
 
@@ -140,7 +140,7 @@ No we setup a listener and request our php reverse shell.
 
 ![](8.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 After getting a foothold and upgrading the shell fully tty, I run `linpeas` and found the following.
 

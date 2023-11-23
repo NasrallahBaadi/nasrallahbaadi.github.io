@@ -13,15 +13,15 @@ img_path: /assets/img/hackthebox/machines/servmon
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [ServMon](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
 ![](0.png)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -92,7 +92,7 @@ PORT     STATE SERVICE       VERSION
 
 We found an FTP server with anonymous login allowed, SSH, HTTP, SSL, SMB and other windows services.
 
-## FTP
+### FTP
 
 Let's login to the ftp server.
 
@@ -152,7 +152,7 @@ $ cat Notes\ to\ do.txt
 
 We see there is a password file in `nathan`'s desktop and a publicly accessible NVMS.
 
-## Web
+### Web
 
 Let's navigate to the web page on port 8443
 
@@ -168,7 +168,7 @@ We found a login page for `NVMS-1000`, On exploit-db, we search for `NVMS-1000` 
 
 ![](2.png)
 
-## Burp
+### Burp
 
 Let's fire up burp suite and test the exploit.
 
@@ -180,9 +180,9 @@ The target is vulnerable, now let's read the password file on `nathan`'s desktop
 
 We got the passwords.
 
-# **Foothold**
+## **Foothold**
 
-## Hydra
+### Hydra
 
 Let's brute force ssh using the passwords we got.
 
@@ -216,7 +216,7 @@ servmon\nadine
 ```
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Now that we're in, we can go to `NSClient++` folder on Program files and read the password from `nsclient.ini` file.
 

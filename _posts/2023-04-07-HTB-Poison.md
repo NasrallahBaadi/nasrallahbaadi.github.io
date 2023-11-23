@@ -13,15 +13,15 @@ img_path: /assets/img/hackthebox/machines/poison
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Poison](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
 ![](0.png)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -49,7 +49,7 @@ Service Info: OS: FreeBSD; CPE: cpe:/o:freebsd:freebsd
 
 We found two open ports, OpenSSH on port 22 and Apache http web server on port 80.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -63,7 +63,7 @@ The `listfiles.php` sounds interesting so let's run it.
 
 It did list files and we see the file `pwdbackup.txt`.
 
-## LFI
+### LFI
 
 Let's see if the site is vulnerable to local file inclusion.
 
@@ -83,7 +83,7 @@ We got a base64 encoded string but it's encoded 13 times.
 
 Using CyberChef we manage to decode the string and get the password.
 
-# **Foothold**
+## **Foothold**
 
 With the password we can ssh to the box as user `charix`
 
@@ -107,7 +107,7 @@ charix@Poison:~ %
 ```
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 On charix home directory we a zip file, let's download it and unzip it.
 

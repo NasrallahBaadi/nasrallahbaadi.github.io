@@ -13,15 +13,15 @@ img_path: /assets/img/hackthebox/machines/timelapse
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [TimeLapse](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
 ![](0.png)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -108,7 +108,7 @@ There are bunch of open ports that suggests the target is a windows domain contr
 
 We have winrm running on port 5986 with ssl, and nmap scripts reveals the hostname `timelapse.htb` and `dc01.timelapse.htb`, let's add them both to `/etc/hosts`.
 
-## SMB
+### SMB
 
 Let's start smb enumeration with `crackmapexec`.
 
@@ -215,7 +215,7 @@ hash  legacyy_dev_auth.pfx  scans  winrm_backup.zip
 
 We extracted a `pfx` file, and after some research i find that we can use the file to get a [shell over WinRM](https://wadcoms.github.io/wadcoms/Evil-Winrm-PKINIT/).
 
-# **Foothold**
+## **Foothold**
 
 The first thing we need to do is extract the private key and the certificate from the `.pfx` file.
 
@@ -269,7 +269,7 @@ evil-winrm -i 10.10.11.152 -c winrm.crt -k priv.key -S -r timelapse.htb
 ![](1.png)
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Checking powershell history file we find a possible password.
 

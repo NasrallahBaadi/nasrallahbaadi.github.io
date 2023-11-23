@@ -13,15 +13,15 @@ img_path: /assets/img/hackthebox/machines/querier
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Querier](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
 ![](0.png)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -73,7 +73,7 @@ Host script results:
 
 We have an SMB server, MSSQL on port 1433 and winrm on port 5985.
 
-## SMB
+### SMB
 
 Let's list shares of the SMB server.
 
@@ -164,7 +164,7 @@ in file: xl/vbaProject.bin - OLE stream: 'VBA/Sheet1'
 
 We found the username `reporting` and password `PcwTWTHRwryjc$c6`.
 
-# **Foothold**
+## **Foothold**
 
 Let's use the credentials to login using `mssqlclient` from Impacket
 
@@ -268,7 +268,7 @@ On responder we see that we've successfully got a hash for user `QUERIER\mssql-s
 [SMB] NTLMv2-SSP Hash     : mssql-svc::QUERIER:9a48d90addffd26b:0D66BC518F8ACB667C791D58EA6AE6C4:010100000000000080513A816069D901BB3671FB417D04D90000000002000800380056005700500001001E00570049004E002D0035005A0050004F004B00430054005900470046004D0004003400570049004E002D0035005A0050004F004B00430054005900470046004D002E0038005600570050002E004C004F00430041004C000300140038005600570050002E004C004F00430041004C000500140038005600570050002E004C004F00430041004C000700080080513A816069D90106000400020000000800300030000000000000000000000000300000B68014B705CA8BEA72454CA147AD20C6E6E6ADF82D8141308DE3F34752ACDD6F0A001000000000000000000000000000000000000900200063006900660073002F00310030002E00310030002E00310037002E0039003000000000000000000000000000
 ```
 
-## John
+### John
 
 Let's use john and crack the hash.
 
@@ -284,7 +284,7 @@ Use the "--show --format=netntlmv2" options to display all of the cracked passwo
 Session completed
 ```
 
-## Metasploit
+### Metasploit
 
 Now we can use the metasploit module `exploit/windows/mssql/mssql_payload` to get a shell on the target.
 
@@ -308,9 +308,9 @@ Now we can use the metasploit module `exploit/windows/mssql/mssql_payload` to ge
 Server username: QUERIER\mssql-svc
 ```
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
-## Winpeas
+### Winpeas
 
 I run winpeas and managed to find the Administrator's password.
 
@@ -320,7 +320,7 @@ With that password we can use `evil-winrm` to authenticate to the target as admi
 
 ![](3.png)
 
-## PrintSpoofer
+### PrintSpoofer
 
 Checking our privileges as `mssql-svc` we see we have `SeImpersonatePrivilege`
 

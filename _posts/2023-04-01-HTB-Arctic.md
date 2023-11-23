@@ -13,15 +13,15 @@ img_path: /assets/img/hackthebox/machines/arctic
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Arctic](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
 ![](0.png)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -44,7 +44,7 @@ Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
 
 We found 3 open ports, MSRPC (135, 49154) and port 8500.
 
-## Web
+### Web
 
 Let's check port 8500 and see if it's accessible via http.
 
@@ -67,7 +67,7 @@ Searching for this version on exploit-db we find it's vulnerable to [remote code
 ![](4.png)
 
 
-# **Foothold**
+## **Foothold**
 
 Let's download the exploit, change the lhost variable and run it.
 
@@ -75,7 +75,7 @@ Let's download the exploit, change the lhost variable and run it.
 
 We got a shell.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's run windows exploit suggester
 

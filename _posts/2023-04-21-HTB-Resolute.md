@@ -13,15 +13,15 @@ img_path: /assets/img/hackthebox/machines/resolute
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Resolute](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com). The target is a domain controller running DC stuff, on `msrpc` we get a username list and a clear text password, so we brute force smb and found the correct credentials that also works for `winrm`. On the root filesystem we find a folder which has a text file that contains a clear text password for another user. The new user is part of a special group that give us the ability to inject a malicious dll and get SYSTEM access
 
 ![](0.png)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 -p- {target_IP}`.
 
@@ -95,7 +95,7 @@ From the open ports, we know that the target is a domain controller with the nam
 
 Let's add `resolute.megabank.local` and `megabank.local` to `/etc/hosts` file and continue our enumeration.
 
-## SMB
+### SMB
 
 Let's list shares using `smbclient`
 
@@ -110,7 +110,7 @@ SMB1 disabled -- no workgroup available
 
 The anonymous login was successful but we didn't find any open shares.
 
-## MSRPC
+### MSRPC
 
 Let's connect to rpc server with the command `rpcclient -U '' -N 10.10.10.69`
 
@@ -247,7 +247,7 @@ Great! The password works for user `melanie`.
 
 We managed to list shares but none the shares are really useful to us.
 
-# **Foothold**
+## **Foothold**
 
 Now let's try to login to the target via `winrm` using `evil-winrm`.
 
@@ -268,9 +268,9 @@ megabank\melanie
 
 Nice! We've logged in successfully.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
-## ryan
+### ryan
 
 After checking privileges and other basic information, let's see what we can find on the root filesystem
 
@@ -335,7 +335,7 @@ We find one text file, and after listing it's content we find the password for u
 
 Let's use the password to login as ryan.
 
-## SYSTEM
+### SYSTEM
 
 Let's check our groups
 

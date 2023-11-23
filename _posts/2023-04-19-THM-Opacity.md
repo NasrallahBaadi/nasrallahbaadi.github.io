@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/opacity
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Opacity](https://tryhackme.com/room/opacity) from [TryHackMe](https://tryhackme.com). This is an easy machine where we exploit an upload page vulnerable to code execution to get a shell. One we gained foothold we find a keepass file that contains credentials to a another user, after that we exploit a cronjob and escalate to root.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -64,7 +64,7 @@ Host script results:
 
 We found 4 open ports, 22 running OpenSSH, 80 running an Apache http web server and 139,445 is SMB.
 
-## Web
+### Web
 
 Let's navigate to the web server.
 
@@ -72,7 +72,7 @@ Let's navigate to the web server.
 
 We got a login page, i tried default credentials as well as sql injection but no luck with that
 
-### feroxbuster
+#### feroxbuster
 
 Let's run a directory/file scans.
 
@@ -122,7 +122,7 @@ I manged to upload the shell with the extension `.php.png` but the code didn't g
 
 I also tried `SSRF` but that didn't work.
 
-# **Foothold**
+## **Foothold**
 
 After playing with the request in burp suite for some time i found a code execution vulnerability.
 
@@ -148,9 +148,9 @@ This command tell the target to connect to my first listener and after it receiv
 
 ![](5.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
-## sysadmin
+### sysadmin
 
 After some basic enumeration, we found an interesting file in the `/opt` directory.
 
@@ -177,7 +177,7 @@ nc 10.10.10.10 1234 < datase.kdbx
 
 To read the file we need a password, and that we don't have.
 
-### john
+#### john
 
 We can use `keepass2john` to extract the hash of the password and then crack it.
 
@@ -191,7 +191,7 @@ Great! We got `sysadmin` password. Let's ssh to the box as sysadmin.
 
 ![](9.png)
 
-## root
+### root
 
 While i was testing the upload functionality in the website, i noticed that images i upload gets deleted, so there must be a cronjob running.
 
@@ -228,7 +228,3 @@ And just like that we got root.
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

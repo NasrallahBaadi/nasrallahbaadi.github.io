@@ -13,15 +13,15 @@ img_path: /assets/img/hackthebox/machines/return
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Return](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
 ![](0.png)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -66,7 +66,7 @@ Host script results:
 
 From the open ports, it's seems like we're dealing with a windows domain controller.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -78,7 +78,7 @@ It's a printer admin panel, let's got to `Settings` page
 
 In this page we can make some sort of an update, we can see a hidden password.
 
-## Burp
+### Burp
 
 Let's start `Burp suite` an intercept the update request, maybe we can read the password.
 
@@ -88,7 +88,7 @@ The password did not get sent, only the `ip`.
 
 Here i thought that the update still must be done and a request is sent to the ip we specify in the request.
 
-# **Foothold**
+## **Foothold**
 
 Let's test that theory by running `responder` and changing the ip value in the request from `printer.return.local` to out tun0 ip.
 
@@ -100,7 +100,7 @@ We got the password for `printer-svc`, let's use `evil-winrm` to connect to the 
 
 We got a shell
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's check our groups.
 
