@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/catpictures2
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Cat Pictures 2](https://tryhackme.com/room/catpictures2) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -76,11 +76,11 @@ PORT     STATE SERVICE VERSION
 
 We found 5 open ports, two OpenSSH servers (22 and 222), and 3 web servers.
 
-## Web
+### Web
 
 Let's check the web servers.
 
-### Port 80
+#### Port 80
 
 ![](1.png)
 
@@ -92,7 +92,7 @@ The log in form reveals the version
 
 This version doesn't have any vulnerabilities.
 
-### Port 3000
+#### Port 3000
 
 ![](2.png)
 
@@ -103,7 +103,7 @@ We can see there is a user registered.
 ![](5.png)
 
 
-### Port 8080
+#### Port 8080
 
 ![](3.png)
 
@@ -123,7 +123,7 @@ There is text file in the nginx server, let's navigate to it.
 
 We found credentials for Gitea, and also the notes informs us there is an ansible runner on port 1337.
 
-## Gitea
+### Gitea
 
 Let's login to Gitea.
 
@@ -135,7 +135,7 @@ We found a repository called ansible that has our first flag and a `playbook.yam
 
 This seems to run the command whoami as user `bismuth`
 
-## Ansible
+### Ansible
 
 Let's check the Ansible runner on port 1337
 
@@ -148,7 +148,7 @@ Here we can run an Ansible playbook, let's do it and check the logs.
 The playbook it run seems to be the one we found in the Gitea repository!
 
 
-# **Foothold**
+## **Foothold**
 
 Let's replace the `whoami` command in `playbook.yaml` to a reverse shell.
 
@@ -166,7 +166,7 @@ Great! We got the shell.
 
 We can find a private ssh key in `bismuth`'s home directory, use it to get a better shell
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's run `linpeas`
 

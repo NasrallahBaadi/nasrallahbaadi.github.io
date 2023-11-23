@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/razorblack
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [RazorBlack](https://tryhackme.com/room/raz0rblack) from [TryHackMe](https://tryhackme.com). It's a great Active Directory machine where we use multiple techniques to achieve our goals, I really had fun doing it and I hope you do too.
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -120,7 +120,7 @@ Host script results:
 
 The open ports indicates that the target is an Active Directory Domain Controller(AD DC) with the domain `raz0rblack.thm`, let'a add it to `/etc/hosts`.
 
-## NFS
+### NFS
 
 One usual port that is 2049 which is NFS. Let's list shares with `showmount -e raz0rblack.thm`
 
@@ -208,9 +208,9 @@ Candidates.#1....: robert2104 -> rmhaey
 
 Great! We got the password.
 
-# **Foothold**
+## **Foothold**
 
-## Kerberoasting
+### Kerberoasting
 
 Now that we got a password we can perform another attack which is `Kerberoasting`.
 
@@ -270,7 +270,7 @@ Info: Establishing connection to remote endpoint
 
 Great! We're in.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's check our privileges.
 
@@ -372,13 +372,13 @@ raz0rblack\administrator
 
 Great! We got Administrator.
 
-# **After Administrator**
+## **After Administrator**
 
 We've got admin access but we still need to answer some other questions and showcase some techniques worth knowing.
 
 Let's go back to where we got the password for user `twilliams`
 
-## SMB
+### SMB
 
 Let's use the password and list shares of the SMB server. 
 

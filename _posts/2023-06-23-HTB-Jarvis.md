@@ -13,15 +13,15 @@ img_path: /assets/img/hackthebox/machines/jarvis
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Jarvis](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
 ![](0.png)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -53,7 +53,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We found two ports, 22 running OpenSSH and port 80 is an Apache web server. Both services are on a Debian machine.
 
-## Web
+### Web
 
 Let's navigate to the website.
 
@@ -65,7 +65,7 @@ Going through the website pages we find a booking page that uses a parameter in 
 
 ![](2.png)
 
-### SQLMap
+#### SQLMap
 
 Let's give the url to `sqlmap` and see if the website is vulnerable to `sql injection``.
 
@@ -77,7 +77,7 @@ sqlmap -u 'http://supersecurehotel.htb/room.php?cod=1' --batch
 
 It's vulnerable!
 
-# **Foothold**
+## **Foothold**
 
 I Dumped the database but there is nothing useful there.
 
@@ -107,7 +107,7 @@ Now we setup a listener and request the file on the browser or using curl `curl 
 
 ![](5.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Running `linpeas` we find two interesting things.
 
@@ -127,7 +127,7 @@ The second thing is that `systemctl` has the suid permission.
 
 Unfortunately only user `pepper` has execute permissions.
 
-## www-data --> pepper
+### www-data --> pepper
 
 Let's check what the script does.
 
@@ -248,7 +248,7 @@ bash-4.4$ whoami
 pepper        
 ```
 
-## pepper --> root
+### pepper --> root
 
 We saw earlier that `systemctl` has suid permissions, let's create a service that would send us a shell when it starts.
 
@@ -294,17 +294,17 @@ id
 uid=0(root) gid=0(root) groups=0(root)  
 ```
 
-# **Prevention and Mitigation**
+## **Prevention and Mitigation**
 
-## SQL injection
+### SQL injection
 
 The website should use a solid input validation and parameterized queries to seperate user input from the query structure.
 
-## OS Command injection
+### OS Command injection
 
 The python script should use proper input validation, and it's better to use libraries to carry out actions instead of calling OS commands directly
 
-## SUID
+### SUID
 
 There are some linux commands that should not have the SUID because that leads to privileges escalation, `systemctl` is one of them, for a full list check [GTFOBins](https://gtfobins.github.io/)
 

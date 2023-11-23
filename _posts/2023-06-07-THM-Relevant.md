@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/relevant
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Relevant](https://tryhackme.com/room/relevant) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -80,7 +80,7 @@ Host script results:
 
 We found an http server on port 80, an SMB server on 445 and RDP on port 3389.
 
-## Web
+### Web
 
 Let's navigate to the website.
 
@@ -115,7 +115,7 @@ by Ben "epi" Risher 🤓                 ver: 2.7.2
 
 Didn't find anything.
 
-## SMB
+### SMB
 
 Let's list smb shares.
 
@@ -220,7 +220,7 @@ QmlsbCAtIEp1dzRubmFNNG40MjA2OTY5NjkhJCQk
 We got the encoded passwords, this means that the website on port 49663 and the SMB Share share the same directory.
 
 
-# **Foothold**
+## **Foothold**
 
 Since the web server is IIS we need to upload an `aspx` reverse shell to the smb share, we can find one [here](https://raw.githubusercontent.com/borjmz/aspx-reverse-shell/master/shell.aspx).
 
@@ -241,7 +241,7 @@ Now we setup a netcat listener and request the file.
 
 We got a shell!
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's check our privileges.
 
@@ -304,7 +304,7 @@ whoami
 nt authority\system
 ```
 
-# **Extra**
+## **Extra**
 
 Let's get the users' hashes from the `sam` and `system` files.
 
@@ -372,7 +372,3 @@ Bob:1002:aad3b435b51404eeaad3b435b51404ee:f88e826720be1c418633c34a79482f6a:::
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

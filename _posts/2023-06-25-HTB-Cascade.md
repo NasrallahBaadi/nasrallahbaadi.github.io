@@ -13,15 +13,15 @@ img_path: /assets/img/hackthebox/machines/cascade
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Cascade](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
 ![](0.png)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -69,7 +69,7 @@ Host script results:
 
 The target seems to be an Active directory domain controller.
 
-## MSRPC
+### MSRPC
 
 With `msrpc` service we can enumerate usernames if it allows for anonymous login.
 
@@ -99,7 +99,7 @@ Let's save the output to a file and use the following command to get a clean lis
 cat RpcOutput.txt | cut -d "[" -f 2 | cut -d "]" -f 1 > users.lst
 ```
 
-## LDAP
+### LDAP
 
 `LDAP` is a protocol that enable anyone to locate organizations, individuals and other resources such as files and devices in a network.
 
@@ -132,7 +132,7 @@ We got `Ryan`'s password.
 
 Tried to connect via `winrm` using this password but it didn't work.
 
-## SMB
+### SMB
 
 Let's see if we can list shares of SMB
 
@@ -216,9 +216,9 @@ irb: warn: can't alias jobs from irb_jobs.
 
 We got the password of `s.smith`.
 
-# **Foothold**
+## **Foothold**
 
-## WinRM
+### WinRM
 
 Using `evil-winrm` let's connect to the target.
 
@@ -236,9 +236,9 @@ Info: Establishing connection to remote endpoint
 *Evil-WinRM* PS C:\Users\s.smith\Documents> 
 ```
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
-## s.smith --> ArkSvc
+### s.smith --> ArkSvc
 
 Let's see if user `s.smith` has anything interesting.
 
@@ -395,7 +395,7 @@ Info: Establishing connection to remote endpoint
 *Evil-WinRM* PS C:\Users\arksvc\Documents> 
 ```
 
-## arksvc --> Administrator
+### arksvc --> Administrator
 
 Let's see what groups this user is part of
 
@@ -479,27 +479,27 @@ Info: Establishing connection to remote endpoint
 ```
 
 
-# **Prevention and Mitigation**
+## **Prevention and Mitigation**
 
-## MSRPC prevention
+### MSRPC prevention
 
 The `msrpc` service was allowing anonymous login which permits us to enumerate domain users. We could've also enumerated more objects like `groups`, specific user info, display info and many more.
 
 To prevent the enumeration you need to disable anonymous access to `msrpc`
 
-## LDAP prevention
+### LDAP prevention
 
 `LDAP` was allowing anonymous login as well so that should be disabled.
 
 We were able to find a base64 encoded password. Passwords should never be stored in plaintext or reversible formats, instead they should be hashed using a strong and secure hashing algorithms.
 
-## CascAudit.exe
+### CascAudit.exe
 
 On the `Audit` share we were able to find a sqlite db file that contained an encoded password. Since the password was being used by `CascAudit.exe` we were able to decompile the program and understand the decryption method used which allowed us to decrypt the password.
 
 Again, passwords should never be stored in a reversible formats, they should be hashed using a strong and secure hashing algorithms.
 
-## Ad Recycle Bin
+### Ad Recycle Bin
 
 As part of the `AD Recycle Bin` group, we were able to see deleted objects in the domain. With that we found the password of a deleted temporary admin account which the current administrator account uses.
 

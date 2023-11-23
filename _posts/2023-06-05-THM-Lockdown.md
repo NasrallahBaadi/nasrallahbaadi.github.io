@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/lockdown
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Lockdown](https://tryhackme.com/room/lockdown) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -51,7 +51,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We found OpenSSH on port 22 and Apache on port 80.
 
-## Web
+### Web
 
 Navigate to the web page.
 
@@ -71,15 +71,15 @@ On the system_info page we see an upload form for the system logo.
 
 ![](4.png)
 
-# **Foothold**
+## **Foothold**
 
 Let's upload a php reverse shell, setup a netcat listener and logout to the first page because that's where the logo is located at.
 
 ![](5.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
-## www-data --> cyrus
+### www-data --> cyrus
 
 Let's now read the config file for the login page and see if we can find any passwords:
 
@@ -113,7 +113,7 @@ quarantine  testvirus  user.txt
 
 We were able to switch to user `cyrus`
 
-## cyrus --> maxine
+### cyrus --> maxine
 
 Let's check our privilege with `sudo -l`
 
@@ -195,7 +195,7 @@ uid=1000(maxine) gid=1000(maxine) groups=1000(maxine),4(adm),24(cdrom),27(sudo),
 maxine@lockdown:~$ 
 ```
 
-## maxine --> root
+### maxine --> root
 
 If we check our privilege we see we can run any command as root.
 
@@ -224,7 +224,3 @@ root@lockdown:/home/maxine#
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

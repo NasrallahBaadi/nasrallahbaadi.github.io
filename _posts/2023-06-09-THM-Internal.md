@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/internal
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Internal](https://tryhackme.com/room/internal) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -47,7 +47,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 There is ssh on port 22 and Apache on 80.
 
-## Web
+### Web
 
 Let's navigate to the web site after we add `internal.thm` to /etc/hosts
 
@@ -194,7 +194,7 @@ Interesting Finding(s):
 
 We found the username `admin`.
 
-## Hydra
+### Hydra
 
 Let's brute force the login page using `hydra`
 
@@ -206,7 +206,7 @@ hydra -l admin -P /usr/share/wordlists/rockyou.txt internal.thm http-post-form "
 
 We got the password, let's log in
 
-# **Foothold**
+## **Foothold**
 
 To get a shell, we go to Theme editor, select 404.php and replace the php code with a reverse shell.
 
@@ -222,7 +222,7 @@ http://internal.thm/blog/wp-content/themes/twentyseventeen/404.php
 
 We got the shell!
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 On the /opt directory we find a text file that contains credentials.
 

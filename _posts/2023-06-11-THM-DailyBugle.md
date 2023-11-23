@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/dailybugle
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Daily Bugle](https://tryhackme.com/room/dailybugle) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -50,7 +50,7 @@ PORT     STATE SERVICE VERSION
 
 We found ssh on port 22, an Apache web server on port 80 with a robots.txt file that reveals multiple directories and the CMS used is Joomla.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -109,7 +109,7 @@ Great! We got the password, now let' login.
 
 ![](4.png)
 
-# **Foothold**
+## **Foothold**
 
 To get a shell, we go to Templates and select `protostar`.
 
@@ -126,7 +126,7 @@ Now we setup a listener and request the file at `http://targetIP/templates/proto
 We got a shell!
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's run `linpeas`
 
@@ -193,7 +193,3 @@ We got root!
 ---
 
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
-
----
-
-# References

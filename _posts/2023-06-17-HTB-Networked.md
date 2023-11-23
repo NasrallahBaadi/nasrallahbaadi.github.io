@@ -13,15 +13,15 @@ img_path: /assets/img/hackthebox/machines/networked
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Networked](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com). We exploit an upload page to get a reverse shell, an os command injection in a cronjob to escalate horizontally and a sudo misconfiguration for root.
 
 ![](0.png)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -48,7 +48,7 @@ PORT    STATE  SERVICE VERSION
 
 We found two open ports, 22 running OpenSSH and 80 running Apache web server.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -60,7 +60,7 @@ We found a note, and if we check the source code we see the following comment:
 <!-- upload and gallery not yet linked -->
 ```
 
-### Feroxbuster
+#### Feroxbuster
 
 Let's run a file scans.
 
@@ -102,7 +102,7 @@ by Ben "epi" Risher 🤓                 ver: 2.7.2
 
 We found a `backup` and `uploads` directory as well as other php files.
 
-### Backup
+#### Backup
 
 On the backup directory we find a backup file, let's download it and extract it.
 
@@ -124,7 +124,7 @@ We can find a list of signatures on [wikipedia](https://en.wikipedia.org/wiki/Li
 
 ![](2.png)
 
-# **Foothold**
+## **Foothold**
 
 Let's upload a php reverse shell, I'll use this [shell from Ivan](https://github.com/ivan-sincek/php-reverse-shell/blob/master/src/reverse/php_reverse_shell.php).
 
@@ -146,9 +146,9 @@ Now we setup a listener and navigate to `photos.php`
 
 We got a shell!.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
-## Apache --> guly
+### Apache --> guly
 
 On `guly`'s home directory we find a crontab file
 
@@ -236,7 +236,7 @@ We created the file successfully, now let's setup our listener and wait.
 
 We upgraded to guly!
 
-## guly --> root
+### guly --> root
 
 Let's check our privileges with `sudo -l`
 
@@ -336,13 +336,13 @@ uid=0(root) gid=0(root) groups=0(root)
 
 We got root!
 
-# **Prevention**
+## **Prevention**
 
-## Backup Information Disclosure
+### Backup Information Disclosure
 
 Backup files should be stored in a secure location that is not accessible via the web. Also use access control and encryption to protect the backup files from unauthorized access even if someone found them.
 
-## Upload Bypass
+### Upload Bypass
 
 We were able to bypass the upload filters because we found the source code of the php files. But even if we didn't, the filters put in place can be bypassed easily by uploading multiple different files and guessing the filters.
 
@@ -350,7 +350,7 @@ A proper input validation checks should be in place on all user input and also d
 
 It's better to use a third party service with enterprise security or a an established framework for preprocessing file uploads
 
-## OS Command Injection
+### OS Command Injection
 
 The cronjob was taking filename of a low privileged user and running commands on them, this allows us to make a filename containing a command that sent a reverse shell.
 
@@ -358,7 +358,7 @@ Again, proper input validation should be in place.
 
 Use libraries to carry out actions instead of calling OS commands directly.
 
-## Misconfiguration
+### Misconfiguration
 
 We should not hace sudo execute permission over a script that takes user input to run privileges commands.
 

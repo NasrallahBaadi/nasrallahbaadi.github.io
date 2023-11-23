@@ -15,13 +15,13 @@ image:
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [MonitorsTwo](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -49,7 +49,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kerne
 
 There is OpenSSH on port 22 and an Nginx web server on port 80.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -61,7 +61,7 @@ Checking on this version we find it's vulnerable to `Unauthenticated Remote Code
 
 ![](2.png)
 
-# **Foothold**
+## **Foothold**
 
 Let's download the [exploit](https://www.exploit-db.com/exploits/51166) and run it.
 
@@ -69,9 +69,9 @@ Let's download the [exploit](https://www.exploit-db.com/exploits/51166) and run 
 
 We got shell, but look like we're in a docker container.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
-## www-data --> root
+### www-data --> root
 
 Running linpeas we find the following:
 
@@ -79,7 +79,7 @@ Running linpeas we find the following:
 
 The binary `capsh` has `SUID` permission, and checking `GTFOBins` We find that we can run `capsh --gid=0 --uid=0 --` to get a root shell
 
-## Escape docker container
+### Escape docker container
 
 Checking the website files we can find the database credentials in `/include/global.php` file.
 
@@ -224,9 +224,9 @@ bash-5.1# ls
 cacti  root.txt
 ```
 
-# **Prevention and Mitigation**
+## **Prevention and Mitigation**
 
-## Cacti
+### Cacti
 
 The website was using a old version of `Cacti` vulnerable to RCE.
 
@@ -234,13 +234,13 @@ It is important to ensure that the system and applications you are using are pat
 
 Vulnerabilities with this type can often be mitigated by applying patches provided by the software provider.
 
-## SUID
+### SUID
 
 We find a command with SUID permission allowed us to escalate to root in the docker container.
 
 In linux there are some commands that gives a direct privilege escalation path if they got the SUID bit. A list of these commands can be found in [GTFOBins](https://gtfobins.github.io). It's better to avoid giving those command SUID permissions.
 
-## MySql
+### MySql
 
 We were able to find hardcoded credentials for mysql which allowed us to authenticate to the `mysql` service and get password hashes.
 
@@ -248,11 +248,11 @@ The password was stored in form of hashes which was the best practice here, but 
 
 The passwords should be strong, this includes a combination of uppercase and lowercase letters, numbers and special characters which makes them difficult to crack.  
 
-## Docker
+### Docker
 
 The docker version running is vulnerable, so it's crucial to update it to a more recent version.
 
-# Sources
+## Sources
 
 <https://www.exploit-db.com/exploits/51166>
 

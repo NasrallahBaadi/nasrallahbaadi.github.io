@@ -15,13 +15,13 @@ image:
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Forest](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -74,7 +74,7 @@ Host script results:
 
 From the open ports the target seems to be a domain controller with the hostname `htb.local`
 
-## Ldap
+### Ldap
 
 To enumerate `ldap` we can use `ldapsearch`, and if it allows anonymous connect we can pull some interesting information.
 
@@ -328,7 +328,7 @@ Candidates.#1....: s9039554h -> s2704081
 
 We got the password.
 
-# **Foothold**
+## **Foothold**
 
 Since this is a domain controller, `winrm` is probably open, let's try connecting to it
 
@@ -349,7 +349,7 @@ Info: Establishing connection to remote endpoint
 Great! We got a shell as `svc-alfresco`
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Now we can upload `SharpHound` to collect data for `BloodHound`.
 
@@ -508,15 +508,15 @@ Info: Establishing connection to remote endpoint
 *Evil-WinRM* PS C:\Users\Administrator\Documents> 
 ```
 
-# **Prevention and Mitigation**
+## **Prevention and Mitigation**
 
-## Anonymous connections
+### Anonymous connections
 
 Services like `ldap` and `msrpc` are allowing anonymous connection, which gives the an attacker to perform certain activities such us enumerating usernames and other information.
 
 `Anonymous connections` should be disabled.
 
-## AS-REP
+### AS-REP
 
 The user `svc-alfresco` had the `Pre-Authentication` disabled, which allows him to authenticate without a password and getting a kerberos TGT, this allowd us to retrieve the ticket and crack the password.
 
@@ -524,7 +524,7 @@ The user `svc-alfresco` had the `Pre-Authentication` disabled, which allows him 
 
 `svc-alfresco`'s password was also weak, and that allowed us to crack it very easily. Password should follow a strong password policy to make them difficult to crack.
 
-## Groups
+### Groups
 
 As we saw use `svc-alfresco` was part of a nested groups that we exploited to create a user with DCSync right, then used abused that right and performed a DCSync attack to get administrator's hash.
 

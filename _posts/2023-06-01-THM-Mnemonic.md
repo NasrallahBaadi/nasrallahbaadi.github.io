@@ -13,13 +13,13 @@ img_path: /assets/img/tryhackme/mnemonic
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Mnemonic](https://tryhackme.com/room/mnemonic) from [TryHackMe](https://tryhackme.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -49,7 +49,7 @@ Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 
 Found three open ports, 21 running a FTP server, port 80 is an Apache web server and port 1337 is SSH.
 
-## Web
+### Web
 
 We don't have any credentials for ftp and ssh so let's check the web page on port 80.
 
@@ -146,7 +146,7 @@ by Ben "epi" Risher 🤓                 ver: 2.7.2
 
 We found the file `backups.zip`.
 
-## Zip file
+### Zip file
 
 Let's download the file and unzip it.
 
@@ -165,7 +165,7 @@ we have to work hard
 
 The note revealed a username for FTP but no password.
 
-## Hydra
+### Hydra
 
 Let's use `hydra` and brute force the password.
 
@@ -229,7 +229,7 @@ Let's use `ssh2john` and crack the hash.
 
 ![](3.png)
 
-# **Foothold**
+## **Foothold**
 
 Let's use the private key and ssh to the target as `james`
 
@@ -237,7 +237,7 @@ Let's use the private key and ssh to the target as `james`
 
 The key didn't do it's job but the passphrase of it works as password for james. 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 After logging in we got the following message from root
 

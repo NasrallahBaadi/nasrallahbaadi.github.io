@@ -13,15 +13,15 @@ img_path: /assets/img/hackthebox/machines/busqueda
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Busqueda](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
 ![](0.png)
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -49,7 +49,7 @@ Service Info: Host: searcher.htb; OS: Linux; CPE: cpe:/o:linux:linux_kernel
 We found an Apache web server on port 80 with the domain name `searcher.htb` and OpenSSH on port 22.
 
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -69,7 +69,7 @@ There are two parameters used: `engine` and `query`.
 
 In the response we can see that this is a python application and using `Werkzeug` as a web server, which means that the Apache we saw earlier acts as a proxy.
 
-# **Foothold**
+## **Foothold**
 
 Since this is a python application, let's try injecting python code in the parameters.
 
@@ -94,9 +94,9 @@ Now let's get a reverse shell:
 
 ![](6.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
-## svc --> root
+### svc --> root
 
 Now we run `linpeas`.
 
@@ -206,27 +206,27 @@ We have successfully got a root shell.
 
 ![](13.png)
 
-# **Prevention and Mitigation**
+## **Prevention and Mitigation**
 
-## Searchor
+### Searchor
 
 The `Searchor` application was passing user input to `eval()` which considered very dangerous.
 
 It's better to avoid using user input in code that is evaluated dynamically, and it it's not avoidable, a strong user input validation should be in place.
 
-## Passwords
+### Passwords
 
 We managed to pull plain text passwords from config files which allowed us to further enumerate the machine.
 
 Password should never be stored in plain text, instead they should be hashed using a strong hashing algorithm.
 
-## System-check
+### System-check
 
 The `system-check.py` was assuming that we'll be executing the script from the `scripts` directory and that's why it runs the `full-checkup.sh` from the current directory.
 
 Commands and scripts should always be called with the full path
 
-# Sources
+## Sources
 
 <https://www.stackhawk.com/blog/command-injection-python/>
 
