@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/academy
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Academy](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -48,7 +48,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 We found two open ports, port 22 running OpenSSH and port 80 is Apache http web server.
 
-## Web
+### Web
 
 We saw from the nmap scan that the web server redirects to the hostname academy.htb, let's add it to /etc/hosts and navigate to it.
 
@@ -133,7 +133,7 @@ Let's see if there are any exploit for `laravel`
 ![](8.png)
 
 
-# **Foothold**
+## **Foothold**
 
 Let's start msfconsole and use `exploit/unix/http/laravel_token_unserialize_exec`.
 
@@ -154,7 +154,7 @@ Now let's run the exploit.
 
 ![](9.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Checking the website files, we find a `.env` file with some credentials.
 

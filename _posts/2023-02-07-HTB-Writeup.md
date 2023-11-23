@@ -12,13 +12,13 @@ img_path: /assets/img/hackthebox/machines/writeup
 
 ---
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Writeup](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -49,7 +49,7 @@ We found two open ports, 22 running SSH and 80 running an Apache http web server
 
 There is a robots.txt file in the web server with a disallowed entry of `/writeup`
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -71,7 +71,7 @@ Checking the `source code: svn.cmsmadesimple.org/svn/cmsmadesimple/trunk/doc/) o
 
 On the target system, we find that the version is 2.2.9.1.
 
-## Searchsploit
+### Searchsploit
 
 Let's check if this version has any vulnerabilities.
 
@@ -97,7 +97,7 @@ Shellcodes: No Results
 
 There is a sql injection vulnerability, let's copy the exploit with `searchsploit -m php/webapps/46635.py`
 
-# **Foothold**
+## **Foothold**
 
 Now let's run the exploit.
 
@@ -120,7 +120,7 @@ We got the password, now we can ssh into the machine.
 
 ![](6.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 By running the command id, we notice that user jkr, is part of a group called `staff`.
 

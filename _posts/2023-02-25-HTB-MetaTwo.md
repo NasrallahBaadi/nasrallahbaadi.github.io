@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/metatwo
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [MetaTwo](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -54,7 +54,7 @@ PORT      STATE    SERVICE       VERSION
 
 We found 3 open ports, 21 running an ftp server, 22 is OpenSSH and 80 is http nginx web server.
 
-## Web
+### Web
 
 From the nmap scan, we see we get redirected to the host metapress.htb, let's add it to `/etc/hosts` and check the web page.
 
@@ -82,7 +82,7 @@ We got the manager's password, let's login.
 
 ![](5.png)
 
-# **Foothold**
+## **Foothold**
 
 We a little to work with in this manager account, the one thing we have is `media library` where we can upload file to the server.
 
@@ -137,7 +137,7 @@ We found a php file and downloaded it, let's check it out.
 
 We found jnelson's password, let's ssh to the target machine.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Checking jnelson's home directory, we found a hidden directory called `.passpie`.
 

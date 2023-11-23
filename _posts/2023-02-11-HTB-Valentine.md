@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/valentine
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Valentine](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -61,7 +61,7 @@ We see three open ports.
  - 443/tcp SSL/HTTP Apache.
 
 
-## Web
+### Web
 
 Let's check the web page.
 
@@ -69,7 +69,7 @@ Let's check the web page.
 
 Judging by the heart logo, i believe we'll be doing a heartbleed exploit.
 
-## Metasploit
+### Metasploit
 
 Let's launch metasploit and use `auxiliary/scanner/ssl/openssl_heartbleed`.
 
@@ -123,7 +123,7 @@ The directory allows listing, and we can see a note.txt and hype_key file. The l
 
 ![](4.png)
 
-# **Foothold**
+## **Foothold**
 
 Let's copy the ssh key to our machine and give the right permissions.
 
@@ -136,7 +136,7 @@ Now let's ssh to the machine as `hype`
 ![](5.png)
 
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Checking files inside hype's home directory, we see that .bash_history file is not empty.
 

@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/postman
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Postman](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -61,7 +61,7 @@ There are four open ports on this Ubuntu machine.
  - 10000/tcp webmin http 1.910
 
 
-## Web
+### Web
 
 Let's navigate to the first web page.
 
@@ -85,7 +85,7 @@ The webmin version running is vulnerable to remote code execution but we need cr
 
 We got nothing from the web servers, let's move on.
 
-## Redis
+### Redis
 
 For redis, i managed to connect to it using `redis-cli`.
 
@@ -100,7 +100,7 @@ Unfortunately there was no keys.
 
 I also tried some rce on metasploit but didn't get a thing.
 
-# **Foothold**
+## **Foothold**
 
 Searching for more ways to enumerate `redis` on [HackTricks](https://book.hacktricks.xyz/network-services-pentesting/6379-pentesting-redis), i came across this [section](https://book.hacktricks.xyz/network-services-pentesting/6379-pentesting-redis#ssh) showing how to get a shell by uploading ssh public key.
 
@@ -112,9 +112,9 @@ Let's do the same.
 
 Great! We got in.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
-## Matt
+### Matt
 
 Now i run linpeas and managed to find the following.
 
@@ -136,7 +136,7 @@ After that i tried to switch to user Matt on our privious ssh session with the p
 
 Checking the sshd_config file we see why we couldn't connect.
 
-## root
+### root
 
 Using matt's credentials, i attempted to connect to webmin and it worked.
 

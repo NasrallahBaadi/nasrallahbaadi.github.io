@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/ambassador
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Ambassador](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -81,7 +81,7 @@ ent, SupportsCompression, SupportsMultipleStatments, SupportsAuthPlugins, Suppor
 We found four open ports, 22 running OpenSSH, 80 is an Apache web server, 3000 looks like another web server, and 3306 is mysql server.
 
 
-## Web
+### Web
 
 Let's navigate to the web page.
 
@@ -101,7 +101,7 @@ This version is vulnerable to arbitrary file read, we can find the exploit [here
 
 We can manually do the exploit by requesting the following url.
 
-```
+```text
 /public/plugins/barchart/../../../../../../../../../../../../etc/passwd
 ```
 
@@ -176,7 +176,7 @@ Let's decode the password and ssh to the machine.
 
 ![](6.png)
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 After some enumeration, we find a service running on port 8500 called `consul`.
 

@@ -13,13 +13,13 @@ img_path: /assets/img/hackthebox/machines/armageddon
 ---
 
 
-# **Description**
+## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Armageddon](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
 
-# **Enumeration**
+## **Enumeration**
 
-## nmap
+### nmap
 
 We start a nmap scan using the following command: `sudo nmap -sC -sV -T4 {target_IP}`.
 
@@ -74,7 +74,7 @@ Here we see the version of Drupal is 7.56, let's search on exploit-db to see if 
 This Drupal is vulnerable to remote code execution.
 
 
-# **Foothold**
+## **Foothold**
 
 Using the metasploit `exploit/unix/webapp/drupal_drupalgeddon2` module, let's exploit the service.
 
@@ -82,7 +82,7 @@ Using the metasploit `exploit/unix/webapp/drupal_drupalgeddon2` module, let's ex
 
 Great! We got the shell.
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 Let's check the settings.php file where database credentials are stored.
 
