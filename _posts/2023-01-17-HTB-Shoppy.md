@@ -4,7 +4,7 @@ author: Nasrallah
 description: ""
 date: 2023-01-17 00:00:00 +0000
 categories : [HackTheBox, Machines]
-tags: [hackthebox, linux, easy, sudo, subdomains, ffuf, nosqli]
+tags: [hackthebox, linux, easy, sudo, subdomain, ffuf, nosqli]
 img_path: /assets/img/hackthebox/machines/shoppy
 ---
 

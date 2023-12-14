@@ -4,7 +4,7 @@ author: Nasrallah
 description: ""
 date: 2022-05-15 00:00:00 +0000
 categories : [TryHackMe]
-tags: [tryhackme, Windows, metasploit, msfvenom, usp]
+tags: [tryhackme, windows, metasploit, msfvenom, usp]
 ---
 
 <div align="center"> <script src="https://tryhackme.com/badge/367641"></script> </div>

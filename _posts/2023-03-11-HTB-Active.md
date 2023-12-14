@@ -4,7 +4,7 @@ author: Nasrallah
 description: ""
 date: 2023-03-11 00:00:00 +0000
 categories : [HackTheBox, Machines]
-tags: [hackthebox, windows, easy, smb, kerberos, kerberoasing, hashcat, cracking, impacket, psexec]
+tags: [hackthebox, windows, easy, smb, kerberos, kerberoasting, hashcat, cracking, impacket, psexec]
 img_path: /assets/img/hackthebox/machines/active
 ---
 

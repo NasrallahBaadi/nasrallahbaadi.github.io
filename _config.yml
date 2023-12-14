@@ -16,10 +16,10 @@ timezone: Africa/Casablanca
 
 title: Nasrallah # the main title
 
-tagline: CTF write-ups. # it will display as the sub-title
+tagline: CTF write-ups and more. # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  CyberSecurity blog.
+  CyberSecurity blog specialized in CTF write-ups and other CyberSecurity topics.
 
 # Fill in the protocol & hostname for your site.
 # e.g. 'https://username.github.io', note that it does not end with a '/'.
@@ -44,13 +44,13 @@ social:
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
 
-google_site_verification: # fill in to your verification string
+google_site_verification: 4KVkOmiU92lvw5EIZmH6QRDgb0FKPuBWWv4vhur1dlQ               # fill in to your verification string
 
 # ↑ --------------------------
 # The end of `jekyll-seo-tag` settings
 
 google_analytics:
-  id: # fill in your Google Analytics ID
+  id: 'G-0TJH1YR7RJ' # fill in your Google Analytics ID
 
 # Prefer color scheme setting.
 #

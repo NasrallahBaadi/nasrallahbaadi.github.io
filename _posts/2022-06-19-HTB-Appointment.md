@@ -4,7 +4,7 @@ author: Nasrallah
 description: ""
 date: 2022-06-19 00:00:00 +0000
 categories : [HackTheBox, Machines]
-tags: [hackthebox, linux, machines, easy, sqli]
+tags: [hackthebox, linux, easy, sqli]
 img_path: /assets/img/hackthebox/machines/appointment/
 ---
 

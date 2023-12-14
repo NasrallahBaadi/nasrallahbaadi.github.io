@@ -4,7 +4,7 @@ author: Nasrallah
 description: ""
 date: 2022-03-21 00:00:00 +0000
 categories : [TryHackMe]
-tags: [tryhackme, linux, rce, exploit]
+tags: [tryhackme, linux, rce]
 ---
 
 <div align="center"> <script src="https://tryhackme.com/badge/367641"></script> </div>

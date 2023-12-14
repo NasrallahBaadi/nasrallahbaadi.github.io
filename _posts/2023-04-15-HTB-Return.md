@@ -4,7 +4,7 @@ author: Nasrallah
 description: ""
 date: 2023-04-15 00:00:00 +0000
 categories : [HackTheBox, Machines]
-tags: [hackthebox, windows, easy, responder, group]
+tags: [hackthebox, windows, easy, responder, groups]
 img_path: /assets/img/hackthebox/machines/return
 ---
 

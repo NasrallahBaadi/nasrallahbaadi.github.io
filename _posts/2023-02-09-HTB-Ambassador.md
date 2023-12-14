@@ -4,7 +4,7 @@ author: Nasrallah
 description: ""
 date: 2023-02-09 00:00:00 +0000
 categories : [HackTheBox, Machines]
-tags: [hackthebox, linux, medium, rce, cve, directorytraversal, tunnenling, sql, metasploit, git]
+tags: [hackthebox, linux, medium, rce, cve, directorytraversal, tunneling, sql, metasploit, git]
 img_path: /assets/img/hackthebox/machines/ambassador
 ---
 

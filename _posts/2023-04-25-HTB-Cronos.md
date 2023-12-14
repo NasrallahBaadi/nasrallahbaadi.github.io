@@ -4,7 +4,7 @@ author: Nasrallah
 description: ""
 date: 2023-04-25 00:00:00 +0000
 categories : [HackTheBox, Machines]
-tags: [hackthebox, linux, medium, cronjob, commandinjection, php, dns, subdomains, ffuf, sqli]
+tags: [hackthebox, linux, medium, cronjob, commandinjection, php, dns, subdomain, ffuf, sqli]
 img_path: /assets/img/hackthebox/machines/cronos
 ---
 

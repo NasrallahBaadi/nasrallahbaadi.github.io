@@ -4,7 +4,7 @@ author: Nasrallah
 description: ""
 date: 2022-04-19 00:00:00 +0000
 categories : [TryHackMe]
-tags: [tryhackme, linux, easy, burp, hydra, bruteforce, steganography, cracking, john]
+tags: [tryhackme, linux, easy, burpsuite, hydra, bruteforce, steganography, cracking, john]
 #img_path: /assets/img/tryhackme
 ---
 

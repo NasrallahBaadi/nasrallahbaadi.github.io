@@ -29,10 +29,6 @@
     url: "https://t.me/Sirius1337"
 
 #
-  - type: stack-overflow
-    icon: 'fab fa-stack-overflow'
-    url:  'https://stackoverflow.com/users/14779624/nasrallah'                  # Fill with your stackoverflow homepage
-
   - type: HackTheBox
     icon: "fas fa-cube"
     url:  'https://app.hackthebox.com/profile/565048' 
@@ -41,6 +37,10 @@
     icon: "fas fa-cloud"
     url:  'https://tryhackme.com/p/Nasrallah'
 
+  - type: buymeacoffee
+    icon: 'fa fa-mug-hot'
+    url:  'https://buymeacoffee/nasrallah'                  # Fill with your stackoverflow homepage
+  
   - type: rss
     icon: "fas fa-rss"
     noblank: true
