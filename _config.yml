@@ -44,7 +44,7 @@ social:
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
 
-google_site_verification: 4KVkOmiU92lvw5EIZmH6QRDgb0FKPuBWWv4vhur1dlQ               # fill in to your verification string
+google_site_verification: 4KVkOmiU92lvw5EIZmH6QRDgb0FKPuBWWv4vhur1dlQ
 
 # ↑ --------------------------
 # The end of `jekyll-seo-tag` settings
@@ -112,7 +112,7 @@ pwa:
 paginate: 10
 
 # The base URL of your site
-baseurl: 
+baseurl: ""
 
 # ------------ The following options are not recommended to be modified ------------------
 
