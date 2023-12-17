@@ -6,6 +6,8 @@ date: 2023-06-21 00:00:00 +0000
 categories : [HackTheBox, Machines]
 tags: [hackthebox, linux, medium, injection, web, burpsuite, nodejs, api, git, proc]
 img_path: /assets/img/hackthebox/machines/secret
+image:
+    path: secret.png
 ---
 
 <div align="center"> <script src="https://www.hackthebox.eu/badge/565048"></script> </div>
@@ -16,8 +18,6 @@ img_path: /assets/img/hackthebox/machines/secret
 ## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Secret](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
-
-![](0.png)
 
 ## **Enumeration**
 

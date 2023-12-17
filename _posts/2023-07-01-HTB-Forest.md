@@ -7,7 +7,7 @@ categories : [HackTheBox, Machines]
 tags: [hackthebox, windows, easy, as-rep-roasting, dcsync, ldap, crack, hashcat, groups, bloodhound]
 img_path: /assets/img/hackthebox/machines/forest
 image:
-    path: 0.png
+    path: forest.png
 ---
 
 <div align="center"> <script src="https://www.hackthebox.eu/badge/565048"></script> </div>

@@ -6,6 +6,8 @@ date: 2023-06-27 00:00:00 +0000
 categories : [HackTheBox, Machines]
 tags: [hackthebox, linux, easy, python, injection, docker, gitea]
 img_path: /assets/img/hackthebox/machines/busqueda
+image:
+    path: busqueda.png
 ---
 
 <div align="center"> <script src="https://www.hackthebox.eu/badge/565048"></script> </div>
@@ -16,8 +18,6 @@ img_path: /assets/img/hackthebox/machines/busqueda
 ## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Busqueda](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com).
-
-![](0.png)
 
 ## **Enumeration**
 

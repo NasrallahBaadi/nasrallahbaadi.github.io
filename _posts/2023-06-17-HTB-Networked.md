@@ -6,6 +6,8 @@ date: 2023-06-17 00:00:00 +0000
 categories : [HackTheBox, Machines]
 tags: [hackthebox, linux, medium, php, informationdisclosure, injection, sudo, hexedit, magicnumber]
 img_path: /assets/img/hackthebox/machines/networked
+image:
+    path: networked.png
 ---
 
 <div align="center"> <script src="https://www.hackthebox.eu/badge/565048"></script> </div>
@@ -16,8 +18,6 @@ img_path: /assets/img/hackthebox/machines/networked
 ## **Description**
 
 Hello hackers, I hope you are doing well. We are doing [Networked](https://app.hackthebox.com/machines/) from [HackTheBox](https://www.hackthebox.com). We exploit an upload page to get a reverse shell, an os command injection in a cronjob to escalate horizontally and a sudo misconfiguration for root.
-
-![](0.png)
 
 ## **Enumeration**
 

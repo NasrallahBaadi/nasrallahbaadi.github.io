@@ -7,7 +7,7 @@ categories : [HackTheBox, Machines]
 tags: [hackthebox, linux, easy, suid, docker, rce, cve, john, crack]
 img_path: /assets/img/hackthebox/machines/monitortwo
 image:
-    path: 0.png
+    path: monitorstwo.png
 ---
 
 <div align="center"> <script src="https://www.hackthebox.eu/badge/565048"></script> </div>
