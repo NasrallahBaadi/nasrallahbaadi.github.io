@@ -39,8 +39,8 @@
 
   - type: buymeacoffee
     icon: 'fa fa-mug-hot'
-    url:  'https://buymeacoffee/nasrallah'                  # Fill with your stackoverflow homepage
+    url:  'https://buymeacoffee.com/nasrallah'                  # Fill with your stackoverflow homepage
   
-  - type: rss
-    icon: "fas fa-rss"
-    noblank: true
+  - type: discord
+    icon: "fab fa-discord"
+    url: 'https://discord.com/users/653195083919532038'
