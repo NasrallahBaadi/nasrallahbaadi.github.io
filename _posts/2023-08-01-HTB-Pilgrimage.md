@@ -18,8 +18,6 @@ image:
 
 [Pilgrimage](https://www.hackthebox.com/machines/pilgrimage) from [HackTheBox](https://www.hackthebox.com) uses a vulnerable program to shrink images, we exploit it to get a foothold. On the system we find cronjob running a script that also uses a vulnerable program, we again exploit it to get root.
 
-![](0.png)
-
 ## **Enumeration**
 
 ### nmap
