@@ -1,5 +1,5 @@
 ---
-title: "TryHackMe - "
+title: "TryHackMe - Hijack"
 author: Nasrallah
 description: ""
 date: 2023-09-03 00:00:00 +0000
@@ -301,7 +301,7 @@ That's rick's password used to connect to the database, let's see if he reused t
 
 It worked!
 
-## **Prevention and Mitigation**
+### rick -> root
 
 Let's check our privileges as rick.
 
