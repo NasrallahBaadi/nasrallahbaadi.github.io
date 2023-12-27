@@ -53,7 +53,7 @@ The http-title script from nmap reveals the hostname `pilgrimage.htb`, let's add
 
 Let's navigate to `http://pilgrimage.htb`
 
-![](1.png)
+![q](1.png)
 
 The website allows us to upload image to shrink them.
 
@@ -147,7 +147,7 @@ This is `imagemagick` version `7.1.0-49 beta`.
 
 Searching for this on `Exploit-db` we find the following:
 
-![](2.png)
+![q](2.png)
 
 The software is vulnerable to an `Arbitrary File Read`. The proof of concept can be found here [https://github.com/voidz0r/CVE-2022-44268](https://github.com/voidz0r/CVE-2022-44268).
 
@@ -208,7 +208,7 @@ Megapixels                      : 0.262
 
 We got a long hex string, let's copy it to `CyberChef` to decode it.
 
-![](3.png)
+![q](3.png)
 
 We got the `/etc/passwd` file and found the user `emily`.
 
@@ -240,7 +240,7 @@ exiftool 64e5c8072eae8.png | grep -i 'raw profile' > data.hex
 
 The hex string is so big so we save it to a file then upload the file to `CyberChef`
 
-![](4.png)
+![q](4.png)
 
 Now let's save the output to a file.
 
@@ -275,11 +275,11 @@ emily@pilgrimage:~$ id
 uid=1000(emily) gid=1000(emily) groups=1000(emily)
 ```
 
-# **Privilege Escalation**
+## **Privilege Escalation**
 
 By running `pspy64` we notice a cronjob running a bash script:
 
-![](5.png)
+![q](5.png)
 
 Let's see what the script does.
 
@@ -306,7 +306,7 @@ Checking the version of `binwalk` in the box we found it's `Binwalk v2.3.2`.
 
 This version is vulnerable to [Code Execution](https://www.exploit-db.com/exploits/51249).
 
-![](6.png)
+![q](6.png)
 
 Let's download the exploit and create the malicious file.
 
@@ -338,7 +338,7 @@ binwalk_exploit.png
 
 Let's setup a listener and upload the file.
 
-![](7.png)
+![q](7.png)
 
 Right after we upload the file we get a root shell.
 
