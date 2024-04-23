@@ -59,9 +59,7 @@ Searching for vulnerabilities in this CMS we find a very recent `RCE`. Here is a
 
 ## **Foothold**
 
-Before running the exploit we need to edit two lines
-
-Now we are good to run the exploit.
+I downloaded the exploit and run it.
 
 ![shell](3.png)
 
