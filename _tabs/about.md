@@ -24,7 +24,7 @@ This website serves as a repository for my journey, featuring detailed walkthrou
     </div>
 
 </div>
-<h1 align="center">Languages and Tools:</h1>
+<h1 align="center">Languages and Tools</h1>
 <p align="center">
 <a href="https://www.python.org" target="blank"><img align="center" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="50" height="50" /></a>
 <a href="https://www.gnu.org/software/bash/" target="blank"><img align="center" src="https://community.infoblox.com/t5/image/serverpage/image-id/2195iA290BF7E3BA6064D/image-size/large/is-moderation-mode/true?v=v2&px=999" alt="bash" width="50" height="50" /></a>
@@ -42,18 +42,25 @@ This website serves as a repository for my journey, featuring detailed walkthrou
 
 </p>
 
-<h1 align="center">Certifications and Achievements:</h1>
+<h1 align="center">Certifications and Achievements</h1>
 
 <div style="display: flex;">
-<img src="/assets/img/certs/aoc20.png" alt="aoc1" width="300" height="150" style="margin-right: 10px;">
-<img src="/assets/img/certs/aoc21.png" alt="aoc2" width="300" height="150" style="margin-right: 10px;">
-<img src="/assets/img/certs/aoc22.png" alt="aoc3" width="300" height="150">
+<img src="/assets/img/certs/peh.png" alt="Practical Ethical Hacking" width="300" height="150" style="margin-right: 10px;">
+<img src="/assets/img/certs/lpecert.png" alt="linux privilege escalation" width="300" height="150" style="margin-right: 10px;">
+<img src="/assets/img/certs/winprivesc.png" alt="windows privilege escalation" width="300" height="150" style="margin-right: 10px;">
 </div>
+
 
 <div style="display: flex;">
 <img src="/assets/img/certs/compbe.png" alt="complete beginner" width="300" height="150" style="margin-right: 10px;">
 <img src="/assets/img/certs/intro.png" alt="intro to cybersec" width="300" height="150" style="margin-right: 10px;">
 <img src="/assets/img/certs/presec.png" alt="pre security" width="300" height="150">
+</div>
+
+<div style="display: flex;">
+<img src="/assets/img/certs/aoc20.png" alt="aoc1" width="300" height="150" style="margin-right: 10px;">
+<img src="/assets/img/certs/aoc21.png" alt="aoc2" width="300" height="150" style="margin-right: 10px;">
+<img src="/assets/img/certs/aoc22.png" alt="aoc3" width="300" height="150">
 </div>
 
 <div style="display: flex;">
@@ -63,12 +70,10 @@ This website serves as a repository for my journey, featuring detailed walkthrou
 </div>
 
 <div style="display: flex;">
-<img src="/assets/img/certs/lpecert.png" alt="linux privilege escalation" width="250" height="150" style="margin-right: 10px;">
 <img src="https://assets.tryhackme.com/room-badges/3e7a5561b259548fb40549e1c9efae15.png" alt="100 days steak" width="300" height="150" style="margin-right: 10px;">
-<img src="/assets/img/certs/winprivesc.png" alt="windows privilege escalation" width="250" height="150" style="margin-right: 10px;">
 </div>
 
-<h1 align="center">Connect with me:</h1>
+<h1 align="center">Connect with me</h1>
 <p align="center">
 <a href="https://twitter.com/nasrallahbaadi" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="x" height="50" width="50" /></a>
 &nbsp; <a href="https://linkedin.com/in/nasrallahbaadi" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="linkedin" height="50" width="50" /></a>
