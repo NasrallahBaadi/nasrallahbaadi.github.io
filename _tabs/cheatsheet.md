@@ -117,6 +117,8 @@ SharpHound powershell
 
 `Invoke-Bloodhound -CollectionMethod All -Domain [domain] -ZipFileName collection.zip`
 
+`SharpHound.exe --ldapusername 'user' --ldappassword 'password'`
+
 ### Mimikatz
 
 `elevate::token`
@@ -186,8 +188,6 @@ Setup an HTTP server with `sudo python3 -m http.server 80`
 <!-- ```bash
 certipy find -u user -p password --dc-ip 10.10.10.10 -stdout -vulnerable
 ``` -->
-
-Impact-Site-Verification: b975e8a6-3f75-4d49-aa65-17c7f42b29d2
 
 ## Aliases
 
