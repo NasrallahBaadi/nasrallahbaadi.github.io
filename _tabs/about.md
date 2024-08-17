@@ -45,6 +45,11 @@ This website serves as a repository for my journey, featuring detailed walkthrou
 <h1 align="center">Certifications and Achievements</h1>
 
 <div style="display: flex;">
+<img src="/assets/img/certs/dante.png" alt="pentes +" width="500" height="250">
+<img src="/assets/img/certs/zephyr.png" alt="pentes +" width="500" height="250">
+</div>
+
+<div style="display: flex;">
 <img src="/assets/img/certs/peh.png" alt="Practical Ethical Hacking" width="300" height="150" style="margin-right: 10px;">
 <img src="/assets/img/certs/lpecert.png" alt="linux privilege escalation" width="300" height="150" style="margin-right: 10px;">
 <img src="/assets/img/certs/winprivesc.png" alt="windows privilege escalation" width="300" height="150" style="margin-right: 10px;">
@@ -71,6 +76,7 @@ This website serves as a repository for my journey, featuring detailed walkthrou
 
 <div style="display: flex;">
 <img src="https://assets.tryhackme.com/room-badges/3e7a5561b259548fb40549e1c9efae15.png" alt="100 days steak" width="300" height="150" style="margin-right: 10px;">
+<img src="/assets/img/certs/pwst.png" alt="pentes +" width="300" height="150">
 </div>
 
 <h1 align="center">Connect with me</h1>
@@ -79,7 +85,7 @@ This website serves as a repository for my journey, featuring detailed walkthrou
 &nbsp; <a href="https://linkedin.com/in/nasrallahbaadi" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="linkedin" height="50" width="50" /></a>
 &nbsp; <a href="https://tryhackme.com/p/Nasrallah" target="blank"><img align="center" src="https://authenticator.2stable.com/assets/img/2fa-services/Icons/tryhackme.com.svg" alt="tryhackme" height="50" width="50" /></a>
 &nbsp; <a href="https://app.hackthebox.com/profile/565048" target="blank"><img align="center" src="https://app.hackthebox.com/images/HTB-favicon/favicon.ico" alt="hackthebox" height="50" width="50" /></a>
-&nbsp; <a href="https://discord.com/users/653193083919532038" target="blank"><img align="center" src="https://static-00.iconduck.com/assets.00/discord-icon-2048x2048-o5mluhz2.png" alt="nasrallahbaadi" height="50" width="50" /></a>
+&nbsp; <a href="https://discord.com/users/653193083919532038" target="blank"><img align="center" src="http://static-00.iconduck.com/assets.00/discord-icon-2048x2048-o5mluhz2.png" alt="nasrallahbaadi" height="50" width="50" /></a>
 &nbsp; <a href="https://t.me/Sirius1337" target="blank"><img align="center" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/2048px-Telegram_logo.svg.png" alt="telegram" height="50" width="50" /></a>
 <a href="https://www.buymeacoffee.com/nasrallah" target="_blank" rel="noreferrer"><img align="center" src="https://www.buymeacoffee.com/favicon.ico" alt="buymecoffee" width="50" height="50" /></a>
 <a href="#" onclick="javascript:location.href='mailto:' + ['baadinasrallah', 'protonmail.com'].join('@')" target="blank"><img align="center" src="https://purepng.com/public/uploads/large/purepng.com-mail-iconsymbolsiconsapple-iosiosios-8-iconsios-8-721522596075clftr.png" alt="nasrallahbaadi" height="50" width="50" /></a>
