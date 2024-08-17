@@ -11,9 +11,9 @@ type: support
 
 #### Get **HackTheBox** VIP annual subscription via my affiliate links:
 
-- **HackTheBox** <https://affiliate.hackthebox.com/036mddn0yl1d>
+- **HackTheBox** <https://hacktheboxltd.sjv.io/Nasrallah>
 
-- **Academy** <https://affiliate.hackthebox.com/nasrallahbaadi1640>
+- **Academy** <https://hacktheboxltd.sjv.io/DKE33j>
 
 #### Sign up for a premium membership of **TryHackMe** using my referral link:
 
