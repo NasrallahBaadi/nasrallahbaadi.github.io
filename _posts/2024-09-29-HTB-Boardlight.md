@@ -100,7 +100,7 @@ Searching on google we find that this version is vulnerable to php code injectio
 
 I found the following exploit that we can use to get a reverse shell <https://github.com/nikn0laty/Exploit-for-Dolibarr-17.0.0-CVE-2023-30253>
 
-![4.png]
+![revs](4.png)
 
 ## **Privilege Escalation**
 
