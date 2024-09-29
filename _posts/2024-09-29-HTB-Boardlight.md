@@ -14,7 +14,7 @@ image:
 
 ---
 
-[Boardlight](https://hacktheboxltd.sjv.io/Nasrallah?u=https://app.hackthebox.com/machines/boardlight) from [HackTheBox](https://hacktheboxltd.sjv.io/anqPJZ).
+[Boardlight](https://hacktheboxltd.sjv.io/Nasrallah?u=https://app.hackthebox.com/machines/boardlight) from [HackTheBox](https://hacktheboxltd.sjv.io/anqPJZ) is running a website vulnerable to code injection givin us a foothold. We find a password inside a config file which we use to elevate our privileges. Then we find another vulnerable software running on the machine that we exploit to get root.
 
 ## **Enumeration**
 
