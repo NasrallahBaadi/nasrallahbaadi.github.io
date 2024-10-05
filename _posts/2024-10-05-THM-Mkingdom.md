@@ -106,7 +106,7 @@ First we got to `system & settings` and select `Allowed File Types`.
 
 Then we add php to the list and click save.
 
-![php](8.php)
+![php](8.png)
 
 Now we go to `Files` and select `Upload Files`
 
