@@ -2,7 +2,7 @@
 title: "TryHackMe - Hammer"
 author: Nasrallah
 description: ""
-date:  00:00:00 +0000
+date: 2024-11-27 00:00:00 +0000
 categories : [TryHackMe]
 tags: [tryhackme, linux, medium, jwt, ffuf]
 img_path: /assets/img/tryhackme/hammer
@@ -14,7 +14,7 @@ image:
 
 ---
 
-[Hammer](https://tryhackme.comr/r/room/hammer) from [TryHackMe](https://tryhackme.com/signup?referrer=603949780215185dfb191142).
+[Hammer](https://tryhackme.comr/r/room/hammer) from [TryHackMe](https://tryhackme.com/signup?referrer=603949780215185dfb191142) requires us to bypass an authentication on a website and gain rce. We do that by brute forcing a password recovery code to reset the password and gain access to the webapp, after that we escalate our privileges to admin by manipulating a JWT token which then enables us to access the admin's dashboard and execute code on the target machine.
 
 ## **Enumeration**
 
@@ -240,5 +240,3 @@ Here ends the room with no privilege escalation unfortunately.
 Thank you for taking the time to read my write-up, I hope you have learned something from this. If you have any questions or comments, please feel free to reach out to me. See you in the next hack :).
 
 ---
-
-## References
