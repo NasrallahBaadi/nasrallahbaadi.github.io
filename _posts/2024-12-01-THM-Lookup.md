@@ -2,7 +2,7 @@
 title: "TryHackMe - Lookup"
 author: Nasrallah
 description: ""
-date: 2024-12-01 12:00:00 +0000
+date: 2024-12-01 7:00:00 +0000
 categories : [TryHackMe]
 tags: [tryhackme, linux, easy, cve, metasploit, sudo, ghidra, suid, path-hijack]
 img_path: /assets/img/tryhackme/lookup
