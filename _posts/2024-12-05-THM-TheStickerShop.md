@@ -22,11 +22,11 @@ image:
 
 This is a web challenge and the website can be found on port 8080.
 
-![website](1.png)
+![website](/assets/img/tryhackme/thestickershop/1.png)
 
 It's a sticker shop, nothing looks interesting on the home page, let's check the feedback page.
 
-![feedback](2.png)
+![feedback](/assets/img/tryhackme/thestickershop/2.png)
 
 Here we can submit a feedback.
 
