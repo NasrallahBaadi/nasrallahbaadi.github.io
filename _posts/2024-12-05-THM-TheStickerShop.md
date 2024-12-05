@@ -7,7 +7,7 @@ categories : [TryHackMe]
 tags: [tryhackme, web, easy, xss]
 img_path: /assets/img/tryhackme/thestickershop
 image:
-    path: thestickershop.png
+    path: /assets/img/tryhackme/thestickershop/thestickershop.png
 ---
 
 <div align="center"> <script src="https://tryhackme.com/badge/367641"></script> </div>
