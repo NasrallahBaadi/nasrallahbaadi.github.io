@@ -2,19 +2,19 @@
 title: "TryHackMe - The Sticker Shop"
 author: Nasrallah
 description: ""
-date:2024-12-05 12:00:00 +0000
+date: 2024-12-05 7:00:00 +0000
 categories : [TryHackMe]
 tags: [tryhackme, web, easy, xss]
 img_path: /assets/img/tryhackme/thestickershop
 image:
-    path: /assets/img/tryhackme/thestickershop/thestickershop.png
+    path: thestickershop.png
 ---
 
 <div align="center"> <script src="https://tryhackme.com/badge/367641"></script> </div>
 
 ---
 
-[The Sticker Shop](https://tryhackme.comr/r/room/thestickershop) from [TryHackMe](https://tryhackme.com/signup?referrer=603949780215185dfb191142) is a simple web challenge where we exploit an XSS vulnerability to read the flag.
+[The Sticker Shop](https://tryhackme.com/r/room/thestickershop) from [TryHackMe](https://tryhackme.com/signup?referrer=603949780215185dfb191142) is a simple web challenge where we exploit an XSS vulnerability to read the flag.
 
 ## **Enumeration**
 
@@ -22,11 +22,11 @@ image:
 
 This is a web challenge and the website can be found on port 8080.
 
-![website](/assets/img/tryhackme/thestickershop/1.png)
+![website](1.png)
 
 It's a sticker shop, nothing looks interesting on the home page, let's check the feedback page.
 
-![feedback](/assets/img/tryhackme/thestickershop/2.png)
+![feedback](2.png)
 
 Here we can submit a feedback.
 
