@@ -5,7 +5,7 @@ description: ""
 date: 2024-12-17 07:00:00 +0000
 categories : [TryHackMe]
 tags: [tryhackme, linux, easy, sudo, steganography, eval]
-img_path: /assets/img/tryhackme/U.A. High School
+img_path: /assets/img/tryhackme/highschool
 image:
     path: highschool.png
 ---
