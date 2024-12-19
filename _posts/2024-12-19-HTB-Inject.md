@@ -60,7 +60,7 @@ Let's upload the image
 
 ![img](3.png)
 
-After uploading the image we get a link to our image <http://10.10.11.204:8080/show_image?img=tmux.png>
+After uploading the image we get a link to our image `http://10.10.11.204:8080/show_image?img=tmux.png`
 
 Let's test for path traversal to read `/etc/passwd` file.
 
