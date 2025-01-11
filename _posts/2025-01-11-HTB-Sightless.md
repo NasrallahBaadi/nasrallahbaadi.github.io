@@ -67,7 +67,7 @@ Searching on google for possible exploits we come across this bug bounty [report
 
 To get a shell we follow the following steps.
 
-- Navigate to <http://sqlpad.sightless.htb>
+- Navigate to `http://sqlpad.sightless.htb`
 - Click on Connections->Add connection
 - Choose MySQL as the driver
 - Input the following payload into the Database form field
