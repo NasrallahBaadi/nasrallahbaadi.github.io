@@ -2,7 +2,7 @@
 title: "HackTheBox - Sightless"
 author: Nasrallah
 description: ""
-date: 07:00:00 +0000
+date: 2025-01-11 07:00:00 +0000
 categories : [HackTheBox, Machines]
 tags: [hackthebox, linux, easy, tunneling, sql, cve, rce, ftp, keepass, john cracking]
 img_path: /assets/img/hackthebox/machines/sightless
