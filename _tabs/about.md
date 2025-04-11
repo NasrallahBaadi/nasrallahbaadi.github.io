@@ -27,7 +27,7 @@ This website serves as a repository for my journey, featuring detailed walkthrou
 <h1 align="center">Languages and Tools</h1>
 <p align="center">
 <a href="https://www.python.org" target="blank"><img align="center" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="50" height="50" /></a>
-<a href="https://www.gnu.org/software/bash/" target="blank"><img align="center" src="https://community.infoblox.com/t5/image/serverpage/image-id/2195iA290BF7E3BA6064D/image-size/large/is-moderation-mode/true?v=v2&px=999" alt="bash" width="50" height="50" /></a>
+<a href="https://www.gnu.org/software/bash/" target="blank"><img align="center" src="https://icon-library.com/images/bash-icon/bash-icon-6.jpg" alt="bash" width="50" height="50" /></a>
 <a href="https://www.w3.org/html/" target="blank"><img align="center" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="50" height="50" /></a>
 <a href="https://git-scm.com/" target="_blank" rel="noreferrer"><img align="center" src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="50" height="50" /></a>
 <a href="https://www.linux.org/" target="_blank" rel="noreferrer"><img align="center" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt="linux" width="50" height="50" /></a>
