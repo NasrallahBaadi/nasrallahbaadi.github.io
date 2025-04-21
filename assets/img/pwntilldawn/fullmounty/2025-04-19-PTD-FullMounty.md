@@ -1,5 +1,5 @@
 ---
-title: "PwnTillDawn - fullmounty"
+title: "PwnTillDawn - Fullmounty"
 author: Nasrallah
 description: ""
 date: 2025-04-19 07:00:00 +0000
