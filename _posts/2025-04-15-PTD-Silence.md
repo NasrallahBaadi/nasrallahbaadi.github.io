@@ -14,7 +14,7 @@ image:
 
 ---
 
-[Silence](https://online.pwntilldawn.com/Target/Show/) from [PwnTillDawn](https://online.pwntilldawn.com/) is medium box, it starts with a file browser website allowing us to list content of directories in the system, we use that to list the web root where we discover an LFI in one of the php files. We exploit the LFI along side the directory listing to discover a backup file of ssh private keys, after downloading the backup we write a script that helps us find the correct key and login. Inside we find a writeable authorized_keys of a user where we add our public key and login as him, the user has a sudo entry that we easily exploit to get root.
+[Silence](https://online.pwntilldawn.com/Target/Show/67) from [PwnTillDawn](https://online.pwntilldawn.com/) is medium box, it starts with a file browser website allowing us to list content of directories in the system, we use that to list the web root where we discover an LFI in one of the php files. We exploit the LFI along side the directory listing to discover a backup file of ssh private keys, after downloading the backup we write a script that helps us find the correct key and login. Inside we find a writeable authorized_keys of a user where we add our public key and login as him, the user has a sudo entry that we easily exploit to get root.
 
 ## **Enumeration**
 
