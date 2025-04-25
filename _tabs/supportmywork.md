@@ -11,7 +11,7 @@ type: support
 
 #### Get **HackTheBox** VIP annual subscription via my affiliate links:
 
-- **HackTheBox** <https://hacktheboxltd.sjv.io/Nasrallah>
+- **HackTheBox** <https://hacktheboxltd.sjv.io/Nasrallah?u=https://app.hackthebox.com/>
 
 - **Academy** <https://hacktheboxltd.sjv.io/DKE33j>
 
