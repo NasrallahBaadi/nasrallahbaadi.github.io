@@ -2,12 +2,10 @@
 title: "Cheat Sheet - File Transfer"
 author: Nasrallah
 description: ""
-date: 2025-05-13 07:00:00 +0000
+date: 2025-05-11 07:00:00 +0000
 categories : [CheatSheet]
 tags: [CheatSheet, linux, windows]
 img_path: /assets/img/cheatsheet
-image:
-    path: banner.png
 ---
 
 <div align="center"> <script src="https://www.hackthebox.eu/badge/565048"></script> </div>
@@ -27,7 +25,7 @@ The following commands are used to setup an HTTP server.
 ```bash
 python3 -m http.server 8000
 python2.7 -m SimpleHTTPServer
-ruby -run -ehttpd . -p 80
+ruby -run -e httpd . -p 80
 php -S 0.0.0.0:80
 ```
 
