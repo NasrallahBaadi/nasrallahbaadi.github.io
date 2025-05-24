@@ -2,7 +2,7 @@
 title: "HackTheBox - EscapeTwo"
 author: Nasrallah
 description: ""
-date: 2025-15-23 07:00:00 +0000
+date: 2025-05-23 07:00:00 +0000
 categories : [HackTheBox, Machines]
 tags: [hackthebox, windows, easy, activedirectory, ad, adcs]
 img_path: /assets/img/hackthebox/machines/escapetwo
