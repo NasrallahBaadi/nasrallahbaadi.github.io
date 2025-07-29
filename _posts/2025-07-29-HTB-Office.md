@@ -2,7 +2,7 @@
 title: "HackTheBox - Office"
 author: Nasrallah
 description: ""
-date: 07:00:00 +0000
+date: 2025-07-29 07:00:00 +0000
 categories : [HackTheBox, Machines]
 tags: [hackthebox, windows, hard, dpapi, gpo, smb, cve, rce, chisel, kerberos, hashcat]
 img_path: /assets/img/hackthebox/machines/office
