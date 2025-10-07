@@ -2,7 +2,7 @@
 title: "HackTheBox - Planning"
 author: Nasrallah
 description: ""
-date: 025-10-01 07:00:00 +0000
+date: 2025-10-01 07:00:00 +0000
 categories : [HackTheBox, Machines]
 tags: [hackthebox, linux, easy, web, ssh, tunneling, cronjobs, cve, sqli, rce]
 img_path: /assets/img/hackthebox/machines/planning
