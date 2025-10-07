@@ -2,7 +2,7 @@
 title: "HackTheBox - Fluffy"
 author: Nasrallah
 description: ""
-date: 07:00:00 +0000
+date: 2025-09-27 07:00:00 +0000
 categories : [HackTheBox, Machines]
 tags: [hackthebox, windows, activedirectory, ad, adcs, certipy, shadow-credentials, easy]
 img_path: /assets/img/hackthebox/machines/fluffy
