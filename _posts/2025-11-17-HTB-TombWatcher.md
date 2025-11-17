@@ -6,8 +6,6 @@ date: 2025-11-17 07:00:00 +0000
 categories : [HackTheBox, Machines]
 tags: [hackthebox, windows, tombstoned, adcs, certipy, shadowcredentials, acl, bloodhound, ldap]
 img_path: /assets/img/hackthebox/machines/tombwatcher
-image:
-    path:
 ---
 
 <div align="center"> <script src="https://www.hackthebox.eu/badge/565048"></script> </div>
