@@ -9,11 +9,9 @@ type: cheatsheet
 
 ## [Windows Passwords](https://nasrallahbaadi.com/posts/Windows-Passwords/)
 
-## [Active Directory](https://nasrallahbaadi.com/cheatsheet/)
+## [Active Directory](https://nasrallahbaadi.com/posts/Active-Directory/)
 
 ## [Pivoting & Tunneling](https://nasrallahbaadi.com/cheatsheet/)
-
-##
 
 ## Aliases
 

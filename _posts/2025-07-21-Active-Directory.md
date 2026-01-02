@@ -18,10 +18,16 @@ tags: [CheatSheet, windows]
 ```bash
 nxc smb 10.10.10.10 -u user -p password --users
 nxc smb 10.10.10.10 -u user -p password --rid-brute
+lookupsid.py user:'Password'@10.10.10.10 10000
+ldapsearch -x -H ldap://dc.domain.htb -D user@domain.htb -w 'password' -b "DC=domain,DC=htb" '(objectClass=user)' | grep sAMAccountName
 ```
 
 ```bash
 rpcclient $> enumdomusers
+```
+
+```bash
+kerbrute userenum -d DOMAIN.local --dc <DC_IP> usernames.txt
 ```
 
 ## **SMB**
@@ -196,6 +202,18 @@ bloodyAD --host domain.local -d domain.local -u user -p password add shadowCrede
 ### Unconstrained Delegation
 
 ### Resource Based Constrained Delegation
+
+## Bloodhound
+
+Collection commands
+
+```bash
+bloodhound-ce-python -d domain.htb -u username -p 'password' -ns 10.10.10.10 -dc dc.domain.htb -c all
+```
+
+```bash
+nxc ldap 10.10.10.10 -u username -p password --bloodhound -c all --dns-server 10.10.10.10
+```
 
 ## **References**
 
