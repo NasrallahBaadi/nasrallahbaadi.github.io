@@ -90,7 +90,7 @@ This website serves as a repository for my journey, featuring detailed walkthrou
 
 
 <div style="display: flex;">
-<img src="/assets/img/certs/Poo.png" alt="pentes +" width="500" height="250">
+<img src="/assets/img/certs/P.O.O.png" alt="pentes +" width="500" height="250">
 <img src="/assets/img/certs/Heron.png" alt="pentes +" width="500" height="250">
 </div>
 
