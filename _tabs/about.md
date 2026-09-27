@@ -44,9 +44,54 @@ This website serves as a repository for my journey, featuring detailed walkthrou
 
 <h1 align="center">Certifications and Achievements</h1>
 
+
+<div style="display: flex;">
+<img src="/assets/img/certs/CPTS.png" alt="pentes +">
+</div>
+
+<div style="display: flex;">
+<img src="/assets/img/certs/NasrallahCRTO.png" alt="pentes +">
+</div>
+
+<div style="display: flex;">
+<img src="/assets/img/certs/RastaLabs.png" alt="pentes +" width="500" height="250">
+<img src="/assets/img/certs/Offshore.png" alt="pentes +" width="500" height="250">
+</div>
+
 <div style="display: flex;">
 <img src="/assets/img/certs/dante.png" alt="pentes +" width="500" height="250">
 <img src="/assets/img/certs/zephyr.png" alt="pentes +" width="500" height="250">
+</div>
+
+<div style="display: flex;">
+<img src="/assets/img/certs/Klendathu.png" alt="pentes +" width="500" height="250">
+<img src="/assets/img/certs/Unintended.png" alt="pentes +" width="500" height="250">
+</div>
+
+<div style="display: flex;">
+<img src="/assets/img/certs/Intercept.png" alt="pentes +" width="500" height="250">
+<img src="/assets/img/certs/Trusted.png" alt="pentes +" width="500" height="250">
+</div>
+
+<div style="display: flex;">
+<img src="/assets/img/certs/Tea.png" alt="pentes +" width="500" height="250">
+<img src="/assets/img/certs/Tengu.png" alt="pentes +" width="500" height="250">
+</div>
+
+<div style="display: flex;">
+<img src="/assets/img/certs/Kaiju.png" alt="pentes +" width="500" height="250">
+<img src="/assets/img/certs/Push.png" alt="pentes +" width="500" height="250">
+</div>
+
+<div style="display: flex;">
+<img src="/assets/img/certs/Sidecar.png" alt="pentes +" width="500" height="250">
+<img src="/assets/img/certs/Reflection.png" alt="pentes +" width="500" height="250">
+</div>
+
+
+<div style="display: flex;">
+<img src="/assets/img/certs/Poo.png" alt="pentes +" width="500" height="250">
+<img src="/assets/img/certs/Heron.png" alt="pentes +" width="500" height="250">
 </div>
 
 <div style="display: flex;">
